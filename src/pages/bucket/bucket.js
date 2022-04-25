@@ -1,7 +1,7 @@
 import React from "react";
 
 const Bucket = () => {
-  return "hello";
+  return <div>Bucket</div>;
 };
 
 export default Bucket;

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Main = () => {
-  return "hello";
+  return <div>Main</div>;
 };
 
 export default Main;
