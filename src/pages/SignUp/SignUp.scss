@@ -1,0 +1,142 @@
+@import "../../styles/mixins.scss";
+
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .signUpTitle {
+    margin-top: 30px;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  .accountContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35%;
+    padding: 20px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    .accountTitleProcess {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 20px;
+
+      h3 {
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .processBox {
+        display: flex;
+        justify-content: center;
+
+        .processUnderBar {
+          opacity: 0.1;
+        }
+
+        .processFirst,
+        .processSecond {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #ddd;
+          color: white;
+          width: 26px;
+          height: 26px;
+          border-radius: 50%;
+          font-size: 12px;
+          font-weight: 800;
+        }
+
+        .processSecond {
+          background-color: #2ac1bc;
+        }
+      }
+    }
+
+    .signUpInfoInputs {
+      width: 100%;
+
+      input {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 15px 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .inputIdBox,
+      .inputPwBox,
+      .inputPwCheckBox,
+      .inputAddressBox,
+      .inputEmailBox,
+      .inputNameBox,
+      .inputPhoneBox {
+        position: relative;
+
+        &::before {
+          @include inputInSideText();
+        }
+      }
+
+      .alertText {
+        margin-bottom: 5px;
+        &::before {
+          content: "아이디는 필수 입력 값입니다 !";
+          color: #f45452;
+          margin-left: 5px;
+          font-size: 10px;
+        }
+      }
+
+      .normalText {
+        margin-bottom: 5px;
+        &::before {
+          content: "아이디는 필수 입력 값입니다 !";
+          color: #f45452;
+          margin-left: 5px;
+          font-size: 10px;
+          display: none;
+        }
+      }
+      .valueFail {
+        margin-bottom: 5px;
+        &::before {
+          content: "형식에 맞게 작성해주세요!";
+          color: #f45452;
+          margin-left: 5px;
+          font-size: 10px;
+        }
+      }
+
+      .inputEmailBox,
+      .inputBirthBox {
+        @include singUpDetailText();
+      }
+    }
+  }
+
+  .signUpBtn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    button {
+      width: 36%;
+      padding: 15px 8px;
+      margin-left: 14px;
+    }
+  }
+}
