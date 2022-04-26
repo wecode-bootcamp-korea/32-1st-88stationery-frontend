@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FindAddr from "../../components/SingUp/FindAdrr";
 import "./SignUp.scss";
 
 const SignUp = () => {
@@ -12,7 +13,13 @@ const SignUp = () => {
     birth: "",
   });
 
+  const [daumAddress, setDaumAddress] = useState(false);
+
   const [valueCheck, setValueCheck] = useState(false);
+
+  const linkToDaum = () => {
+    setDaumAddress(!daumAddress);
+  };
 
   const putUserInfo = e => {
     setUserInfo(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -101,6 +108,10 @@ const SignUp = () => {
                 name="address"
                 onChange={putUserInfo}
               />
+              <button type="button" onClick={linkToDaum}>
+                주소 검색
+              </button>
+              {daumAddress && <FindAddr />}
             </div>
           </li>
           {/* <li className="signUpEmail">
