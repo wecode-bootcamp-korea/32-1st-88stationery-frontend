@@ -2,7 +2,7 @@ import React from "react";
 import "../Search/Search.scss";
 function Search({ searchOn, handleSearchBarOn }) {
   return (
-    <search
+    <div
       className={`${
         searchOn === true
           ? "searchBarContainer action"
@@ -12,10 +12,7 @@ function Search({ searchOn, handleSearchBarOn }) {
       <div className="searchBarWrapper">
         <div className="searchBarHeader">
           <input type="text" placeholder="검색어를 입력해주세요" />
-          <i
-            className=" fa fa-light fa-magnifying-glass fa-2x"
-            onClick={handleSearchBarOn}
-          />
+          <i className=" fa fa-light fa-magnifying-glass fa-2x" />
         </div>
         <div className="searchBarRecentContainer">
           <section className="searchBarRecentItems">
@@ -25,8 +22,12 @@ function Search({ searchOn, handleSearchBarOn }) {
             </div>
           </section>
         </div>
+        <i
+          className="fa fa-duotone fa-xmark fa-2x"
+          onClick={handleSearchBarOn}
+        />
       </div>
-    </search>
+    </div>
   );
 }
 
