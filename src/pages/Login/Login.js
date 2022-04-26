@@ -37,7 +37,7 @@ const Login = () => {
   return (
     <div className="loginArea">
       <div className="loginContainer">
-        <form>
+        <form action="">
           <h1>로그인</h1>
           <div className="acountContent">
             <ul className="loginForm">
@@ -90,6 +90,11 @@ const Login = () => {
           <li>아이디 찾기</li>
           <li>비밀번호 찾기</li>
         </ul>
+      </div>
+      <div style={{ color: "red" }}>
+        <p>usestate 현황</p>
+        <p>아이디 값 : {userInfo.id}</p>
+        <p>패스워드 값 : {userInfo.pw}</p>
       </div>
     </div>
   );
