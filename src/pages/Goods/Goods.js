@@ -3,11 +3,13 @@ import "./Goods.scss";
 
 const Goods = () => {
   const [quantity, setQuantity] = useState(1);
+  const [curIndex, setCurIndex] = useState("0");
+  const isActive = curIndex === "0";
 
   const quantityHandler = ({ target }) => {
     target.className === "quantityUp"
       ? setQuantity(quantity + 1)
-      : setQuantity(quantity - 1);
+      : quantity > 0 && setQuantity(quantity - 1);
   };
 
   const changeNumber = ({ target }) => {
@@ -18,6 +20,21 @@ const Goods = () => {
     !(e.code.includes("Digit") || e.code === "Backspace") && e.preventDefault();
   };
 
+  const moveImage = ({ target }) => {
+    setCurIndex(target.innerText);
+  };
+
+  const swipeHandler = ({ target }) => {
+    target.className === "swipePrev"
+      ? isActive
+        ? setCurIndex("1")
+        : setCurIndex("0")
+      : !isActive
+      ? setCurIndex("0")
+      : setCurIndex("1");
+  };
+  console.log(curIndex);
+  console.log(isActive);
   return (
     <main className="goodsContainer">
       <header className="goodsView">
@@ -27,13 +44,25 @@ const Goods = () => {
             <p className="goodsPrice">3,000원</p>
           </div>
           <figure className="goodsImage">
-            <img src="/images/items/2.jpeg" alt="goodsImage" />
-            <img src="/images/items/3.jpeg" alt="goodsImage" />
-            <div className="swipePrev" />
-            <div className="swipeNext" />
+            <img
+              src="/images/items/2.jpeg"
+              alt="goodsImage"
+              style={{ opacity: isActive ? 1 : 0 }}
+            />
+            <img
+              src="/images/items/3.jpeg"
+              alt="goodsImage"
+              style={{ opacity: isActive ? 0 : 1 }}
+            />
+            <div onClick={swipeHandler} className="swipePrev" />
+            <div onClick={swipeHandler} className="swipeNext" />
             <div className="indexButton">
-              <span>0</span>
-              <span>1</span>
+              <span className={isActive && "active"} onClick={moveImage}>
+                0
+              </span>
+              <span className={!isActive && "active"} onClick={moveImage}>
+                1
+              </span>
             </div>
           </figure>
           <div className="goodsOrder">
