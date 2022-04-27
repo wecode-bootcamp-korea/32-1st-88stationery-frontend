@@ -1,0 +1,32 @@
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin-top: 30%;
+
+  h1 {
+    font-size: 35px;
+    margin-bottom: 3%;
+  }
+  .cartWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    .cartContent {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      padding-bottom: 10px;
+      width: 70%;
+    }
+    .cartPayment {
+      padding-top: 10px;
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+      .productPirce {
+      }
+    }
+  }
+}
