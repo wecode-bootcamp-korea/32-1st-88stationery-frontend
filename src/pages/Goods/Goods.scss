@@ -1,12 +1,16 @@
 .goodsContainer {
-  width: 1200px;
-  margin: 170px auto;
-  background-color: yellowgreen;
+  width: 100%;
+
+  .goodsView {
+    width: 1300px;
+    margin: 0 auto;
+    padding: 40px;
+  }
 
   .goodsInfo {
     display: flex;
+    align-items: center;
     width: 100%;
-    background-color: thistle;
 
     .goodsTitle {
       display: flex;
@@ -31,19 +35,90 @@
 
     .goodsImage {
       flex: 2;
+      margin: 0 35px;
 
       img {
         width: 100%;
+        height: 500px;
       }
     }
 
     .goodsOrder {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       flex: 1;
 
       .shippingGuide {
-        padding: 20 0;
+        padding: 20px 0;
         border-top: 1px solid #ddd;
         border-bottom: 1px solid #ddd;
+
+        p {
+          line-height: 20px;
+          color: #999;
+        }
+
+        p:first-child {
+          color: black;
+          margin-bottom: 10px;
+        }
+      }
+
+      .orderOption {
+        display: flex;
+        align-items: center;
+        // justify-content: space-between;
+        padding: 20px 0;
+        border-bottom: 1px solid #ddd;
+
+        p {
+          padding-top: 2px;
+        }
+
+        .orderQuantity {
+          display: flex;
+          justify-content: space-between;
+          width: 120px;
+
+          input {
+            width: 50px;
+            height: 25px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 19px;
+            text-align: center;
+          }
+
+          button {
+            width: 25px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 20px;
+          }
+        }
+      }
+      .orderTotal {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+
+        p {
+          font-weight: 500;
+        }
+
+        p:last-child {
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 24px;
+        }
+      }
+
+      .btnGroup {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
       }
     }
   }
