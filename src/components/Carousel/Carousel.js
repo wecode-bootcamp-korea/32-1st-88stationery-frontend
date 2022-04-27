@@ -22,7 +22,7 @@ const Carousel = () => {
         setCurIndex(3);
         setTimeout(() => {
           setAction(0.5);
-        }, 10);
+        }, 20);
       }, 500);
     curIndex === 4 &&
       setTimeout(() => {
@@ -30,7 +30,7 @@ const Carousel = () => {
         setCurIndex(1);
         setTimeout(() => {
           setAction(0.5);
-        }, 10);
+        }, 20);
       }, 500);
     return () => {
       // setAction(0.5);
