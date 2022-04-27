@@ -1,7 +1,7 @@
 import React from "react";
 export default function AsideGlobalChange() {
   return (
-    <style jsx>{`
+    <style jsx global>{`
       body {
         overflow: hidden;
       }
