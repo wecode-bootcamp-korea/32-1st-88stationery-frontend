@@ -2,13 +2,12 @@ import React from "react";
 import "./items.scss";
 
 const Items = ({ itemList }) => {
-  console.log(itemList.name);
   return (
-    <div className="item">
-      <a>
+    <div key={itemList.id} className="item">
+      <a href="#">
         <figure className="thumbnail">
-          <img src={itemList.src1} />
-          <img src={itemList.src2} />
+          <img src={itemList.src1} alt="itemimage" />
+          <img src={itemList.src2} alt="itemimage" />
         </figure>
         <div className="itemInfo">
           <p className="itemName">{itemList.name}</p>

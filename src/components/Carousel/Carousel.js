@@ -68,8 +68,8 @@ const Carousel = () => {
         <span>1</span>
         <span>2</span>
       </div>
-      <div className="prevButton" onClick={swipeHandler}></div>
-      <div className="nextButton" onClick={swipeHandler}></div>
+      <div className="prevButton" onClick={swipeHandler} />
+      <div className="nextButton" onClick={swipeHandler} />
     </div>
   );
 };

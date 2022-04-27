@@ -16,7 +16,6 @@ const Main = () => {
       });
   }, []);
 
-  console.log(itemLists);
   return (
     <main className="mainContainer">
       <Carousel />
