@@ -18,8 +18,12 @@ const Goods = () => {
     !(e.code.includes("Digit") || e.code === "Backspace") && e.preventDefault();
   };
 
+  const wheel = e => {
+    e.preventDefault();
+  };
+
   return (
-    <main className="goodsContainer">
+    <main onWheel={wheel} className="goodsContainer">
       <header className="goodsView">
         <div className="goodsInfo">
           <div className="goodsTitle">
@@ -61,8 +65,8 @@ const Goods = () => {
               </p>
             </div>
             <footer className="btnGroup">
-              <button></button>
-              <button>바로 구매하기</button>
+              <button className="cartButton"></button>
+              <button className="buyButton">바로 구매하기</button>
             </footer>
           </div>
         </div>
