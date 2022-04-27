@@ -1,13 +1,13 @@
 import React from "react";
 import "../Search/Search.scss";
-function Search({ searchOn, handleSearchBarOn }) {
+function Search({ isSearchOn, handleSearchBarOn }) {
   return (
     <div
-      className={`${
-        searchOn === true
+      className={
+        isSearchOn === true
           ? "searchBarContainer action"
           : "searchBarContainer base"
-      }`}
+      }
     >
       <div className="searchBarWrapper">
         <div className="searchBarHeader">

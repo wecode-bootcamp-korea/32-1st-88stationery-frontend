@@ -1,0 +1,7 @@
+[
+  { "path": "baseball", "category": "야구" },
+  { "path": "swim", "category": "수영" },
+  { "path": "running", "category": "육상" },
+  { "path": "sky", "category": "체조" },
+  { "path": "arrow", "category": "양궁" }
+]

@@ -2,46 +2,49 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Aside from "../Aside/Aside";
 import Search from "../Search/Search";
+import NavSideCategory from "./NavSideCategory";
 import "./Nav.scss";
-import NavSideCategoryComponents from "./NavSideCategoryComponents";
 
 const Nav = () => {
-  const categoryList = [
-    { path: "baseball", category: "야구" },
-    { path: "swim", category: "수영" },
-    { path: "running", category: "육상" },
-    { path: "sky", category: "체조" },
-    { path: "arrow", category: "양궁" },
-  ];
-
-  const [ScrollY, setScrollY] = useState(0);
-  const [powerOn, setPowerOn] = useState(false);
-  const [searchOn, setSearchOn] = useState(false);
+  const [CATEGORY_LIST, setCATEGORY_LIST] = useState([]);
+  const [scrollY, setScrollY] = useState(0);
+  const [isSideBarOn, setisSideBarOn] = useState(false);
+  const [isSearchOn, setisSearchOn] = useState(false);
 
   function handleScroll() {
     setScrollY(window.pageYOffset);
   }
 
   function handleSideBarOn() {
-    powerOn === false ? setPowerOn(true) : setPowerOn(false);
+    isSideBarOn === false ? setisSideBarOn(true) : setisSideBarOn(false);
   }
   function handleSearchBarOn() {
-    searchOn === false ? setSearchOn(true) : setSearchOn(false);
+    isSearchOn === false ? setisSearchOn(true) : setisSearchOn(false);
   }
 
   useEffect(() => {
     function scrollListener() {
       window.addEventListener("scroll", handleScroll);
-    } //  window 에서 스크롤을 감시 시작
-    scrollListener(); // window 에서 스크롤을 감시
+    }
+    scrollListener();
     return () => {
       window.removeEventListener("scroll", handleScroll);
-    }; //  window 에서 스크롤을 감시를 종료
+    };
   });
+
+  useEffect(() => {
+    fetch("data/CategoryListData.json", {
+      method: "GET",
+    })
+      .then(res => res.json())
+      .then(data => {
+        setCATEGORY_LIST(data);
+      });
+  }, []);
 
   return (
     <>
-      <nav className={ScrollY !== 0 ? "gnb action" : "gnb base"}>
+      <nav className={scrollY !== 0 ? "gnb action" : "gnb base"}>
         <div className="gnbContainer">
           <div className="gnbLogo">
             <Link to="/main">
@@ -53,7 +56,7 @@ const Nav = () => {
           </div>
           <div className="gnbCategory">
             <ul className="gnbCategoryList">
-              <NavSideCategoryComponents categoryList={categoryList} />
+              <NavSideCategory CATEGORY_LIST={CATEGORY_LIST} />
             </ul>
           </div>
           <div className="gnbEtc">
@@ -70,16 +73,16 @@ const Nav = () => {
           </div>
         </div>
       </nav>
-      <Search searchOn={searchOn} handleSearchBarOn={handleSearchBarOn} />
+      <Search isSearchOn={isSearchOn} handleSearchBarOn={handleSearchBarOn} />
       <Aside
-        categoryList={categoryList}
-        powerOn={powerOn}
+        CATEGORY_LIST={CATEGORY_LIST}
+        isSideBarOn={isSideBarOn}
         handleSideBarOn={handleSideBarOn}
       />
 
-      {(powerOn || searchOn) && (
+      {(isSideBarOn || isSearchOn) && (
         <div
-          className={`${powerOn === true ? "sideScreenHide" : "sideScreen"}`}
+          className={isSideBarOn === true ? "sideScreenHide" : "sideScreen"}
           onClick={handleSideBarOn}
         />
       )}

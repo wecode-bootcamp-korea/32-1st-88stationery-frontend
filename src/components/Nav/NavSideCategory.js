@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function NavSideCategoryComponents({ categoryList }) {
-  return categoryList.map((list, index) => {
+function NavSideCategory({ CATEGORY_LIST }) {
+  return CATEGORY_LIST.map((list, index) => {
     const { path, category } = list;
     return (
       <li key={index}>
@@ -12,4 +12,4 @@ function NavSideCategoryComponents({ categoryList }) {
   });
 }
 
-export default NavSideCategoryComponents;
+export default NavSideCategory;

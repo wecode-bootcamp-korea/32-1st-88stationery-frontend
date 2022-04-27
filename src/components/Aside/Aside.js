@@ -1,9 +1,10 @@
 import React from "react";
-import NavSideCategoryComponents from "../Nav/NavSideCategoryComponents";
+import NavSideCategory from "../Nav/NavSideCategory";
 import "./Aside.scss";
-const Aside = ({ categoryList, powerOn, handleSideBarOn }) => {
+
+const Aside = ({ CATEGORY_LIST, isSideBarOn, handleSideBarOn }) => {
   return (
-    <aside className={`${powerOn === true ? "gsb" : "gsb hidden"}`}>
+    <aside className={isSideBarOn === true ? "gsb" : "gsb hidden"}>
       <header className="gsbHeader">
         <h2>
           앗<p>로그인이 필요합니다</p>
@@ -13,12 +14,12 @@ const Aside = ({ categoryList, powerOn, handleSideBarOn }) => {
         <i className="fa fa-duotone fa-xmark fa-2x" onClick={handleSideBarOn} />
         <h2>카테고리</h2>
         <ul className="gsbCategoryList">
-          <NavSideCategoryComponents categoryList={categoryList} />
+          <NavSideCategory CATEGORY_LIST={CATEGORY_LIST} />
         </ul>
       </nav>
       <footer className="gsbFooter">
         <div className="footerContainer">
-          <i class="fa fa-solid fa-headphones-simple fa-2x" />
+          <i className="fa fa-solid fa-headphones-simple fa-2x" />
           <ul>
             <li>
               <span>1:1문의</span>
