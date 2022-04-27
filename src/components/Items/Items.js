@@ -1,10 +1,10 @@
 import React from "react";
 import "./items.scss";
 
-const Items = ({ itemList }) => {
+const Items = ({ itemList, key }) => {
   return (
-    <div key={itemList.id} className="item">
-      <a href="#">
+    <div key={key} className="item">
+      <div className="itemDetail">
         <figure className="thumbnail">
           <img src={itemList.src1} alt="itemimage" />
           <img src={itemList.src2} alt="itemimage" />
@@ -13,7 +13,7 @@ const Items = ({ itemList }) => {
           <p className="itemName">{itemList.name}</p>
           <p className="itemPrice">{itemList.price}</p>
         </div>
-      </a>
+      </div>
     </div>
   );
 };

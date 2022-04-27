@@ -23,19 +23,19 @@ const Main = () => {
         <h3 className="mainTitle">요즘 잘 나가요</h3>
         <div className="itemList">
           {itemLists.map(itemList => (
-            <Items itemList={itemList} />
+            <Items key={Date.now()} itemList={itemList} />
           ))}
         </div>
         <h3 className="mainTitle">새로 나왔어요</h3>
         <div className="itemList">
           {itemLists.map(itemList => (
-            <Items itemList={itemList} />
+            <Items key={Date.now()} itemList={itemList} />
           ))}
         </div>
         <h3 className="mainTitle">지금은 할인중</h3>
         <div className="itemList">
           {itemLists.map(itemList => (
-            <Items itemList={itemList} />
+            <Items key={Date.now()} itemList={itemList} />
           ))}
         </div>
       </div>
