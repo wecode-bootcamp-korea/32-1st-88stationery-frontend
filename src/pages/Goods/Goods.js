@@ -18,12 +18,8 @@ const Goods = () => {
     !(e.code.includes("Digit") || e.code === "Backspace") && e.preventDefault();
   };
 
-  const wheel = e => {
-    e.preventDefault();
-  };
-
   return (
-    <main onWheel={wheel} className="goodsContainer">
+    <main className="goodsContainer">
       <header className="goodsView">
         <div className="goodsInfo">
           <div className="goodsTitle">
@@ -32,6 +28,13 @@ const Goods = () => {
           </div>
           <figure className="goodsImage">
             <img src="/images/items/2.jpeg" alt="goodsImage" />
+            <img src="/images/items/3.jpeg" alt="goodsImage" />
+            <div className="swipePrev" />
+            <div className="swipeNext" />
+            <div className="indexButton">
+              <span>0</span>
+              <span>1</span>
+            </div>
           </figure>
           <div className="goodsOrder">
             <div className="shippingGuide">

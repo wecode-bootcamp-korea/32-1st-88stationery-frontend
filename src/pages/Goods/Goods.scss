@@ -34,12 +34,49 @@
     }
 
     .goodsImage {
+      position: relative;
       flex: 2;
       margin: 0 35px;
 
       img {
         width: 100%;
         height: 500px;
+      }
+
+      img:first-child {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 1;
+      }
+
+      .swipePrev,
+      .swipeNext {
+        position: absolute;
+        width: 30px;
+        height: 50px;
+        background-color: #2ac1bc;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .swipePrev {
+        left: 10px;
+      }
+
+      .swipeNext {
+        right: 10px;
+      }
+
+      .indexButton {
+        display: flex;
+        justify-content: center;
+        margin-top: 5px;
+
+        span {
+          margin-right: 10px;
+          text-indent: -1000em;
+        }
       }
     }
 
@@ -123,12 +160,18 @@
         .cartButton {
           width: 50px;
           height: 50px;
+          background-color: #fff;
           border: 1px solid #ccc;
           border-radius: 6px;
           transition: all 0.3s ease;
         }
 
+        .cartButton:hover {
+          border-color: #2ac1bc;
+        }
+
         .buyButton {
+          flex: 1;
           width: 100%;
           font-size: 16px;
           color: #fff;
@@ -136,6 +179,13 @@
           border-radius: 6px;
           margin-left: 10px;
           border: none;
+          transition: all 0.3s ease;
+        }
+
+        .buyButton:hover {
+          color: #2ac1bc;
+          background-color: #fff;
+          border: 1px solid #2ac1bc;
         }
       }
     }
