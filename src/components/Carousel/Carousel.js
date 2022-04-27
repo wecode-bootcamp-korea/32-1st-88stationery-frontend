@@ -15,7 +15,6 @@ const Carousel = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      console.log("hi");
       setIsTransition(false);
     }, 1000);
     // setTimeout(() => {
@@ -38,7 +37,6 @@ const Carousel = () => {
         }, 20);
       }, 1000);
     return () => {
-      console.log("heelo");
       // setAction(0.5);
     };
   }, [curIndex]);
