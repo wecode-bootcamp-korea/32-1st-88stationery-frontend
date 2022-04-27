@@ -1,6 +1,7 @@
 import React from "react";
 import NavSideCategory from "../Nav/NavSideCategory";
 import "./Aside.scss";
+import AsideGlobalChange from "./AsideGlobalChange";
 
 const Aside = ({ CATEGORY_LIST, isSideBarOn, handleSideBarOn }) => {
   return (
@@ -36,10 +37,13 @@ const Aside = ({ CATEGORY_LIST, isSideBarOn, handleSideBarOn }) => {
         </footer>
       </aside>
       {isSideBarOn && (
-        <div
-          className={isSideBarOn ? "sideScreenHide" : "sideScreen"}
-          onClick={handleSideBarOn}
-        />
+        <>
+          <div
+            className={isSideBarOn ? "sideScreenHide" : "sideScreen"}
+            onClick={handleSideBarOn}
+          />
+          <AsideGlobalChange />
+        </>
       )}
     </>
   );
