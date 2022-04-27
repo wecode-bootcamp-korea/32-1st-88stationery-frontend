@@ -3,7 +3,8 @@ import "./Carousel.scss";
 
 const Carousel = () => {
   const [curIndex, setCurIndex] = useState(1);
-  const [action, setAction] = useState(0.5);
+  const [action, setAction] = useState(1);
+  const [isTransition, setIsTransition] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setCurIndex(curIndex + 1), 4000);
@@ -13,6 +14,10 @@ const Carousel = () => {
   });
 
   useEffect(() => {
+    setTimeout(() => {
+      console.log("hi");
+      setIsTransition(false);
+    }, 1000);
     // setTimeout(() => {
     //   setAction(0);
     // }, 500);
@@ -21,18 +26,19 @@ const Carousel = () => {
         setAction(0);
         setCurIndex(3);
         setTimeout(() => {
-          setAction(0.5);
+          setAction(1);
         }, 20);
-      }, 500);
+      }, 1000);
     curIndex === 4 &&
       setTimeout(() => {
         setAction(0);
         setCurIndex(1);
         setTimeout(() => {
-          setAction(0.5);
+          setAction(1);
         }, 20);
-      }, 500);
+      }, 1000);
     return () => {
+      console.log("heelo");
       // setAction(0.5);
     };
   }, [curIndex]);
@@ -42,11 +48,21 @@ const Carousel = () => {
   };
 
   const swipeHandler = ({ target }) => {
-    setAction(0.5);
+    if (isTransition) return;
+    setAction(1);
     target.className === "prevButton"
-      ? setCurIndex(curIndex - 1)
-      : setCurIndex(curIndex + 1);
+      ? setCurIndex(curIndex => {
+          setIsTransition(true);
+          return curIndex - 1;
+        })
+      : setCurIndex(curIndex => {
+          setIsTransition(true);
+          return curIndex + 1;
+        });
   };
+
+  console.log(isTransition);
+  console.log(curIndex);
 
   return (
     <div className="bannerContainer">
