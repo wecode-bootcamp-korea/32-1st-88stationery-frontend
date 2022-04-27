@@ -2,6 +2,7 @@ import React from "react";
 import "./Cart.scss";
 
 const Cart = () => {
+  const onClick = () => {};
   return (
     <div className="cartContainer">
       <h1 className="cartTitle">장바구니</h1>
@@ -9,7 +10,7 @@ const Cart = () => {
         <div className="cartContent">
           <div className="cartContentHeader">
             <div>
-              <input type="checkbox" />
+              <input type="checkbox" onClick={onClick} />
               <button>전체선택</button>
             </div>
             <div>
