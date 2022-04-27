@@ -1,16 +1,16 @@
 .searchBarContainer {
   position: fixed;
-  overflow-y: scroll;
   max-height: 100%;
   width: 100%;
   background-color: rgb(255, 255, 255);
   visibility: visible;
   transition: top 0.5s ease 0s, visibility 0.3s ease 0s;
+  overflow-y: scroll;
 
   &.action {
     top: 0px;
-    z-index: 100;
     height: 100%;
+    z-index: 100;
   }
 
   &.base {
@@ -36,10 +36,10 @@
     input {
       width: 100%;
       height: 60px;
-      font-size: 20px;
       border: none;
       border-bottom: 2px solid #000;
       outline: none;
+      font-size: 20px;
     }
   }
 

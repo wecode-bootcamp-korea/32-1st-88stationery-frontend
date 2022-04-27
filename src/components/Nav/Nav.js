@@ -5,8 +5,15 @@ import Search from "../Search/Search";
 import NavSideCategory from "./NavSideCategory";
 import "./Nav.scss";
 
+const CATEGORY_LIST = [
+  { path: "baseball", category: "야구" },
+  { path: "swim", category: "수영" },
+  { path: "running", category: "육상" },
+  { path: "sky", category: "체조" },
+  { path: "arrow", category: "양궁" },
+];
+
 const Nav = () => {
-  const [CATEGORY_LIST, setCATEGORY_LIST] = useState([]);
   const [scrollY, setScrollY] = useState(0);
   const [isSideBarOn, setisSideBarOn] = useState(false);
   const [isSearchOn, setisSearchOn] = useState(false);
@@ -16,10 +23,11 @@ const Nav = () => {
   }
 
   function handleSideBarOn() {
-    isSideBarOn === false ? setisSideBarOn(true) : setisSideBarOn(false);
+    setisSideBarOn(!isSideBarOn);
   }
+
   function handleSearchBarOn() {
-    isSearchOn === false ? setisSearchOn(true) : setisSearchOn(false);
+    setisSearchOn(!isSearchOn);
   }
 
   useEffect(() => {
@@ -32,19 +40,9 @@ const Nav = () => {
     };
   });
 
-  useEffect(() => {
-    fetch("data/CategoryListData.json", {
-      method: "GET",
-    })
-      .then(res => res.json())
-      .then(data => {
-        setCATEGORY_LIST(data);
-      });
-  }, []);
-
   return (
     <>
-      <nav className={scrollY !== 0 ? "gnb action" : "gnb base"}>
+      <nav className={scrollY !== 0 ? "gnbAction" : "gnbBase"}>
         <div className="gnbContainer">
           <div className="gnbLogo">
             <Link to="/main">
@@ -79,13 +77,6 @@ const Nav = () => {
         isSideBarOn={isSideBarOn}
         handleSideBarOn={handleSideBarOn}
       />
-
-      {(isSideBarOn || isSearchOn) && (
-        <div
-          className={isSideBarOn === true ? "sideScreenHide" : "sideScreen"}
-          onClick={handleSideBarOn}
-        />
-      )}
     </>
   );
 };

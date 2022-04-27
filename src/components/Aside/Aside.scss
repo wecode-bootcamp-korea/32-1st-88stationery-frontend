@@ -1,18 +1,19 @@
 .gsb {
   position: fixed;
+  display: flex;
+  flex-direction: column;
   right: 0;
   width: 380px;
   height: 100%;
   padding-top: 60px;
   background-color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 1;
-  transition: right 0.4s ease 0s;
   border: 1px solid black;
+  overflow: hidden;
+  transition: right 0.4s ease 0s;
+  z-index: 1;
 
-  &.hidden {
+  &Hidden {
+    @extend .gsb;
     right: -380px;
   }
 
@@ -21,11 +22,11 @@
 
     h2 {
       width: 260px;
-      font-size: 32px;
       line-height: 42px;
+      color: rgb(68, 68, 68);
+      font-size: 32px;
       font-weight: 400;
       letter-spacing: -1px;
-      color: rgb(68, 68, 68);
     }
   }
 
@@ -64,9 +65,9 @@
   }
 
   .gsbFooter {
-    padding: 27px 40px;
     display: flex;
     justify-content: center;
+    padding: 27px 40px;
 
     .footerContainer {
       display: flex;
@@ -78,20 +79,20 @@
       }
 
       ul {
+        display: flex;
+        line-height: 19px;
         font-size: 16px;
         font-weight: 700;
-        line-height: 19px;
-        display: flex;
 
         li {
           display: flex;
 
           &:nth-last-child(1)::before {
+            display: block;
             width: 1px;
             height: 16px;
             margin: 0px 10px;
             background-color: rgb(221, 221, 221);
-            display: block;
             content: "";
           }
 

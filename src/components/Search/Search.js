@@ -4,9 +4,7 @@ function Search({ isSearchOn, handleSearchBarOn }) {
   return (
     <div
       className={
-        isSearchOn === true
-          ? "searchBarContainer action"
-          : "searchBarContainer base"
+        isSearchOn ? "searchBarContainer action" : "searchBarContainer base"
       }
     >
       <div className="searchBarWrapper">

@@ -1,27 +1,29 @@
 .gnb {
-  width: 100%;
   position: fixed;
   left: 0px;
+  width: 100%;
   padding-top: 0px;
+  background: transparent;
   transition: border 0.4s ease 0s, background-color 0.4s ease 0s,
     top 0.2s ease 0s;
-  background: transparent;
   z-index: 1;
 
-  &.action {
+  &Action {
+    @extend .gnb;
     border-bottom: 1px solid black;
   }
 
-  &.base {
+  &Base {
+    @extend .gnb;
     border-bottom: 1px solid transparent;
   }
 
   .gnbContainer {
     display: flex;
+    align-items: center;
     height: 90px;
     width: 100%;
     padding: 0 40px;
-    align-items: center;
 
     .gnbLogo {
       flex: 1;
@@ -37,10 +39,10 @@
 
       a {
         padding-right: 20px;
+        color: #000;
         font-size: inherit;
         font-weight: 700;
         text-decoration-line: none;
-        color: #000;
 
         &:hover {
           color: #39c5c0;
@@ -59,18 +61,18 @@
     }
 
     .gnbLogin {
+      display: inline-flex;
+      align-items: center;
       min-width: 69px;
       height: 33px;
       margin: 0px 2px;
       padding: 0px 16px;
+      background: transparent;
+      border: 2px solid rgb(68, 68, 68);
+      border-radius: 17px;
       font-size: 14px;
       font-weight: 700;
       text-align: center;
-      border: 2px solid rgb(68, 68, 68);
-      border-radius: 17px;
-      display: inline-flex;
-      align-items: center;
-      background: transparent;
       cursor: pointer;
 
       &:hover {
@@ -87,13 +89,8 @@
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 0.4s ease 0.2s;
   opacity: 0;
-
-  &Hide {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: opacity 0.4s ease 0.2s;
-    opacity: 1;
-  }
+}
+.sideScreenHide {
+  @extend .sideScreen;
+  opacity: 1;
 }
