@@ -1,0 +1,50 @@
+.goodsContainer {
+  width: 1200px;
+  margin: 170px auto;
+  background-color: yellowgreen;
+
+  .goodsInfo {
+    display: flex;
+    width: 100%;
+    background-color: thistle;
+
+    .goodsTitle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+
+      .goodsName {
+        font-size: 30px;
+        font-weight: 700;
+        word-break: keep-all;
+        line-height: 20px;
+      }
+
+      .goodsPrice {
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 20px;
+      }
+    }
+
+    .goodsImage {
+      flex: 2;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .goodsOrder {
+      flex: 1;
+
+      .shippingGuide {
+        padding: 20 0;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+      }
+    }
+  }
+}
