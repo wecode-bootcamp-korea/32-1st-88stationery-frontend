@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Carousel.scss";
 
 const Carousel = () => {
+  const [imageList, setImageList] = useState(IMAGE);
   const [curIndex, setCurIndex] = useState(1);
   const [action, setAction] = useState(1);
   const [isTransition, setIsTransition] = useState(false);
@@ -20,7 +21,8 @@ const Carousel = () => {
     // setTimeout(() => {
     //   setAction(0);
     // }, 500);
-    curIndex === 0 &&
+    const startIndex = 0;
+    curIndex === startIndex &&
       setTimeout(() => {
         setAction(0);
         setCurIndex(3);
@@ -59,6 +61,8 @@ const Carousel = () => {
         });
   };
 
+  console.log(imageList);
+
   return (
     <div className="bannerContainer">
       <div
@@ -68,11 +72,9 @@ const Carousel = () => {
           transition: `all ${action}s`,
         }}
       >
-        <img src="/images/items/3.jpeg" alt="bannerImage" />
-        <img src="/images/items/1.jpeg" alt="bannerImage" />
-        <img src="/images/items/2.jpeg" alt="bannerImage" />
-        <img src="/images/items/3.jpeg" alt="bannerImage" />
-        <img src="/images/items/1.jpeg" alt="bannerImage" />
+        {imageList.map(({ src }) => (
+          <img src={src} alt="bannerImage" />
+        ))}
       </div>
       <div className="indexButton" onClick={clickHandler}>
         <span>0</span>
@@ -86,3 +88,9 @@ const Carousel = () => {
 };
 
 export default Carousel;
+
+const IMAGE = [
+  { src: "/images/items/1.jpeg" },
+  { src: "/images/items/2.jpeg" },
+  { src: "/images/items/3.jpeg" },
+];
