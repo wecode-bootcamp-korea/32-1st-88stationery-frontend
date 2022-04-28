@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Items from "../../components/Items/Items";
+import React from "react";
 import Carousel from "../../components/Carousel/Carousel";
 import ItemContainer from "../../components/ItemContainer/ItemContainer";
 import "./Main.scss";

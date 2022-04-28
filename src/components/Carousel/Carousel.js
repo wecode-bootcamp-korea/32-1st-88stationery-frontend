@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./Carousel.scss";
 
 const Carousel = () => {
-  const [imageList, setImageList] = useState(IMAGE);
+  const [imageList, setImageList] = useState([]);
   const [curIndex, setCurIndex] = useState(1);
   const [action, setAction] = useState(1);
   const [isTransition, setIsTransition] = useState(false);
+
+  useEffect(() => {
+    setImageList(IMAGE);
+    setImageList(prev => [IMAGE[IMAGE.length - 1], ...prev, IMAGE[0]]);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => setCurIndex(curIndex + 1), 4000);
@@ -30,7 +35,7 @@ const Carousel = () => {
           setAction(1);
         }, 20);
       }, 1000);
-    curIndex === 4 &&
+    curIndex === imageList.length - 1 &&
       setTimeout(() => {
         setAction(0);
         setCurIndex(1);
@@ -61,7 +66,7 @@ const Carousel = () => {
         });
   };
 
-  console.log(imageList);
+  console.log(curIndex);
 
   return (
     <div className="bannerContainer">
@@ -77,9 +82,11 @@ const Carousel = () => {
         ))}
       </div>
       <div className="indexButton" onClick={clickHandler}>
-        <span>0</span>
-        <span>1</span>
-        <span>2</span>
+        {Array(IMAGE.length)
+          .fill()
+          .map((_, idx) => (
+            <span>{idx + 1}</span>
+          ))}
       </div>
       <div className="prevButton" onClick={swipeHandler} />
       <div className="nextButton" onClick={swipeHandler} />
