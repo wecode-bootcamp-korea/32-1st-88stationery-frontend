@@ -75,15 +75,17 @@ const Carousel = () => {
           transition: `all ${action}s`,
         }}
       >
-        {imageList.map(({ src }) => (
-          <img src={src} alt="bannerImage" />
+        {imageList.map(({ src }, idx) => (
+          <img key={idx} src={src} alt="bannerImage" />
         ))}
       </div>
       <div className="indexButton" onClick={clickHandler}>
         {Array(IMAGE.length)
           .fill()
           .map((_, idx) => (
-            <span className={curIndex === idx + 1 && "active"}>{idx + 1}</span>
+            <span key={idx} className={curIndex === idx + 1 && "active"}>
+              {idx + 1}
+            </span>
           ))}
       </div>
       <div className="prevButton" onClick={swipeHandler} />
