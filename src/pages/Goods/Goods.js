@@ -3,7 +3,7 @@ import "./Goods.scss";
 
 const Goods = () => {
   const [quantity, setQuantity] = useState(1);
-  const [curIndex, setCurIndex] = useState(true);
+  const [isActive, setisActive] = useState(true);
 
   const quantityHandler = ({ target }) => {
     target.className === "quantityUp"
@@ -19,12 +19,12 @@ const Goods = () => {
     !(e.code.includes("Digit") || e.code === "Backspace") && e.preventDefault();
   };
 
-  const moveImage = ({ target }) => {
-    setCurIndex(!curIndex);
+  const moveImage = () => {
+    setisActive(!isActive);
   };
 
   const swipeHandler = () => {
-    setCurIndex(!curIndex);
+    setisActive(!isActive);
   };
 
   return (
@@ -39,20 +39,20 @@ const Goods = () => {
             <img
               src="/images/items/2.jpeg"
               alt="goodsImage"
-              style={{ opacity: curIndex ? 1 : 0 }}
+              style={{ opacity: isActive ? 1 : 0 }}
             />
             <img
               src="/images/items/3.jpeg"
               alt="goodsImage"
-              style={{ opacity: curIndex ? 0 : 1 }}
+              style={{ opacity: isActive ? 0 : 1 }}
             />
             <div onClick={swipeHandler} className="swipePrev" />
             <div onClick={swipeHandler} className="swipeNext" />
             <div className="indexButton">
-              <span className={curIndex && "active"} onClick={moveImage}>
+              <span className={isActive && "active"} onClick={moveImage}>
                 0
               </span>
-              <span className={!curIndex && "active"} onClick={moveImage}>
+              <span className={!isActive && "active"} onClick={moveImage}>
                 1
               </span>
             </div>
