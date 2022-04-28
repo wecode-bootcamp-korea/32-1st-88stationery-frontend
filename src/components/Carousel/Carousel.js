@@ -66,8 +66,6 @@ const Carousel = () => {
         });
   };
 
-  console.log(curIndex);
-
   return (
     <div className="bannerContainer">
       <div
@@ -85,7 +83,7 @@ const Carousel = () => {
         {Array(IMAGE.length)
           .fill()
           .map((_, idx) => (
-            <span>{idx + 1}</span>
+            <span className={curIndex === idx + 1 && "active"}>{idx + 1}</span>
           ))}
       </div>
       <div className="prevButton" onClick={swipeHandler} />
