@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+import Items from "./Items";
 import "./Inquiry.scss";
 
-const inquiry = () => {
-  const [itemBtn, setItemBtn] = useState("0");
+const Inquiry = () => {
+  // state zone
+
+  // variable zone
+
+  // function zone
 
   return (
     <div className="inquiryContainer">
@@ -11,42 +16,8 @@ const inquiry = () => {
         <button className="writeInquiry">1:1문의하기</button>
       </header>
 
-      <div className="inquiryContent">
-        <div className="inquiryItem">
-          <div className="itemTop">
-            <h1>글제목 : 상품이 불량</h1>
-            <ul>
-              <li>작성자 : 전형준 </li>
-              <li>작성일자 : 2022-04-27</li>
-            </ul>
-            <button className="itemOnOff">✅</button>
-          </div>
-          <div className="itemHide">
-            <div className="itemMain">
-              <p>
-                글내용 : 오늘 배송받은 물품이 어쩌구 저쩌구 주절 주절 ... 😣
-              </p>
-            </div>
-            <div className="itemBottom">
-              <ul>
-                <li>
-                  <span>댓글내용 : 어쩔티비 ~ 🤗</span>
-                  <div className="commentAction">
-                    <button>🗨</button>&nbsp;
-                    <button>✖</button>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="commentInput">
-              <form action="">
-                <input type="text" placeholder="내용을 입력하세요." />{" "}
-                <button>💬</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Items />
+
       <br />
       <br />
       <div className="inquiryPop">
@@ -75,4 +46,4 @@ const inquiry = () => {
   );
 };
 
-export default inquiry;
+export default Inquiry;
