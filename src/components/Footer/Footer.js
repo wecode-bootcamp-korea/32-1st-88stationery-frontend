@@ -3,7 +3,7 @@ import "./Footer.scss";
 
 const Footer = () => {
   return (
-    <footer className="moonbangguFooter">
+    <footer className="footer">
       <figure className="logoImage">
         <img src="/images/common/88munbangguLogo.png" alt="logoImage" />
       </figure>
