@@ -103,6 +103,13 @@ const Goods = () => {
           </div>
         </div>
       </header>
+      <div className="goodsTab">
+        <ul>
+          <li>상품정보</li>
+          <li>기본정보</li>
+          <li>상품후기</li>
+        </ul>
+      </div>
     </main>
   );
 };
