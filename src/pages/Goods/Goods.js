@@ -3,8 +3,7 @@ import "./Goods.scss";
 
 const Goods = () => {
   const [quantity, setQuantity] = useState(1);
-  const [curIndex, setCurIndex] = useState("0");
-  const isActive = curIndex === "0";
+  const [curIndex, setCurIndex] = useState(true);
 
   const quantityHandler = ({ target }) => {
     target.className === "quantityUp"
@@ -21,20 +20,13 @@ const Goods = () => {
   };
 
   const moveImage = ({ target }) => {
-    setCurIndex(target.innerText);
+    setCurIndex(!curIndex);
   };
 
-  const swipeHandler = ({ target }) => {
-    target.className === "swipePrev"
-      ? isActive
-        ? setCurIndex("1")
-        : setCurIndex("0")
-      : !isActive
-      ? setCurIndex("0")
-      : setCurIndex("1");
+  const swipeHandler = () => {
+    setCurIndex(!curIndex);
   };
-  console.log(curIndex);
-  console.log(isActive);
+
   return (
     <main className="goodsContainer">
       <header className="goodsView">
@@ -47,20 +39,20 @@ const Goods = () => {
             <img
               src="/images/items/2.jpeg"
               alt="goodsImage"
-              style={{ opacity: isActive ? 1 : 0 }}
+              style={{ opacity: curIndex ? 1 : 0 }}
             />
             <img
               src="/images/items/3.jpeg"
               alt="goodsImage"
-              style={{ opacity: isActive ? 0 : 1 }}
+              style={{ opacity: curIndex ? 0 : 1 }}
             />
             <div onClick={swipeHandler} className="swipePrev" />
             <div onClick={swipeHandler} className="swipeNext" />
             <div className="indexButton">
-              <span className={isActive && "active"} onClick={moveImage}>
+              <span className={curIndex && "active"} onClick={moveImage}>
                 0
               </span>
-              <span className={!isActive && "active"} onClick={moveImage}>
+              <span className={!curIndex && "active"} onClick={moveImage}>
                 1
               </span>
             </div>
