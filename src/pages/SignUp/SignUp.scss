@@ -92,33 +92,61 @@
       }
 
       .alertText {
-        margin-bottom: 5px;
+        margin-bottom: 10px;
         &::before {
-          content: "아이디는 필수 입력 값입니다 !";
+          content: "필수 입력 값입니다 !";
           color: #f45452;
           margin-left: 5px;
-          font-size: 10px;
+          font-size: 12px;
         }
       }
 
-      .normalText {
-        margin-bottom: 5px;
-        &::before {
-          content: "아이디는 필수 입력 값입니다 !";
-          color: #f45452;
-          margin-left: 5px;
-          font-size: 10px;
-          display: none;
-        }
-      }
       .valueFail {
-        margin-bottom: 5px;
+        margin-bottom: 10px;
+
         &::before {
           content: "형식에 맞게 작성해주세요!";
           color: #f45452;
           margin-left: 5px;
-          font-size: 10px;
+          font-size: 12px;
         }
+      }
+
+      .valuePwFail {
+        margin-bottom: 10px;
+
+        &::before {
+          content: "8자 이상 작성해주세요!";
+          color: #f45452;
+          margin-left: 5px;
+          font-size: 12px;
+        }
+      }
+
+      .valuePwCheckFail {
+        margin-bottom: 10px;
+
+        &::before {
+          content: "비밀번호가 일치하지 않습니다!";
+          color: #f45452;
+          margin-left: 5px;
+          font-size: 12px;
+        }
+      }
+
+      .valueBirthFail {
+        margin-bottom: 10px;
+
+        &::before {
+          content: "생일형식에 맞게 작성해주세요!";
+          color: #f45452;
+          margin-left: 5px;
+          font-size: 12px;
+        }
+      }
+
+      .successBox {
+        border: 3px solid #2ac1bc;
       }
 
       .inputEmailBox,
@@ -133,10 +161,18 @@
     justify-content: center;
     width: 100%;
 
-    button {
+    .disabled {
       width: 36%;
       padding: 15px 8px;
       margin-left: 14px;
+      background: transparent;
+    }
+
+    .abled {
+      width: 36%;
+      padding: 15px 8px;
+      margin-left: 14px;
+      background-color: #2ac1bc;
     }
   }
 }
