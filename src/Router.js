@@ -7,6 +7,7 @@ import Main from "./pages/Main/Main";
 import Login from "./pages/Login/Login";
 import Cart from "./pages/Cart/Cart";
 import Inquiry from "./pages/Inquiry/Inquiry";
+import Category from "./pages/Category/Category";
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
         <Route path="/main" element={<Main />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/inquiry" element={<Inquiry />} />
+        <Route path="/category" element={<Category />} />
       </Routes>
       <Footer />
     </BrowserRouter>
