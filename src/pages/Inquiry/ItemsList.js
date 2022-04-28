@@ -5,8 +5,8 @@ function ItemsList({ data: { id, title, user, date, text }, itemValue }) {
   const [btnValue, setBtnValue] = useState(false);
 
   function itemOnOff(id) {
-    const aaa = itemValue.find(item => item.id === id);
-    if (aaa.id === id) {
+    const selectItem = itemValue.find(item => item.id === id);
+    if (selectItem.id === id) {
       setBtnValue(!btnValue);
     }
   }
