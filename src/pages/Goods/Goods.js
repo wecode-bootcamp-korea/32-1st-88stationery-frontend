@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Goods.scss";
 
 const Goods = () => {
   const [quantity, setQuantity] = useState(1);
   const [isActive, setisActive] = useState(true);
+  const [imageList, setImageList] = useState([]);
 
-  const quantityHandler = ({ target }) => {
-    target.className === "quantityUp"
-      ? setQuantity(quantity + 1)
-      : quantity > 0 && setQuantity(quantity - 1);
+  useEffect(() => {
+    setImageList(IMAGE);
+  }, []);
+
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decreaseQuantity = () => {
+    quantity > 0 && setQuantity(quantity - 1);
   };
 
   const changeNumber = ({ target }) => {
@@ -24,7 +31,7 @@ const Goods = () => {
   };
 
   return (
-    <main className="goodsContainer">
+    <main className="goods">
       <header className="goodsView">
         <div className="goodsInfo">
           <div className="goodsTitle">
@@ -32,25 +39,32 @@ const Goods = () => {
             <p className="goodsPrice">3,000원</p>
           </div>
           <figure className="goodsImage">
-            <img
-              src="/images/items/2.jpeg"
-              alt="goodsImage"
-              style={{ opacity: isActive ? 1 : 0 }}
-            />
-            <img
-              src="/images/items/3.jpeg"
-              alt="goodsImage"
-              style={{ opacity: isActive ? 0 : 1 }}
-            />
+            {imageList.map(({ src }, idx) => (
+              <img
+                key={idx}
+                src={src}
+                alt="goodsImage"
+                style={{
+                  opacity: idx === 0 ? (isActive ? 1 : 0) : isActive ? 0 : 1,
+                }}
+              />
+            ))}
             <div onClick={swipeHandler} className="swipePrev" />
             <div onClick={swipeHandler} className="swipeNext" />
             <div className="indexButton">
-              <span className={isActive && "active"} onClick={swipeHandler}>
-                0
-              </span>
-              <span className={!isActive && "active"} onClick={swipeHandler}>
-                1
-              </span>
+              {Array(imageList.length)
+                .fill()
+                .map((_, idx) => (
+                  <span
+                    key={idx}
+                    className={
+                      (idx === 0 ? isActive : !isActive) ? "active" : undefined
+                    }
+                    onClick={swipeHandler}
+                  >
+                    {idx}
+                  </span>
+                ))}
             </div>
           </figure>
           <div className="goodsOrder">
@@ -62,7 +76,7 @@ const Goods = () => {
             <div className="orderOption">
               <p>개수</p>
               <div className="orderQuantity">
-                <button className="quantityDown" onClick={quantityHandler}>
+                <button className="quantityDown" onClick={decreaseQuantity}>
                   -
                 </button>
                 <input
@@ -71,18 +85,15 @@ const Goods = () => {
                   onChange={changeNumber}
                   onKeyDown={keyCode}
                   maxLength="4"
-                ></input>
-                <button className="quantityUp" onClick={quantityHandler}>
+                />
+                <button className="quantityUp" onClick={increaseQuantity}>
                   +
                 </button>
               </div>
             </div>
             <div className="orderTotal">
               <p>총 금액</p>
-              <p>
-                {String(quantity * 3000).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                원
-              </p>
+              <p>{(quantity * 3000).toLocaleString("ko-KR")}원</p>
             </div>
             <footer className="btnGroup">
               <button className="cartButton"></button>
@@ -103,3 +114,8 @@ const Goods = () => {
 };
 
 export default Goods;
+
+const IMAGE = [
+  { id: 1, src: "/images/items/2.jpeg" },
+  { id: 2, src: "/images/items/3.jpeg" },
+];
