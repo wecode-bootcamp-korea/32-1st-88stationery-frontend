@@ -1,14 +1,8 @@
 import React from "react";
-import Items from "./Items";
+import Items from "./Items/Items";
 import "./Inquiry.scss";
 
 const Inquiry = () => {
-  // state zone
-
-  // variable zone
-
-  // function zone
-
   return (
     <div className="inquiryContainer">
       <header>
@@ -35,7 +29,7 @@ const Inquiry = () => {
               placeholder="문의 내용을 입력해주세요 (1,000자 이내)"
             />
             <p>ℹ 문의 내용을 꼭 입력해주세요.</p>
-            <input type="text" placeholder="이메일" />
+            <input type="email" placeholder="이메일" />
             <button type="submit" className="popInputBtn" disabled>
               문의하기
             </button>
