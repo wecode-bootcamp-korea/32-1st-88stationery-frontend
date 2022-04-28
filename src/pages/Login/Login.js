@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "./Login.scss";
 
@@ -18,21 +18,47 @@ const Login = () => {
     console.log(userInfo);
   };
 
+  const goMain = e => {
+    e.preventDefault();
+    navigate("/Main");
+    alert("로그인 성공");
+  };
+
+  const goSignUp = e => {
+    e.preventDefault();
+
+    fetch("", {
+      method: "POST",
+      body: JSON.stringify({
+        email: userInfo.id,
+        password: userInfo.pw,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log("결과확인: ", result);
+        navigate("/Main");
+      });
+  };
+
   // variable zone
-  let idisValid = userInfo.id.length === 0;
 
-  let pwisValid = userInfo.pw.length === 0;
+  const navigate = useNavigate();
 
-  let emailCheck =
+  const idisValid = userInfo.id.length === 0;
+
+  const pwisValid = userInfo.pw.length === 0;
+
+  const emailCheck =
     (userInfo.id.includes("@") && userInfo.id.includes(".com")) ||
     userInfo.id.length === 0;
 
-  let emailValid =
+  const emailValid =
     userInfo.id.includes("@") &&
     userInfo.id.includes(".com") &&
     userInfo.id.length > 1;
 
-  let buttonActive = emailValid && !pwisValid;
+  const buttonActive = emailValid && !pwisValid;
 
   return (
     <div className="loginArea">
@@ -78,6 +104,7 @@ const Login = () => {
             <button
               className={!buttonActive ? "btnLogin" : "btnLogin active"}
               disabled={!buttonActive}
+              onClick={goMain}
             >
               로그인
             </button>
