@@ -1,0 +1,77 @@
+.searchBarContainer {
+  position: fixed;
+  max-height: 100%;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  visibility: visible;
+  transition: top 0.5s ease 0s, visibility 0.3s ease 0s;
+  overflow-y: scroll;
+
+  &.action {
+    top: 0px;
+    height: 100%;
+    z-index: 100;
+  }
+
+  &.base {
+    top: -500px;
+    z-index: 0;
+  }
+
+  .searchBarWrapper {
+    position: relative;
+    min-width: 600px;
+    max-width: 1440px;
+    margin: 0px auto;
+    padding: 102px 0px 80px;
+  }
+
+  .searchBarHeader {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin: 0 auto;
+    width: 600px;
+
+    input {
+      width: 100%;
+      height: 60px;
+      border: none;
+      border-bottom: 2px solid #000;
+      outline: none;
+      font-size: 20px;
+    }
+  }
+
+  .searchBarRecentContainer {
+    width: 800px;
+    margin: 0 auto;
+
+    .searchBarRecentItems {
+      padding-top: 80px;
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .showRecentItemsList {
+        width: 100%;
+
+        p {
+          padding: 36px 0px;
+          font-size: 16px;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .fa-xmark {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    cursor: pointer;
+  }
+}
