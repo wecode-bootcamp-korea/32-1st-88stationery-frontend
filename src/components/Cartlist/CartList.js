@@ -8,6 +8,9 @@ const CartList = ({
   setPrice,
   deliveryPrice,
   setDeliveryPrice,
+  cartLists,
+  name,
+  id,
 }) => {
   const increaseCount = () => {
     setQuantity(prev => prev + 1);
@@ -36,6 +39,10 @@ const CartList = ({
     }
   };
 
+  const removeCartList = id => {
+    cartLists.filter(prev => );
+  };
+
   useEffect(() => {
     if (price > 30000) {
       setDeliveryPrice(0);
@@ -53,7 +60,7 @@ const CartList = ({
         <div className="cartListProductBox">
           <a href="#">이미지</a>
           <div className="cartListProductText">
-            <p>배달이친구들 팝업카드 2종</p>
+            <p>{name}</p>
             <p>잘먹고 잘살자</p>
           </div>
         </div>
@@ -77,7 +84,7 @@ const CartList = ({
           </div>
         </div>
         <div className="cartListDeleteBox">
-          <button>❌</button>
+          <button onClick={() => removeCartList(id)}>❌</button>
         </div>
       </li>
     </ul>
