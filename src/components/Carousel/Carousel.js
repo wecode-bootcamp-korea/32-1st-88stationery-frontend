@@ -59,9 +59,6 @@ const Carousel = () => {
         });
   };
 
-  console.log(isTransition);
-  console.log(curIndex);
-
   return (
     <div className="bannerContainer">
       <div
