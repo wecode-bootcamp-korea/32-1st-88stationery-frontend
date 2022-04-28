@@ -19,10 +19,6 @@ const Goods = () => {
     !(e.code.includes("Digit") || e.code === "Backspace") && e.preventDefault();
   };
 
-  const moveImage = () => {
-    setisActive(!isActive);
-  };
-
   const swipeHandler = () => {
     setisActive(!isActive);
   };
@@ -49,10 +45,10 @@ const Goods = () => {
             <div onClick={swipeHandler} className="swipePrev" />
             <div onClick={swipeHandler} className="swipeNext" />
             <div className="indexButton">
-              <span className={isActive && "active"} onClick={moveImage}>
+              <span className={isActive && "active"} onClick={swipeHandler}>
                 0
               </span>
-              <span className={!isActive && "active"} onClick={moveImage}>
+              <span className={!isActive && "active"} onClick={swipeHandler}>
                 1
               </span>
             </div>
