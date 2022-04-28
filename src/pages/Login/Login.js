@@ -18,16 +18,16 @@ const Login = () => {
     console.log(userInfo);
   };
 
-  const goMain = e => {
-    e.preventDefault();
-    navigate("/Main");
-    alert("로그인 성공");
-  };
+  // const goMain = e => {
+  //   e.preventDefault();
+  //   navigate("/Main");
+  //   alert("로그인 성공");
+  // };
 
-  const goSignUp = e => {
+  const onSubmit = e => {
     e.preventDefault();
 
-    fetch("", {
+    fetch("http://10.58.5.120:8000/users/signin", {
       method: "POST",
       body: JSON.stringify({
         email: userInfo.id,
@@ -63,7 +63,7 @@ const Login = () => {
   return (
     <div className="loginArea">
       <div className="loginContainer">
-        <form action="">
+        <form action="" onSubmit={onSubmit}>
           <h1>로그인</h1>
           <div className="acountContent">
             <ul className="loginForm">
@@ -104,7 +104,7 @@ const Login = () => {
             <button
               className={!buttonActive ? "btnLogin" : "btnLogin active"}
               disabled={!buttonActive}
-              onClick={goMain}
+              type="submit"
             >
               로그인
             </button>
