@@ -24,23 +24,25 @@ const ItemContainer = ({ title }) => {
         </select>
       </div>
       <div className="itemList">
-        {itemLists.slice(offset, offset + limit).map((itemList, idx) => (
-          <Items idx={idx} itemList={itemList} />
-        ))}
+        {itemLists.slice(offset, offset + limit).map((itemList, idx) => {
+          return <Items key={idx} itemList={itemList} />;
+        })}
       </div>
       <div className="indexBtn">
         {Array(numPages)
           .fill()
-          .map((_, i) => (
-            <button
-              className={page === i + 1 ? "active" : undefined}
-              key={i + 1}
-              onClick={() => setPage(i + 1)}
-              aria-current={page === i + 1 ? "page" : undefined}
-            >
-              {i + 1}
-            </button>
-          ))}
+          .map((_, i) => {
+            return (
+              <button
+                className={page === i + 1 ? "active" : undefined}
+                key={i + 1}
+                onClick={() => setPage(i + 1)}
+                aria-current={page === i + 1 ? "page" : undefined}
+              >
+                {i + 1}
+              </button>
+            );
+          })}
       </div>
     </div>
   );

@@ -23,9 +23,7 @@ const Carousel = () => {
     setTimeout(() => {
       setIsTransition(false);
     }, 1000);
-    // setTimeout(() => {
-    //   setAction(0);
-    // }, 500);
+
     const startIndex = 0;
     curIndex === startIndex &&
       setTimeout(() => {
@@ -43,9 +41,7 @@ const Carousel = () => {
           setAction(1);
         }, 20);
       }, 1000);
-    return () => {
-      // setAction(0.5);
-    };
+    return () => {};
   }, [curIndex]);
 
   const clickHandler = ({ target }) => {
@@ -83,10 +79,7 @@ const Carousel = () => {
         {Array(IMAGE.length)
           .fill()
           .map((_, idx) => (
-            <span
-              key={idx}
-              className={curIndex === idx + 1 ? "active" : undefined}
-            >
+            <span key={idx} className={curIndex === idx + 1 ? "active" : ""}>
               {idx + 1}
             </span>
           ))}
