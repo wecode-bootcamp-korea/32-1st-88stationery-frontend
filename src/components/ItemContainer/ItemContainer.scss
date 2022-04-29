@@ -1,43 +1,68 @@
-.limitBox {
+.itemContainer {
   display: flex;
-  flex-direction: row-reverse;
-  width: 100%;
-}
+  flex-direction: column;
+  align-items: center;
+  width: 1200px;
 
-.limitBox {
-  select {
-    width: 100px;
-    height: 30px;
-    font-size: 14px;
-    border: none;
+  .mainTitle {
+    width: 100%;
+    margin-top: 120px;
+    padding-top: 120px;
+    border-top: 1px solid #ddd;
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+  }
 
-    option:checked {
-      background-color: #2ac1bc;
+  .limitBox {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+
+    select {
+      width: 100px;
+      height: 30px;
+      font-size: 14px;
+      border: none;
+
+      option:checked {
+        background-color: #2ac1bc;
+      }
     }
   }
-}
 
-.indexBtn {
-  display: flex;
-  margin-top: 30px;
+  .itemList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
 
-  button {
-    width: 30px;
-    height: 30px;
-    margin-right: 20px;
-    border: 1px solid #2ac1bc;
-    border-radius: 5px;
-    color: #2ac1bc;
-    background-color: #fff;
-    transition: all 0.4s;
+    .item:nth-child(4n) {
+      margin-right: 0;
+    }
   }
 
-  button:last-child {
-    margin-right: 0;
-  }
+  .indexBtn {
+    display: flex;
+    margin-top: 30px;
 
-  .active {
-    color: white;
-    background-color: #2ac1bc;
+    button {
+      width: 30px;
+      height: 30px;
+      margin-right: 20px;
+      border: 1px solid #2ac1bc;
+      border-radius: 5px;
+      color: #2ac1bc;
+      background-color: #fff;
+      transition: all 0.4s;
+    }
+
+    button:last-child {
+      margin-right: 0;
+    }
+
+    .active {
+      color: white;
+      background-color: #2ac1bc;
+    }
   }
 }
