@@ -17,10 +17,23 @@ const Main = () => {
 
   console.log(productList);
 
+  const clickHandler = () => {
+    fetch("http://10.58.4.183:8000/products/category", {
+      method: "POST",
+      body: JSON.stringify({
+        name: "문구",
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        setProductList(data);
+      });
+  };
+
   return (
     <main className="mainContainer">
       <Carousel />
-      <div className="itemContainer">
+      <div className="itemContainer" onClick={clickHandler}>
         <ItemContainer title="요즘 잘 나가요" />
         <ItemContainer title="새로 나왔어요" />
         <ItemContainer title="내가 제일 잘나가" />
