@@ -21,7 +21,7 @@ function ItemsList({ data: { id, title, user, date, text }, itemValue }) {
             <li>{date}</li>
           </ul>
           <button className="itemOnOff" onClick={() => itemOnOff(id)}>
-            ✅
+            🔽
           </button>
         </div>
         <ItemsComment
