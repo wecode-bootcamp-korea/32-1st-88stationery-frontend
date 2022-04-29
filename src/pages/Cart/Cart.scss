@@ -24,6 +24,7 @@
         display: flex;
         justify-content: space-between;
         padding-bottom: 10px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
         button {
           border: none;
@@ -35,7 +36,7 @@
     }
     .cartPayment {
       position: relative;
-      top: 54px;
+      top: -5%;
       padding-top: 20px;
       border-top: 1px solid rgba(0, 0, 0, 0.2);
       width: 50%;

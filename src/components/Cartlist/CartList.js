@@ -1,17 +1,11 @@
-import { React, useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import "./CartList.scss";
 
-const CartList = ({
-  quantity,
-  setQuantity,
-  price,
-  setPrice,
-  deliveryPrice,
-  setDeliveryPrice,
-  cartLists,
-  name,
-  id,
-}) => {
+const CartList = ({ productPrice, name, id, key }) => {
+  const [quantity, setQuantity] = useState(1);
+  const [price, setPrice] = useState(4000);
+  const [deliveryPrice, setDeliveryPrice] = useState(3000);
+
   const increaseCount = () => {
     setQuantity(prev => prev + 1);
     setPrice(4000 * (quantity + 1));
@@ -39,9 +33,9 @@ const CartList = ({
     }
   };
 
-  const removeCartList = id => {
-    cartLists.filter(prev => );
-  };
+  // const removeCartList = id => {
+  //   cartLists.filter(prev => );
+  // };
 
   useEffect(() => {
     if (price > 30000) {
@@ -61,7 +55,6 @@ const CartList = ({
           <a href="#">이미지</a>
           <div className="cartListProductText">
             <p>{name}</p>
-            <p>잘먹고 잘살자</p>
           </div>
         </div>
         <div className="cartListInfoBox">
@@ -84,7 +77,8 @@ const CartList = ({
           </div>
         </div>
         <div className="cartListDeleteBox">
-          <button onClick={() => removeCartList(id)}>❌</button>
+          <button>❌</button>
+          {/* onClick={() => removeCartList(id)} */}
         </div>
       </li>
     </ul>

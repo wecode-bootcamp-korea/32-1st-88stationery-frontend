@@ -3,10 +3,6 @@ import CartList from "../../components/Cartlist/CartList";
 import "./Cart.scss";
 
 const Cart = () => {
-  const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(4000);
-  const [deliveryPrice, setDeliveryPrice] = useState(3000);
-
   const mockData = [
     {
       id: 1,
@@ -50,45 +46,27 @@ const Cart = () => {
             return (
               <CartList
                 key={cartList.id}
-                quantity={quantity}
-                setQuantity={setQuantity}
-                price={cartList.price}
-                setPrice={setPrice}
-                deliveryPrice={deliveryPrice}
-                setDeliveryPrice={setDeliveryPrice}
-                cartLists={cartLists}
+                // quantity={quantity}
+                // setQuantity={setQuantity}
+                productPrice={cartList.price}
+                // setPrice={setPrice}
+                // deliveryPrice={deliveryPrice}
+                // setDeliveryPrice={setDeliveryPrice}
                 name={cartList.name}
                 id={cartList.id}
               />
             );
           })}
-
-          {/* <CartList
-            quantity={quantity}
-            setQuantity={setQuantity}
-            price={price}
-            setPrice={setPrice}
-            deliveryPrice={deliveryPrice}
-            setDeliveryPrice={setDeliveryPrice}
-          />
-          <CartList
-            quantity={quantity}
-            setQuantity={setQuantity}
-            price={price}
-            setPrice={setPrice}
-            deliveryPrice={deliveryPrice}
-            setDeliveryPrice={setDeliveryPrice}
-          /> */}
         </div>
         <div className="cartPayment">
-          <div className="paymentResult">
+          {/* <div className="paymentResult">
             <div className="productPrice">
               <span>총 상품금액</span>
               <span>{price}원</span>
             </div>
             <div className="deliveryPrice">
               <span>배송비</span>
-              <span>+{deliveryPrice}원</span>
+              <span>+{price <= 30000 && deliveryPrice}원</span>
             </div>
             <div className="totalPrice">
               <span>결제예상금액</span>
@@ -97,7 +75,7 @@ const Cart = () => {
             <div className="textBox">
               {30000 - price > 0 ? `${30000 - price}원 더 주문시 무료배송` : ""}
             </div>
-          </div>
+          </div> */}
           <div className="orderBtn">
             <button disabled>0원 주문하기</button>
           </div>

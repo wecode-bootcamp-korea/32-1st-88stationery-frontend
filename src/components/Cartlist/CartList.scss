@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   height: 150px;
 
@@ -28,11 +27,8 @@
         margin-right: 30px;
 
         p {
-          margin-bottom: 10px;
-
-          &:nth-child(2) {
-            opacity: 0.4;
-          }
+          font-size: 20px;
+          font-weight: 700;
         }
       }
     }
