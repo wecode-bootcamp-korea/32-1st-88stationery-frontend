@@ -25,7 +25,7 @@ const ItemContainer = ({ title }) => {
       </div>
       <div className="itemList">
         {itemLists.slice(offset, offset + limit).map((itemList, idx) => (
-          <Items key={idx} itemList={itemList} />
+          <Items idx={idx} itemList={itemList} />
         ))}
       </div>
       <div className="indexBtn">
@@ -33,10 +33,10 @@ const ItemContainer = ({ title }) => {
           .fill()
           .map((_, i) => (
             <button
-              className={page === i + 1 && "active"}
+              className={page === i + 1 ? "active" : undefined}
               key={i + 1}
               onClick={() => setPage(i + 1)}
-              aria-current={page === i + 1 ? "page" : null}
+              aria-current={page === i + 1 ? "page" : undefined}
             >
               {i + 1}
             </button>

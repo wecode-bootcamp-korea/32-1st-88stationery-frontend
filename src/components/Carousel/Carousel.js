@@ -83,7 +83,10 @@ const Carousel = () => {
         {Array(IMAGE.length)
           .fill()
           .map((_, idx) => (
-            <span key={idx} className={curIndex === idx + 1 && "active"}>
+            <span
+              key={idx}
+              className={curIndex === idx + 1 ? "active" : undefined}
+            >
               {idx + 1}
             </span>
           ))}

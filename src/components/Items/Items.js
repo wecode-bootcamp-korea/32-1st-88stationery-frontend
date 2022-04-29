@@ -1,9 +1,9 @@
 import React from "react";
 import "./items.scss";
 
-const Items = ({ itemList, key }) => {
+const Items = ({ itemList, idx }) => {
   return (
-    <div key={key} className="item">
+    <div key={idx} className="item">
       <div className="itemDetail">
         <figure className="thumbnail">
           <img src={itemList.src1} alt="itemimage" />
