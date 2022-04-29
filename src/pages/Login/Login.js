@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import config from "../../config";
 import "./Login.scss";
 
 const Login = () => {
@@ -19,7 +20,7 @@ const Login = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    fetch("http://10.58.5.120:8000/users/signin", {
+    fetch(`http://10.58.5.120:8000/${config.loginEndPoint}`, {
       method: "POST",
       body: JSON.stringify({
         email: userInfo.id,
