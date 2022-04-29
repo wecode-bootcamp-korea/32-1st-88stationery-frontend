@@ -1,31 +1,10 @@
 import React, { useState } from "react";
 import CartList from "../../components/Cartlist/CartList";
+import CartPaymentResult from "../../components/CartPaymentResult/CartPaymentResult";
 import "./Cart.scss";
 
 const Cart = () => {
-  const mockData = [
-    {
-      id: 1,
-      name: "공책",
-      price: 4000,
-    },
-    {
-      id: 2,
-      name: "지우개",
-      price: 5000,
-    },
-    {
-      id: 3,
-      name: "연필",
-      price: 2000,
-    },
-    {
-      id: 4,
-      name: "볼펜",
-      price: 1000,
-    },
-  ];
-
+  const [sumPrice, setSumPrice] = useState(0);
   const [cartLists, setCartLists] = useState(mockData);
 
   return (
@@ -46,12 +25,7 @@ const Cart = () => {
             return (
               <CartList
                 key={cartList.id}
-                // quantity={quantity}
-                // setQuantity={setQuantity}
                 productPrice={cartList.price}
-                // setPrice={setPrice}
-                // deliveryPrice={deliveryPrice}
-                // setDeliveryPrice={setDeliveryPrice}
                 name={cartList.name}
                 id={cartList.id}
               />
@@ -59,30 +33,37 @@ const Cart = () => {
           })}
         </div>
         <div className="cartPayment">
-          {/* <div className="paymentResult">
-            <div className="productPrice">
-              <span>총 상품금액</span>
-              <span>{price}원</span>
-            </div>
-            <div className="deliveryPrice">
-              <span>배송비</span>
-              <span>+{price <= 30000 && deliveryPrice}원</span>
-            </div>
-            <div className="totalPrice">
-              <span>결제예상금액</span>
-              <span>{price + deliveryPrice}원</span>
-            </div>
-            <div className="textBox">
-              {30000 - price > 0 ? `${30000 - price}원 더 주문시 무료배송` : ""}
-            </div>
-          </div> */}
+          <CartPaymentResult />
           <div className="orderBtn">
-            <button disabled>0원 주문하기</button>
+            <button disabled>주문하기</button>
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+const mockData = [
+  {
+    id: 1,
+    name: "공책",
+    price: 4000,
+  },
+  {
+    id: 2,
+    name: "지우개",
+    price: 5000,
+  },
+  {
+    id: 3,
+    name: "연필",
+    price: 2000,
+  },
+  {
+    id: 4,
+    name: "볼펜",
+    price: 1000,
+  },
+];
 
 export default Cart;

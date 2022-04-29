@@ -1,22 +1,28 @@
 import { React, useState, useEffect } from "react";
 import "./CartList.scss";
 
-const CartList = ({ productPrice, name, id, key }) => {
+const CartList = ({ productPrice, name, id }) => {
   const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(4000);
+  const [itemPrice, setItemPrice] = useState(productPrice);
   const [deliveryPrice, setDeliveryPrice] = useState(3000);
+
+  useEffect(() => {
+    if (itemPrice > 30000) {
+      setDeliveryPrice(0);
+    } else {
+      setDeliveryPrice(3000);
+    }
+  });
 
   const increaseCount = () => {
     setQuantity(prev => prev + 1);
-    setPrice(4000 * (quantity + 1));
-
-    console.log("price", price, "quantity", quantity);
+    setItemPrice(productPrice * (quantity + 1));
   };
 
   const decreaseCount = () => {
     if (quantity > 0) {
       setQuantity(prev => prev - 1);
-      setPrice(4000 * (quantity - 1));
+      setItemPrice(productPrice * (quantity - 1));
     }
   };
 
@@ -29,21 +35,9 @@ const CartList = ({ productPrice, name, id, key }) => {
       return;
     } else {
       setQuantity(Number(e.target.value));
-      setPrice(4000 * quantity);
+      setItemPrice(productPrice * quantity);
     }
   };
-
-  // const removeCartList = id => {
-  //   cartLists.filter(prev => );
-  // };
-
-  useEffect(() => {
-    if (price > 30000) {
-      setDeliveryPrice(0);
-    } else {
-      setDeliveryPrice(3000);
-    }
-  });
 
   return (
     <ul className="cartList">
@@ -73,12 +67,11 @@ const CartList = ({ productPrice, name, id, key }) => {
             </button>
           </div>
           <div className="cartListPrice">
-            <p>{price}원</p>
+            <p>{productPrice}원</p>
           </div>
         </div>
         <div className="cartListDeleteBox">
           <button>❌</button>
-          {/* onClick={() => removeCartList(id)} */}
         </div>
       </li>
     </ul>
