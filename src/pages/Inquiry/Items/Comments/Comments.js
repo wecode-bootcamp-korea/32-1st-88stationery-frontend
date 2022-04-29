@@ -1,9 +1,11 @@
-function Comments() {
-  return (
+function Comments({ comments }) {
+  return comments.map(({ id, user, text }) => (
     <div className="itemBottom">
       <ul>
-        <li>
-          <span>댓글내용 : 어쩔티비 ~ 🤗</span>
+        <li key={id}>
+          <span>
+            {user} : {text}
+          </span>
           <div className="commentAction">
             <button>🗨</button>&nbsp;
             <button>✖</button>
@@ -11,7 +13,7 @@ function Comments() {
         </li>
       </ul>
     </div>
-  );
+  ));
 }
 
 export default Comments;

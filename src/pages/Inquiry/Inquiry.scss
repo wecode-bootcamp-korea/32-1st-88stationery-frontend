@@ -10,13 +10,15 @@
 }
 
 .inquiryContainer {
+  padding: 100px;
+
   width: 1200px;
   margin: 0 auto;
 
   header {
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     margin-bottom: 20px;
     border-bottom: 2px solid #cacaca;
@@ -29,6 +31,7 @@
     }
 
     .writeInquiry {
+      margin-top: 30px;
       cursor: pointer;
       border: none;
       background: none;
@@ -106,7 +109,7 @@
         background-color: rgb(0, 0, 0, 0.1);
 
         input {
-          width: 1000px;
+          width: 900px;
           height: 30px;
 
           color: #000;
