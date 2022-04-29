@@ -1,6 +1,7 @@
-.loginArea {
+.login {
   width: 1200px;
   margin: 0 auto;
+  padding: 100px;
 
   .loginContainer {
     width: 400px;
@@ -31,13 +32,13 @@
         outline: none;
       }
 
-      .input-disable {
+      .inputDisable {
         outline: none;
         border: 1px solid #f1a4a3;
         transition: all 1s;
       }
 
-      .input-able {
+      .inputAble {
         outline: none;
         border: 1px solid #2ac1bc;
         transition: all 1s;

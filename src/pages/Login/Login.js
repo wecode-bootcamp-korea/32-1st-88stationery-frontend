@@ -3,30 +3,22 @@ import React, { useState } from "react";
 import "./Login.scss";
 
 const Login = () => {
-  // state zone
+  const navigate = useNavigate();
+
   const [userInfo, setUserInfo] = useState({
     id: "",
     pw: "",
   });
 
-  // function zone
   const inputHandler = e => {
     setUserInfo(prev => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
-    console.log(userInfo);
   };
-
-  // const goMain = e => {
-  //   e.preventDefault();
-  //   navigate("/Main");
-  //   alert("로그인 성공");
-  // };
 
   const onSubmit = e => {
     e.preventDefault();
-
     fetch("http://10.58.5.120:8000/users/signin", {
       method: "POST",
       body: JSON.stringify({
@@ -36,20 +28,21 @@ const Login = () => {
     })
       .then(response => response.json())
       .then(result => {
-        console.log("결과확인: ", result);
-        navigate("/Main");
+        if (result.message === "INVALID_EMAIL") {
+          alert("존재하지 않는 아이디입니다.");
+        } else if (result.message === "INVALID_PASSWORD") {
+          alert("올바르지 않은 패스워드입니다.");
+        } else {
+          alert("88문방구에 오신걸 환영합니다.");
+          navigate("/Main");
+        }
       });
   };
 
-  // variable zone
-
-  const navigate = useNavigate();
-
   const idisValid = userInfo.id.length === 0;
-
   const pwisValid = userInfo.pw.length === 0;
 
-  const emailCheck =
+  const validateEmailType =
     (userInfo.id.includes("@") && userInfo.id.includes(".com")) ||
     userInfo.id.length === 0;
 
@@ -61,7 +54,7 @@ const Login = () => {
   const buttonActive = emailValid && !pwisValid;
 
   return (
-    <div className="loginArea">
+    <div className="login">
       <div className="loginContainer">
         <form action="" onSubmit={onSubmit}>
           <h1>로그인</h1>
@@ -69,21 +62,23 @@ const Login = () => {
             <ul className="loginForm">
               <li>
                 <input
-                  className={!emailValid ? "input-disable" : "input-able"}
+                  className={!emailValid ? "inputDisable" : "inputAble"}
                   type="text"
                   placeholder="아이디"
                   name="id"
                   onChange={inputHandler}
                 />
                 {idisValid && <p>ℹ 아이디를 입력해주세요.</p>}
-                {!emailCheck && <p>ℹ 아이디는 이메일 형식이어야 합니다.</p>}
-                {emailCheck && !idisValid && (
+                {!validateEmailType && (
+                  <p>ℹ 아이디는 이메일 형식이어야 합니다.</p>
+                )}
+                {validateEmailType && !idisValid && (
                   <p className="loginInputText">ℹ 아이디 입력완료</p>
                 )}
               </li>
               <li>
                 <input
-                  className={pwisValid ? "input-disable" : "input-able"}
+                  className={pwisValid ? "inputDisable" : "inputAble"}
                   type="password"
                   placeholder="비밀번호"
                   name="pw"
@@ -117,11 +112,6 @@ const Login = () => {
           <li>아이디 찾기</li>
           <li>비밀번호 찾기</li>
         </ul>
-      </div>
-      <div style={{ color: "red" }}>
-        <p>usestate 현황</p>
-        <p>아이디 값 : {userInfo.id}</p>
-        <p>패스워드 값 : {userInfo.pw}</p>
       </div>
     </div>
   );
