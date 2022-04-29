@@ -1,6 +1,5 @@
-const config = {
-  loginIp: "http://10.58.5.120:8000/",
-  loginEndPoint: "users/signin",
-};
+export const BASE_URL = "http://10.58.5.120:8000/";
 
-export default config;
+export const config = {
+  login: `${BASE_URL}users/signin`,
+};
