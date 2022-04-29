@@ -47,10 +47,10 @@ const SignUp = () => {
         userInfo.id.includes("@") ? (
           ""
         ) : (
-          <p className="valueFail" />
+          <p className="showValueFail" />
         )
       ) : (
-        <p className="alertText" />
+        <p className="showAlertText" />
       )}
     </>
   );
@@ -61,10 +61,10 @@ const SignUp = () => {
         userInfo.pw.length >= 8 ? (
           ""
         ) : (
-          <p className="valuePwFail" />
+          <p className="showValuePwFail" />
         )
       ) : (
-        <p className="alertText" />
+        <p className="showAlertText" />
       )}
     </>
   );
@@ -75,10 +75,10 @@ const SignUp = () => {
         userInfo.pwCheck === userInfo.pw ? (
           ""
         ) : (
-          <p className="valuePwCheckFail" />
+          <p className="showValuePwCheckFail" />
         )
       ) : (
-        <p className="alertText" />
+        <p className="showAlertText" />
       )}
     </>
   );
@@ -89,10 +89,10 @@ const SignUp = () => {
         userInfo.name ? (
           ""
         ) : (
-          <p className="valueFail" />
+          <p className="showValueFail" />
         )
       ) : (
-        <p className="alertText" />
+        <p className="showAlertText" />
       )}
     </>
   );
@@ -103,10 +103,10 @@ const SignUp = () => {
         userInfo.phone ? (
           ""
         ) : (
-          <p className="valueFail" />
+          <p className="showValueFail" />
         )
       ) : (
-        <p className="alertText" />
+        <p className="showAlertText" />
       )}
     </>
   );
@@ -116,10 +116,10 @@ const SignUp = () => {
         userInfo.address ? (
           ""
         ) : (
-          <p className="valueFail" />
+          <p className="showValueFail" />
         )
       ) : (
-        <p className="alertText" />
+        <p className="showAlertText" />
       )}
     </>
   );
@@ -130,10 +130,10 @@ const SignUp = () => {
         userInfo.detailAddress ? (
           ""
         ) : (
-          <p className="valueFail" />
+          <p className="showValueFail" />
         )
       ) : (
-        <p className="alertText" />
+        <p className="showAlertText" />
       )}
     </>
   );
@@ -146,10 +146,10 @@ const SignUp = () => {
         userInfo.birth.length >= 10 ? (
           ""
         ) : (
-          <p className="valueBirthFail" />
+          <p className="showValueBirthFail" />
         )
       ) : (
-        <p className="alertText" />
+        <p className="showAlertText" />
       )}
     </>
   );
@@ -195,7 +195,7 @@ const SignUp = () => {
     setUserInfo(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const alertText = e => {
+  const showAlertText = e => {
     e.target.name === "id"
       ? setValueCheck(prev => ({ ...prev, id: true }))
       : e.target.name === "pw"
@@ -217,7 +217,7 @@ const SignUp = () => {
   return (
     <form
       action="POST"
-      className="signUpForm"
+      className="signUp"
       onKeyUp={isDisabled}
       onSubmit={onSubmit}
     >
@@ -226,14 +226,12 @@ const SignUp = () => {
         <div className="accountTitleProcess">
           <h3>회원정보</h3>
           <ul className="processBox">
-            <li className="processFirst">01</li>
-            <span className="processUnderBar">__</span>
-            <li className="processSecond">02</li>
+            <li className="process">01</li>
           </ul>
         </div>
         <ul className="signUpInfoInputs">
           <li className="signUpId">
-            <div className="inputIdBox">
+            <div className="inputIdBox relativeText">
               <input
                 className={userInfo.id.includes("@") ? "successBox" : ""}
                 type="email"
@@ -241,13 +239,13 @@ const SignUp = () => {
                 name="id"
                 onChange={putUserInfo}
                 autoComplete="off"
-                onBlur={alertText}
+                onBlur={showAlertText}
               />
               {valueCheck.id && valueIdText}
             </div>
           </li>
           <li className="signUpPw">
-            <div className="inputPwBox">
+            <div className="inputPwBox relativeText">
               <input
                 className={userInfo.pw.length >= 8 ? "successBox" : ""}
                 type="password"
@@ -255,11 +253,11 @@ const SignUp = () => {
                 name="pw"
                 onChange={putUserInfo}
                 autoComplete="off"
-                onBlur={alertText}
+                onBlur={showAlertText}
               />
               {valueCheck.pw && valuePwText}
             </div>
-            <div className="inputPwCheckBox">
+            <div className="inputPwCheckBox relativeText">
               <input
                 className={
                   userInfo.pw !== "" && userInfo.pw === userInfo.pwCheck
@@ -271,62 +269,62 @@ const SignUp = () => {
                 name="pwCheck"
                 onChange={putUserInfo}
                 autoComplete="off"
-                onBlur={alertText}
+                onBlur={showAlertText}
               />
               {valueCheck.pwCheck && valuePwCheckText}
             </div>
           </li>
           <li className="signUpName">
-            <div className="inputNameBox">
+            <div className="inputNameBox relativeText">
               <input
                 className={userInfo.name ? "successBox" : ""}
                 type="text"
                 placeholder="이름"
                 name="name"
                 onChange={putUserInfo}
-                onBlur={alertText}
+                onBlur={showAlertText}
                 autoComplete="off"
               />
               {valueCheck.name && valueNameCheckText}
             </div>
           </li>
           <li className="singUpPhone">
-            <div className="inputPhoneBox">
+            <div className="inputPhoneBox relativeText">
               <input
                 className={userInfo.phone ? "successBox" : ""}
                 type="number"
                 placeholder="휴대폰 번호"
                 name="phone"
                 onChange={putUserInfo}
-                onBlur={alertText}
+                onBlur={showAlertText}
                 autoComplete="off"
               />
               {valueCheck.phone && valuePhoneCheckText}
             </div>
           </li>
           <li className="signUpAddress">
-            <div className="inputAddressBox">
+            <div className="inputAddressBox relativeText">
               <input
                 className={userInfo.address ? "successBox" : ""}
                 type="text"
                 placeholder="주소"
                 name="address"
                 onChange={putUserInfo}
-                onBlur={alertText}
+                onBlur={showAlertText}
                 autoComplete="off"
               />
               {valueCheck.address && valueAddressCheckText}
             </div>
           </li>
           <li className="signUpAddress">
-            <div className="inputAddressBox">
+            <div className="inputAddressBox relativeText">
               <input
                 className={userInfo.detailAddress ? "successBox" : ""}
                 type="text"
                 placeholder="상세주소"
                 name="detailAddress"
                 onChange={putUserInfo}
-                onBlur={alertText}
+                onBlur={showAlertText}
                 autoComplete="off"
               />
               {valueCheck.detailAddress && valueDetailAddressCheckText}
@@ -347,7 +345,7 @@ const SignUp = () => {
                 placeholder="생일정보"
                 name="birth"
                 onChange={putUserInfo}
-                onBlur={alertText}
+                onBlur={showAlertText}
                 autoComplete="off"
               />
               {valueCheck.birth && valueBirthCheckText}

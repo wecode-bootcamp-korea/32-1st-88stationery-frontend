@@ -1,6 +1,6 @@
 @import "../../styles/mixins.scss";
 
-.signUpForm {
+.signUp {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,22 +42,17 @@
           opacity: 0.1;
         }
 
-        .processFirst,
-        .processSecond {
+        .process {
           display: flex;
           justify-content: center;
           align-items: center;
-          background-color: #ddd;
-          color: white;
           width: 26px;
           height: 26px;
           border-radius: 50%;
+          background-color: #2ac1bc;
+          color: white;
           font-size: 12px;
           font-weight: 800;
-        }
-
-        .processSecond {
-          background-color: #2ac1bc;
         }
       }
     }
@@ -77,13 +72,7 @@
         }
       }
 
-      .inputIdBox,
-      .inputPwBox,
-      .inputPwCheckBox,
-      .inputAddressBox,
-      .inputEmailBox,
-      .inputNameBox,
-      .inputPhoneBox {
+      .relativeText {
         position: relative;
 
         &::before {
@@ -91,7 +80,7 @@
         }
       }
 
-      .alertText {
+      .showAlertText {
         margin-bottom: 10px;
         &::before {
           content: "필수 입력 값입니다 !";
@@ -101,7 +90,7 @@
         }
       }
 
-      .valueFail {
+      .showValueFail {
         margin-bottom: 10px;
 
         &::before {
@@ -112,7 +101,7 @@
         }
       }
 
-      .valuePwFail {
+      .showValuePwFail {
         margin-bottom: 10px;
 
         &::before {
@@ -123,7 +112,7 @@
         }
       }
 
-      .valuePwCheckFail {
+      .showValuePwCheckFail {
         margin-bottom: 10px;
 
         &::before {
@@ -134,7 +123,7 @@
         }
       }
 
-      .valueBirthFail {
+      .showValueBirthFail {
         margin-bottom: 10px;
 
         &::before {
@@ -162,14 +151,14 @@
     width: 100%;
 
     .disabled {
-      width: 36%;
+      width: 35%;
       padding: 15px 8px;
       margin-left: 14px;
       background: transparent;
     }
 
     .abled {
-      width: 36%;
+      width: 35%;
       padding: 15px 8px;
       margin-left: 14px;
       background-color: #2ac1bc;
