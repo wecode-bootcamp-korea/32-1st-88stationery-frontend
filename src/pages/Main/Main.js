@@ -6,7 +6,7 @@ import "./Main.scss";
 const Main = () => {
   const [productList, setProductList] = useState([]);
   useEffect(() => {
-    fetch("http://10.58.4.183:8000/products", {
+    fetch("http://3.39.118.217:8000/products", {
       method: "GET",
     })
       .then(res => res.json())
@@ -14,6 +14,8 @@ const Main = () => {
         setProductList(data);
       });
   }, []);
+
+  console.log(productList);
 
   return (
     <main className="mainContainer">
