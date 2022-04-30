@@ -63,7 +63,10 @@ const Nav = () => {
               onClick={handleSearchBarOn}
             />
             <i className="fa fa-light fa-cart-shopping" />
-            <button className="gnbLogin">로그인</button>
+            <Link to="/login">
+              <button className="gnbLogin">로그인</button>
+            </Link>
+
             <i
               className="fa fa-light fa-align-justify"
               onClick={handleSideBarOn}

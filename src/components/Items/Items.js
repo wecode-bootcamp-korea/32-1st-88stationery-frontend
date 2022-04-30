@@ -3,7 +3,7 @@ import "./items.scss";
 
 const Items = ({ itemList, idx }) => {
   return (
-    <div className="item">
+    <div className="items">
       <div className="itemDetail">
         <figure className="thumbnail">
           <img src={itemList.src1} alt="itemimage" />

@@ -15,8 +15,27 @@
       background-color: #2ac1bc;
     }
   }
-}
 
+  ul {
+    display: flex;
+    li {
+      height: 23px;
+      padding: 5px 10px;
+      border-right: 2px solid #a2a2a2;
+      cursor: pointer;
+
+      &:nth-last-child(1) {
+        border-right: 0;
+      }
+      &:hover {
+        color: #2ac1bc;
+      }
+    }
+  }
+}
+// &::after {
+//   content: "\00B7";
+// }
 .indexBtn {
   display: flex;
   margin-top: 30px;

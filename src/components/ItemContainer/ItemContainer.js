@@ -2,26 +2,53 @@ import React, { useState } from "react";
 import Items from "../Items/Items";
 import "./ItemContainer.scss";
 
-const ItemContainer = ({ title }) => {
+const ItemContainer = ({ title, name }) => {
   const [itemLists, setitemLists] = useState(PRODUCT);
   const [limit, setLimit] = useState(8);
   const [page, setPage] = useState(1);
+
   const offset = (page - 1) * limit;
+  const numPages = Math.ceil(itemLists.length / limit);
 
   const limitHandler = ({ target: { value } }) => {
     setLimit(Number(value));
   };
 
-  const numPages = Math.ceil(itemLists.length / limit);
+  const handlerSortCategory = e => {
+    const newSortItems = [...itemLists];
+    return e.target.type === "sortByLowPrice"
+      ? setitemLists(newSortItems.sort((a, b) => a.price - b.price))
+      : e.target.type === "sortByHighPrice"
+      ? setitemLists(newSortItems.sort((a, b) => b.price - a.price))
+      : null;
+  };
 
   return (
     <div className="itemContainer">
       <h3 className="mainTitle">{title}</h3>
       <div className="limitBox">
-        <select onChange={limitHandler}>
-          <option value="8">8개씩 보기</option>
-          <option value="12">12개씩 보기</option>
-        </select>
+        {name === "itemsInCategory" ? (
+          <div className="sortCategoriesList">
+            <div className="sortCategory">
+              <ul>
+                <li type="sortByLowPrice" onClick={handlerSortCategory}>
+                  가격 낮은 순
+                </li>
+                <li type="sortByHighPrice" onClick={handlerSortCategory}>
+                  가격 높은 순
+                </li>
+                <li type="sortByNewItems" onClick={handlerSortCategory}>
+                  신상품
+                </li>
+              </ul>
+            </div>
+          </div>
+        ) : (
+          <select onChange={limitHandler}>
+            <option value="8">8개씩 보기</option>
+            <option value="12">12개씩 보기</option>
+          </select>
+        )}
       </div>
       <div className="itemList">
         {itemLists.slice(offset, offset + limit).map((itemList, idx) => {
