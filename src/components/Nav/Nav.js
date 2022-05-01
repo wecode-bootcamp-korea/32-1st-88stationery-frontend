@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Aside from "../Aside/Aside";
 import Search from "../Search/Search";
 import NavSideCategory from "./NavSideCategory";
+import LoginModal from "../Login/LoginModal";
 import "./Nav.scss";
 
 const CATEGORY_LIST = [
@@ -17,6 +18,7 @@ const Nav = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isSideBarOn, setisSideBarOn] = useState(false);
   const [isSearchOn, setisSearchOn] = useState(false);
+  const [isLoginModalOn, setIstLoginModalOn] = useState(false);
 
   function handleScroll() {
     setScrollY(window.pageYOffset);
@@ -28,6 +30,9 @@ const Nav = () => {
 
   function handleSearchBarOn() {
     setisSearchOn(!isSearchOn);
+  }
+  function handleisLoginModalOn() {
+    setIstLoginModalOn(!isLoginModalOn);
   }
 
   useEffect(() => {
@@ -63,9 +68,17 @@ const Nav = () => {
               onClick={handleSearchBarOn}
             />
             <i className="fa fa-light fa-cart-shopping" />
-            <Link to="/login">
-              <button className="gnbLogin">로그인</button>
-            </Link>
+
+            <button className="gnbLogin" onClick={handleisLoginModalOn}>
+              로그인
+            </button>
+
+            {isLoginModalOn && (
+              <LoginModal
+                isLoginModalOn={isLoginModalOn}
+                handleisLoginModalOn={handleisLoginModalOn}
+              />
+            )}
 
             <i
               className="fa fa-light fa-align-justify"
