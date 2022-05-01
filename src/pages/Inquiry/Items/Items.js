@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ItemsList from "./ItemsList";
 
-function Items() {
-  const [itemValue, setItemValue] = useState([]);
-
-  useEffect(() => {
-    fetch("/data/items.json")
-      .then(res => res.json())
-      .then(data => {
-        setItemValue(data);
-      });
-  }, []);
-
-  return itemValue.map(data => <ItemsList data={data} itemValue={itemValue} />);
+function Items({ list, deleteItem }) {
+  return list.map(item => (
+    <ItemsList
+      key={item.id}
+      item={item}
+      itemValue={list}
+      deleteItem={deleteItem}
+    />
+  ));
 }
 
 export default Items;

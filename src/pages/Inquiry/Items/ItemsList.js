@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import ItemsComment from "./ItemsComment";
 
-function ItemsList({ data: { id, title, user, date, text }, itemValue }) {
+function ItemsList({ item, itemValue, deleteItem }) {
   const [btnValue, setBtnValue] = useState(false);
+  const { id, title, user, date, detail } = item;
 
   function itemOnOff(id) {
     const selectItem = itemValue.find(item => item.id === id);
@@ -10,11 +11,10 @@ function ItemsList({ data: { id, title, user, date, text }, itemValue }) {
       setBtnValue(!btnValue);
     }
   }
-
   return (
     <div className="inquiryContent" key={id}>
       <div className="inquiryItem">
-        <div className="itemTop">
+        <div className={btnValue ? "itemTopSelect" : "itemTop"}>
           <h1>{title}</h1>
           <ul>
             <li>{user}</li>
@@ -23,10 +23,13 @@ function ItemsList({ data: { id, title, user, date, text }, itemValue }) {
           <button className="itemOnOff" onClick={() => itemOnOff(id)}>
             🔽
           </button>
+          <button className="itemDelete" onClick={() => deleteItem(id)}>
+            ❎
+          </button>
         </div>
         <ItemsComment
-          key={id}
-          text={text}
+          id={id}
+          text={detail}
           itemOnOff={itemOnOff}
           btnValue={btnValue}
         />
