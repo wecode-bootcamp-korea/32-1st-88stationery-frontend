@@ -1,0 +1,65 @@
+.bannerContainer {
+  position: relative;
+  width: 100vw;
+  height: 810px;
+  overflow: hidden;
+
+  .imageWrapper {
+    display: flex;
+    width: 500vw;
+
+    img {
+      width: 100vw;
+      height: 810px;
+    }
+  }
+
+  .indexButton {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    transform: translateX(-50%);
+    z-index: 1;
+
+    span {
+      width: 10px;
+      height: 10px;
+      margin-left: 12px;
+      text-indent: -1000px;
+      overflow: hidden;
+      background-color: #fff;
+      border-radius: 50%;
+      opacity: 0.2;
+      flex: 1;
+      cursor: pointer;
+    }
+
+    span:first-child {
+      margin-left: 0;
+    }
+
+    .active {
+      opacity: 1;
+    }
+  }
+
+  .prevButton,
+  .nextButton {
+    position: absolute;
+    width: 30px;
+    height: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .prevButton {
+    background-color: yellow;
+    left: 20px;
+  }
+
+  .nextButton {
+    background-color: yellowgreen;
+    right: 20px;
+  }
+}
