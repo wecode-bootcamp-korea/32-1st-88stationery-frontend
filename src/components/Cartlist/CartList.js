@@ -1,28 +1,28 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, cloneElement } from "react";
 import "./CartList.scss";
 
-const CartList = ({ productPrice, name, id }) => {
+const CartList = ({
+  productPrice,
+  name,
+  id,
+  isChecked,
+  setSumPrice,
+  handleCheckBox,
+}) => {
   const [quantity, setQuantity] = useState(1);
-  const [itemPrice, setItemPrice] = useState(productPrice);
-  const [deliveryPrice, setDeliveryPrice] = useState(3000);
+  const itemPrice = productPrice * quantity;
 
   useEffect(() => {
-    if (itemPrice > 30000) {
-      setDeliveryPrice(0);
-    } else {
-      setDeliveryPrice(3000);
-    }
-  });
+    setSumPrice(prev => ({ ...prev, [name]: itemPrice }));
+  }, [itemPrice]);
 
   const increaseCount = () => {
-    setQuantity(prev => prev + 1);
-    setItemPrice(productPrice * (quantity + 1));
+    setQuantity(prev => Number(prev) + 1);
   };
 
   const decreaseCount = () => {
     if (quantity > 0) {
-      setQuantity(prev => prev - 1);
-      setItemPrice(productPrice * (quantity - 1));
+      setQuantity(prev => Number(prev) - 1);
     }
   };
 
@@ -30,23 +30,25 @@ const CartList = ({ productPrice, name, id }) => {
     setQuantity(e.target.value);
   };
 
-  const onKeyUp = e => {
-    if (isNaN(Number(e.target.value))) {
-      return;
+  const onKeyDown = e => {
+    if (e.code.includes("Digit") || e.code.includes("Backspace")) {
+      setQuantity(e.target.value);
     } else {
-      setQuantity(Number(e.target.value));
-      setItemPrice(productPrice * quantity);
+      e.preventDefault();
     }
   };
-
   return (
     <ul className="cartList">
       <li className="cartListLi">
         <div className="cartListCheckBox">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={() => handleCheckBox(id, isChecked)}
+            checked={isChecked}
+          />
         </div>
         <div className="cartListProductBox">
-          <a href="#">이미지</a>
+          <a ahref="#">이미지</a>
           <div className="cartListProductText">
             <p>{name}</p>
           </div>
@@ -60,14 +62,14 @@ const CartList = ({ productPrice, name, id }) => {
               type="text"
               value={quantity}
               onChange={onChangeHandler}
-              onKeyUp={onKeyUp}
+              onKeyDown={onKeyDown}
             />
             <button type="button" onClick={increaseCount}>
               +
             </button>
           </div>
           <div className="cartListPrice">
-            <p>{productPrice}원</p>
+            <p>{itemPrice.toLocaleString("ko-KR")}원</p>
           </div>
         </div>
         <div className="cartListDeleteBox">

@@ -27,12 +27,21 @@
     .totalPrice {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 30px;
 
       span {
         color: #2ac1bc;
         margin: 15px 0;
       }
+    }
+    .textBox {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      color: #2ac1bc;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
     }
   }
 
@@ -41,8 +50,16 @@
       width: 100%;
       padding: 18px 100px;
       border-radius: 6px;
-      font-size: 12px;
+      border: none;
+      font-size: 18px;
+      color: white;
+      background-color: #2ac1bc;
+      opacity: 0.9;
       cursor: pointer;
+
+      &:active {
+        transform: scale(0.9);
+      }
     }
   }
 }

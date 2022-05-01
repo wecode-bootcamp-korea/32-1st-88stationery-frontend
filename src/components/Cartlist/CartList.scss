@@ -34,8 +34,6 @@
     }
     .cartListInfoBox {
       display: flex;
-      justify-content: center;
-      align-items: center;
 
       .cartListQuantity {
         display: flex;
@@ -44,7 +42,12 @@
         margin-right: 20px;
 
         button {
-          background-color: white;
+          padding: 2px 6px;
+          border-radius: 6px;
+          border: 1px solid #dcdcdc;
+          color: #666666;
+          background-color: #ffffff;
+          font-size: 20px;
           cursor: pointer;
         }
 
@@ -56,7 +59,12 @@
       }
 
       .cartListPrice {
+        display: flex;
+        align-items: center;
         margin-right: 30px;
+        p {
+          margin-left: 30px;
+        }
       }
     }
 
