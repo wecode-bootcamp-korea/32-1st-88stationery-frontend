@@ -3,7 +3,8 @@ import Items from "./Items/Items";
 import "./Inquiry.scss";
 
 const Inquiry = () => {
-  const [counter, setCounter] = useState(4);
+  const [counter, setCounter] = useState(1);
+  const token = localStorage.getItem("token");
 
   const [inquiryInput, setInquiryInput] = useState({
     id: counter,
@@ -16,12 +17,14 @@ const Inquiry = () => {
 
   const [writeBtn, setWriteBtn] = useState(false);
 
-  const [itemValue, setItemValue] = useState([]);
+  const [itemValue, setItemValue] = useState();
 
   useEffect(() => {
-    fetch("http://10.58.7.20:8000/questions/question")
+    fetch("http://10.58.7.20:8000/questions/question", {
+      headers: { Authorization: token },
+    })
       .then(res => res.json())
-      .then(data => setItemValue(data));
+      .then(data => setItemValue(data.result));
   }, []);
 
   const onSubmit = e => {
@@ -66,7 +69,6 @@ const Inquiry = () => {
       {itemValue && (
         <Items
           list={itemValue}
-          itemValue={itemValue}
           setItemValue={setItemValue}
           deleteItem={deleteItem}
         />
