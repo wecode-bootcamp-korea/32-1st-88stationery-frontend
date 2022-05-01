@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Aside from "../Aside/Aside";
 import Search from "../Search/Search";
 import NavSideCategory from "./NavSideCategory";
-import LoginModal from "../Login/LoginModal";
+import LoginModal from "../Modal/LoginModal";
 import "./Nav.scss";
 
 const CATEGORY_LIST = [
