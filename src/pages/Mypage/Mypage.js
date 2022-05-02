@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import Welcome from "../Welcome";
+import ProductList from "../ProductList";
 import "./Mypage.scss";
 
 const Mypage = () => {
+  const [BtnMove, setBtnMove] = useState(true);
+  const onClick = () => {
+    setBtnMove(!BtnMove);
+  };
   return (
     <div className="myPageContentBox">
       <div className="myPageAllBox">
@@ -10,18 +16,16 @@ const Mypage = () => {
           <aside className="asideBar">
             <div>
               <h2>쇼핑 정보</h2>
-              <h3>주문 상품 조회</h3>
+              <span href="#" onClick={onClick}>
+                주문 상품 조회
+              </span>
             </div>
             <div>
               <h2>고객 센터</h2>
-              <h3>문의 내역</h3>
+              <a href="">문의 내역</a>
             </div>
           </aside>
-          <div className="showInfo">
-            <div className="welcomeBox">
-              <span>반가워요, OOO님</span>
-            </div>
-          </div>
+          {BtnMove ? <Welcome /> : <ProductList />}
         </div>
       </div>
     </div>
