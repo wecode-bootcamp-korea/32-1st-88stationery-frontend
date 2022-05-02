@@ -16,31 +16,33 @@ const Cart = () => {
   const totalPrice = Object.values(sumPrice).reduce((acc, cur) => acc + cur);
 
   const checkBoxAllHandler = () => {
-    const checkAll = [...cartLists];
-    checkAll.map(e => {
-      if (e.isChecked === true) {
-        e.isChecked = false;
-        setIsCheckedAll(false);
-        setCartLists(checkAll);
-        console.log(checkAll);
-      } else if (e.isChecked === false) {
-        e.isChecked = true;
-        setIsCheckedAll(true);
-        setCartLists(checkAll);
-      }
-    });
+    // const checkAll = [...cartLists];
+    // checkAll.map(e => {
+    //   if (e.isChecked === true) {
+    //     e.isChecked = false;
+    //     setIsCheckedAll(false);
+    //     setCartLists(checkAll);
+    //     console.log(checkAll);
+    //   } else if (e.isChecked === false) {
+    //     e.isChecked = true;
+    //     setIsCheckedAll(true);
+    //     setCartLists(checkAll);
+    //   }
+    // });
   };
 
-  const handleCheckBox = (id, isChecked) => {
+  const handleCheckBox = (id, currentChecked) => {
+    const taretCartLists = cartLists.findIndex(list => list.id === id);
     const newCartLists = [...cartLists];
-    newCartLists[id - 1].isChecked = !isChecked;
+    newCartLists[taretCartLists].isChecked = currentChecked;
     setCartLists(newCartLists);
-    cartLists.map(e => {
-      if (e.isChecked !== isCheckedAll) {
-        setIsCheckedAll(!isCheckedAll);
-      }
-    });
-    console.log(cartLists[id - 1].isChecked);
+
+    // cartLists.map(e => {
+    //   if (e.isChecked !== isCheckedAll) {
+    //     setIsCheckedAll(!isCheckedAll);
+    //   }
+    // });
+    // console.log(cartLists[id - 1].isChecked);
   };
 
   return (

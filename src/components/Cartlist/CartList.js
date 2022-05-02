@@ -43,7 +43,7 @@ const CartList = ({
         <div className="cartListCheckBox">
           <input
             type="checkbox"
-            onChange={() => handleCheckBox(id, isChecked)}
+            onChange={e => handleCheckBox(id, e.target.checked)}
             checked={isChecked}
           />
         </div>
