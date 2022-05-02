@@ -7,8 +7,8 @@ const Cart = () => {
   const [sumPrice, setSumPrice] = useState({ default: 0 });
   const [cartLists, setCartLists] = useState(mockData);
   const [deliveryPrice, setDeliveryPrice] = useState(3000);
-  const [checkedList, setCheckedList] = useState([]);
-  const [isAllChecked, setIsAllChecked] = useState(false);
+  const [checkedList, setCheckedList] = useState(mockData.map(el => el.name));
+  const [isAllChecked, setIsAllChecked] = useState(true);
 
   useEffect(() => {
     checkedList.length === cartLists.length
@@ -26,8 +26,8 @@ const Cart = () => {
     setIsAllChecked(!isAllChecked);
     isAllChecked === true && setCheckedList([]);
   };
-  console.log(cartLists.length);
   console.log(checkedList);
+  console.log(sumPrice);
 
   return (
     <div className="cartContainer">

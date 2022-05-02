@@ -12,19 +12,21 @@ const CartList = ({
 }) => {
   const [quantity, setQuantity] = useState(1);
   const itemPrice = productPrice * quantity;
-  const [isChecked, setIsChecked] = useState(false);
-
+  const [isChecked, setIsChecked] = useState(checkedList.includes(name));
   useEffect(() => {
-    isAllChecked === true && setIsChecked(true);
+    setIsChecked(checkedList.includes(name));
+  });
+  useEffect(() => {
     isAllChecked === true &&
       !checkedList.includes(name) &&
       setCheckedList(prev => [...prev, name]);
   }, [isAllChecked]);
 
   useEffect(() => {
-    checkedList.includes(name) === true &&
-      setSumPrice(prev => ({ ...prev, [name]: itemPrice }));
-  }, [itemPrice, isChecked, isAllChecked]);
+    isChecked
+      ? setSumPrice(prev => ({ ...prev, [name]: itemPrice }))
+      : setSumPrice(prev => ({ ...prev, [name]: 0 }));
+  }, [itemPrice, isChecked]);
 
   const increaseCount = () => {
     setQuantity(prev => Number(prev) + 1);
@@ -49,13 +51,11 @@ const CartList = ({
   };
 
   const checkHandler = () => {
-    setIsChecked(checkedList.includes(name));
-    isChecked === false
+    checkedList.includes(name) === false
       ? setCheckedList(prev => [...prev, name])
       : setCheckedList(prev => prev.filter(item => item !== name));
   };
 
-  console.log(checkedList.includes(name));
   return (
     <ul className="cartList">
       <li className="cartListLi">
