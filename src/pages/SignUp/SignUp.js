@@ -23,23 +23,7 @@ const SignUp = () => {
     detailAddress: false,
     birth: false,
   });
-
   const [disabled, setDisabled] = useState(true);
-
-  const isDisabled = () => {
-    userInfo.id.includes("@") &&
-    userInfo.pw.length >= 8 &&
-    userInfo.pw === userInfo.pwCheck &&
-    userInfo.name.length &&
-    userInfo.phone.length &&
-    userInfo.address.length &&
-    userInfo.detailAddress.length &&
-    userInfo.birth[4] === "-" &&
-    userInfo.birth[7] === "-" &&
-    userInfo.birth.length >= 10
-      ? setDisabled(false)
-      : setDisabled(true);
-  };
 
   const valueIdText = (
     <>
@@ -172,6 +156,21 @@ const SignUp = () => {
       .then(data => {
         console.log(data);
       });
+  };
+
+  const isDisabled = () => {
+    userInfo.id.includes("@") &&
+    userInfo.pw.length >= 8 &&
+    userInfo.pw === userInfo.pwCheck &&
+    userInfo.name.length &&
+    userInfo.phone.length &&
+    userInfo.address.length &&
+    userInfo.detailAddress.length &&
+    userInfo.birth[4] === "-" &&
+    userInfo.birth[7] === "-" &&
+    userInfo.birth.length >= 10
+      ? setDisabled(false)
+      : setDisabled(true);
   };
 
   const putUserInfo = e => {
