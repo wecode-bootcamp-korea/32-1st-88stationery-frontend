@@ -1,0 +1,47 @@
+.OrderedItemUl {
+  width: 100%;
+  height: 50vh;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  .orderedListLi {
+    .orderedListOrder {
+      font-size: 30px;
+      color: #2ac1bc;
+    }
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    .orderedProductBox {
+      display: flex;
+      align-items: center;
+      a {
+        margin-right: 150px;
+      }
+      .orderedListProductText {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-right: 30px;
+        p {
+          font-size: 20px;
+          font-weight: 700;
+        }
+      }
+    }
+    .orderedListInfoBox {
+      display: flex;
+      align-items: center;
+    }
+    .orderedSumPrice {
+      display: flex;
+      align-items: center;
+    }
+    .orderedStatus {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

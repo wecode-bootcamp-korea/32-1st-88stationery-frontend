@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Welcome from "../../components/Welcome/Welcome";
 import ProductList from "../../components/OrderItems/OrderItems";
 import "./Mypage.scss";
 
 const Mypage = () => {
   const [BtnMove, setBtnMove] = useState(true);
+  const [orderedItems, setOrderedItems] = useState(mockData);
+
   const onClick = () => {
     setBtnMove(!BtnMove);
   };
@@ -16,16 +19,24 @@ const Mypage = () => {
           <aside className="asideBar">
             <div>
               <h2>쇼핑 정보</h2>
+
               <span href="#" onClick={onClick}>
                 주문 상품 조회
               </span>
             </div>
             <div>
               <h2>고객 센터</h2>
-              <a href="">문의 내역</a>
+              <Link to="/inquiry">문의 내역 </Link>
             </div>
           </aside>
-          {BtnMove ? <Welcome /> : <ProductList />}
+          {BtnMove ? (
+            <Welcome />
+          ) : (
+            <ProductList
+              orderedItems={orderedItems}
+              setOrderedItems={setOrderedItems}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -33,3 +44,40 @@ const Mypage = () => {
 };
 
 export default Mypage;
+const mockData = [
+  {
+    id: 1,
+    name: "공책",
+    price: 10000,
+    count: 1,
+    status: "배송중",
+  },
+  {
+    id: 2,
+    name: "공책",
+    price: 1000,
+    count: 3,
+    status: "배송중",
+  },
+  {
+    id: 3,
+    name: "공책",
+    price: 1000,
+    count: 3,
+    status: "배송준비",
+  },
+  {
+    id: 4,
+    name: "공책",
+    price: 1000,
+    count: 4,
+    status: "배송완료",
+  },
+  {
+    id: 5,
+    name: "공책",
+    price: 1000,
+    count: 5,
+    status: "배송준비",
+  },
+];
