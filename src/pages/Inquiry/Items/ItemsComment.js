@@ -1,49 +1,46 @@
 import React, { useEffect, useState } from "react";
 import Comment from "./Comments/Comment";
 
-function ItemsComment({ id, text, btnValue }) {
-  const [comments, setComments] = useState([]);
+function ItemsComment({
+  id,
+  text,
+  btnValue,
+  comment,
+  setComment,
+  deleteHandler,
+}) {
   const [inputComments, setInputComments] = useState("");
-  const [counter, setCounter] = useState(3);
+  // const [counter, setCounter] = useState(3);
+  const token = localStorage.getItem("token");
 
   const inputHandler = e => {
-    setInputComments(e.target.value);
+    setInputComments(prev => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
   };
-
   const enterCatch = e => {
     if (e.key === "Enter") {
-      inputBtn();
+      // inputBtn();
     }
-  };
-
-  const deleteHandler = id => {
-    setComments(
-      comments.filter(comment => {
-        return comment.id !== id;
-      })
-    );
   };
 
   const inputBtn = e => {
     e.preventDefault();
-    setCounter(counter + 1);
-    const copyComments = [...comments];
-    copyComments.push({
-      id: counter,
-      user: "담당자",
-      text: inputComments,
-    });
-    setComments(copyComments);
-    setInputComments("");
+    setInputComments(prev => [...prev, inputComments]);
+    // setInputComments(prev => [...prev, inputComments]);
+    fetch("http://10.58.7.20:8000/questions/answer", {
+      method: "POST",
+      headers: { Authorization: token },
+      body: JSON.stringify({
+        detail: inputComments,
+        question_id: inputComments.question_id,
+      }),
+    })
+      .then(response => console.log(response))
+      .then(result => console.log(result));
   };
 
-  useEffect(() => {
-    fetch("/data/comments.json")
-      .then(res => res.json())
-      .then(data => {
-        setComments(data);
-      });
-  }, []);
+  console.log(inputComments);
 
   return (
     btnValue && (
@@ -53,13 +50,14 @@ function ItemsComment({ id, text, btnValue }) {
         </div>
         <div className="itemBottom">
           <ul>
-            {comments.map(comment => (
-              <Comment
-                key={comment.id}
-                comment={comment}
-                deleteHandler={deleteHandler}
-              />
-            ))}
+            {comment &&
+              comment.map(comment => (
+                <Comment
+                  key={comment.id}
+                  comment={comment}
+                  deleteHandler={deleteHandler}
+                />
+              ))}
           </ul>
         </div>
         <div className="commentInput">

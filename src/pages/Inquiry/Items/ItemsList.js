@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import ItemsComment from "./ItemsComment";
 
-function ItemsList({ item, itemValue, deleteItem }) {
+function ItemsList({
+  item,
+  itemValue,
+  deleteItem,
+  comment,
+  setComment,
+  deleteHandler,
+}) {
   const [btnValue, setBtnValue] = useState(false);
   const { id, title, user, date, detail } = item;
 
@@ -32,6 +39,9 @@ function ItemsList({ item, itemValue, deleteItem }) {
           text={detail}
           itemOnOff={itemOnOff}
           btnValue={btnValue}
+          comment={comment}
+          setComment={setComment}
+          deleteHandler={deleteHandler}
         />
       </div>
     </div>

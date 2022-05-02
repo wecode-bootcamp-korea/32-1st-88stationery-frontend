@@ -3,39 +3,61 @@ import Items from "./Items/Items";
 import "./Inquiry.scss";
 
 const Inquiry = () => {
-  const [counter, setCounter] = useState(1);
   const token = localStorage.getItem("token");
 
   const [inquiryInput, setInquiryInput] = useState({
-    id: counter,
     title: "",
     detail: "",
-    email: "",
-    user: "손놈",
-    date: Date.now(),
+    user: "",
   });
 
   const [writeBtn, setWriteBtn] = useState(false);
-
-  const [itemValue, setItemValue] = useState();
+  const [itemValue, setItemValue] = useState([]);
+  const [comment, setComment] = useState();
 
   useEffect(() => {
     fetch("http://10.58.7.20:8000/questions/question", {
       headers: { Authorization: token },
     })
       .then(res => res.json())
-      .then(data => setItemValue(data.result));
+      .then(data => {
+        setItemValue(data.result);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("http://10.58.7.20:8000/questions/answer", {
+      headers: { Authorization: token },
+      method: "GET",
+    })
+      .then(res => res.json())
+      .then(data => {
+        setComment(data.result);
+        console.log(data.result);
+      });
   }, []);
 
   const onSubmit = e => {
     e.preventDefault();
     setItemValue(prev => [...prev, inquiryInput]);
-    setCounter(counter => counter + 1);
-    actionWriteBtn();
-
-    console.log(inquiryInput);
+    fetch("http://10.58.7.20:8000/questions/question", {
+      method: "POST",
+      headers: { Authorization: token },
+      body: JSON.stringify({
+        title: inquiryInput.title,
+        detail: inquiryInput.detail,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(inputHandler);
+        if (result.token === token) {
+          alert("로그인 후 작성해주세요.");
+        } else {
+          actionWriteBtn();
+        }
+      });
   };
-
   const inputHandler = e => {
     setInquiryInput(prev => {
       return { ...prev, [e.target.name]: e.target.value };
@@ -43,11 +65,36 @@ const Inquiry = () => {
   };
 
   const deleteItem = id => {
-    setItemValue(
-      itemValue.filter(el => {
-        return el.id !== id;
-      })
-    );
+    console.log(id);
+    fetch("http://10.58.7.20:8000/questions/question", {
+      method: "DELETE",
+      headers: { Authorization: token },
+      body: JSON.stringify({
+        question_id: id,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        setItemValue(data.result);
+      });
+  };
+
+  console.log(itemValue);
+
+  const deleteHandler = id => {
+    console.log(id);
+    fetch("http://10.58.7.20:8000/questions/answer", {
+      method: "DELETE",
+      headers: { Authorization: token },
+      body: JSON.stringify({
+        answer_id: id,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        // console.log(data.result);
+        setComment(data.result);
+      });
   };
 
   const actionWriteBtn = () => {
@@ -71,6 +118,9 @@ const Inquiry = () => {
           list={itemValue}
           setItemValue={setItemValue}
           deleteItem={deleteItem}
+          comment={comment}
+          setComment={setComment}
+          deleteHandler={deleteHandler}
         />
       )}
       {writeBtn && (
@@ -108,12 +158,6 @@ const Inquiry = () => {
                     ℹ 문의사항을 자세하게 작성해주시면 좋습니다.
                   </p>
                 )}
-                <input
-                  type="email"
-                  placeholder="이메일 (선택사항)"
-                  name="email"
-                  onChange={inputHandler}
-                />
                 <button
                   className={!writeBtnisvalid ? "popInputBtn" : "popInputBtnOn"}
                   type="submit"
