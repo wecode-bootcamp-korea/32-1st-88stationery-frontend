@@ -21,7 +21,7 @@ const Nav = () => {
   const [isSearchOn, setisSearchOn] = useState(false);
   const [isLoginModalOn, setIstLoginModalOn] = useState(false);
   const [userInput, setUserInput] = useState("");
-
+  const userName = "";
   function handleScroll() {
     setScrollY(window.pageYOffset);
   }
@@ -78,9 +78,13 @@ const Nav = () => {
             />
             <i className="fa fa-light fa-cart-shopping" />
 
-            <button className="gnbLogin" onClick={handleisLoginModalOn}>
-              로그인
-            </button>
+            {localStorage.getItem("token") ? (
+              <span>{userName}</span>
+            ) : (
+              <button className="gnbLogin" onClick={handleisLoginModalOn}>
+                로그인
+              </button>
+            )}
 
             {isLoginModalOn && (
               <LoginModal

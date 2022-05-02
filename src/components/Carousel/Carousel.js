@@ -84,8 +84,11 @@ const Carousel = () => {
             </span>
           ))}
       </div>
-      <div className="prevButton" onClick={swipeHandler} />
-      <div className="nextButton" onClick={swipeHandler} />
+      <i className="fa-solid fa-arrow-left-long fa-3x" onClick={swipeHandler} />
+      <i
+        className="fa-solid fa-arrow-right-long fa-3x"
+        onClick={swipeHandler}
+      />
     </div>
   );
 };
@@ -93,7 +96,7 @@ const Carousel = () => {
 export default Carousel;
 
 const IMAGE = [
-  { src: "/images/items/1.jpeg" },
-  { src: "/images/items/2.jpeg" },
-  { src: "/images/items/3.jpeg" },
+  { src: "/images/items/mainImage1.png" },
+  { src: "/images/items/mainImage2.png" },
+  { src: "/images/items/mainImage3.png" },
 ];
