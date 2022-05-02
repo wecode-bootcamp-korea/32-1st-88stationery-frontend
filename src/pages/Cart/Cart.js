@@ -7,12 +7,28 @@ const Cart = () => {
   const [sumPrice, setSumPrice] = useState({ default: 0 });
   const [cartLists, setCartLists] = useState(mockData);
   const [deliveryPrice, setDeliveryPrice] = useState(3000);
+  const [checkedList, setCheckedList] = useState([]);
+  const [isAllChecked, setIsAllChecked] = useState(false);
+
+  useEffect(() => {
+    checkedList.length === cartLists.length
+      ? setIsAllChecked(true)
+      : setIsAllChecked(false);
+  }, [checkedList]);
 
   useEffect(() => {
     sumPrice > 30000 ? setDeliveryPrice(0) : setDeliveryPrice(3000);
   }, [sumPrice]);
 
   const totalPrice = Object.values(sumPrice).reduce((acc, cur) => acc + cur);
+
+  const allCheckHandler = () => {
+    setIsAllChecked(!isAllChecked);
+    isAllChecked === true && setCheckedList([]);
+  };
+  console.log(cartLists.length);
+  console.log(checkedList);
+
   return (
     <div className="cartContainer">
       <h1 className="cartTitle">장바구니</h1>
@@ -20,7 +36,11 @@ const Cart = () => {
         <div className="cartContent">
           <div className="cartContentHeader">
             <div>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                checked={isAllChecked}
+                onChange={allCheckHandler}
+              />
               <button>전체선택</button>
             </div>
             <div>
@@ -30,6 +50,9 @@ const Cart = () => {
           {cartLists.map(cartList => {
             return (
               <CartList
+                setCheckedList={setCheckedList}
+                checkedList={checkedList}
+                isAllChecked={isAllChecked}
                 key={cartList.id}
                 productPrice={cartList.price}
                 name={cartList.name}

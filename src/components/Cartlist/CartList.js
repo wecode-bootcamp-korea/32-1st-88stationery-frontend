@@ -1,13 +1,30 @@
 import { React, useState, useEffect, cloneElement } from "react";
 import "./CartList.scss";
 
-const CartList = ({ productPrice, name, id, setSumPrice }) => {
+const CartList = ({
+  productPrice,
+  name,
+  id,
+  setSumPrice,
+  setCheckedList,
+  checkedList,
+  isAllChecked,
+}) => {
   const [quantity, setQuantity] = useState(1);
   const itemPrice = productPrice * quantity;
+  const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
-    setSumPrice(prev => ({ ...prev, [name]: itemPrice }));
-  }, [itemPrice]);
+    isAllChecked === true && setIsChecked(true);
+    isAllChecked === true &&
+      !checkedList.includes(name) &&
+      setCheckedList(prev => [...prev, name]);
+  }, [isAllChecked]);
+
+  useEffect(() => {
+    checkedList.includes(name) === true &&
+      setSumPrice(prev => ({ ...prev, [name]: itemPrice }));
+  }, [itemPrice, isChecked, isAllChecked]);
 
   const increaseCount = () => {
     setQuantity(prev => Number(prev) + 1);
@@ -30,11 +47,24 @@ const CartList = ({ productPrice, name, id, setSumPrice }) => {
       e.preventDefault();
     }
   };
+
+  const checkHandler = () => {
+    setIsChecked(checkedList.includes(name));
+    isChecked === false
+      ? setCheckedList(prev => [...prev, name])
+      : setCheckedList(prev => prev.filter(item => item !== name));
+  };
+
+  console.log(checkedList.includes(name));
   return (
     <ul className="cartList">
       <li className="cartListLi">
         <div className="cartListCheckBox">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={checkHandler}
+            checked={checkedList.includes(name)}
+          />
         </div>
         <div className="cartListProductBox">
           <a ahref="#">이미지</a>
