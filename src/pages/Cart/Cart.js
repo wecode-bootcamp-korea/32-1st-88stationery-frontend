@@ -15,6 +15,8 @@ const Cart = () => {
 
   const totalPrice = Object.values(sumPrice).reduce((acc, cur) => acc + cur);
 
+  const onIsCheckedAll = () => {};
+
   const checkBoxAllHandler = () => {
     // const checkAll = [...cartLists];
     // checkAll.map(e => {
@@ -54,7 +56,7 @@ const Cart = () => {
             <div>
               <input
                 type="checkbox"
-                onChange={checkBoxAllHandler}
+                onChange={onIsCheckedAll}
                 checked={isCheckedAll}
               />
               <button>전체선택</button>
@@ -68,11 +70,13 @@ const Cart = () => {
               <CartList
                 key={cartList.id}
                 productPrice={cartList.price}
+                cartLists={cartLists}
                 name={cartList.name}
                 id={cartList.id}
                 setSumPrice={setSumPrice}
-                isChecked={cartList.isChecked}
-                handleCheckBox={handleCheckBox}
+                setIsCheckedAll={setIsCheckedAll}
+                // handleCheckBox={handleCheckBox}
+                // isChecked={cartList.isChecked}
               />
             );
           })}
@@ -96,25 +100,25 @@ const mockData = [
     id: 1,
     name: "공책",
     price: 4000,
-    isChecked: true,
+    // isChecked: true,
   },
   {
     id: 2,
     name: "지우개",
     price: 5000,
-    isChecked: true,
+    // isChecked: true,
   },
   {
     id: 3,
     name: "연필",
     price: 2000,
-    isChecked: true,
+    // isChecked: true,
   },
   {
     id: 4,
     name: "볼펜",
     price: 1000,
-    isChecked: true,
+    // isChecked: true,
   },
 ];
 

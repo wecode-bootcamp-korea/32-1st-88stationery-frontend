@@ -5,12 +5,14 @@ const CartList = ({
   productPrice,
   name,
   id,
-  isChecked,
   setSumPrice,
   handleCheckBox,
+  setIsCheckedAll,
+  cartLists,
 }) => {
   const [quantity, setQuantity] = useState(1);
   const itemPrice = productPrice * quantity;
+  const [isCheckedEach, setIsCheckedEach] = useState(true);
 
   useEffect(() => {
     setSumPrice(prev => ({ ...prev, [name]: itemPrice }));
@@ -29,6 +31,12 @@ const CartList = ({
   const onChangeHandler = e => {
     setQuantity(e.target.value);
   };
+  const onIsCheckedEach = (targetChecked, id) => {
+    setIsCheckedEach(!isCheckedEach);
+    if (targetChecked === false) {
+      setIsCheckedAll(false);
+    }
+  };
 
   const onKeyDown = e => {
     if (e.code.includes("Digit") || e.code.includes("Backspace")) {
@@ -43,8 +51,9 @@ const CartList = ({
         <div className="cartListCheckBox">
           <input
             type="checkbox"
-            onChange={e => handleCheckBox(id, e.target.checked)}
-            checked={isChecked}
+            // onChange={e => handleCheckBox(id, e.target.checked)}
+            onChange={e => onIsCheckedEach(e.target.checked, id)}
+            checked={isCheckedEach}
           />
         </div>
         <div className="cartListProductBox">
