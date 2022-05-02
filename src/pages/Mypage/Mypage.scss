@@ -32,21 +32,6 @@
           cursor: pointer;
         }
       }
-      .showInfo {
-        width: 60%;
-        display: flex;
-        justify-content: center;
-        .welcomeBox {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
-        }
-        span {
-          font-size: 40px;
-          color: #2ac1bc;
-        }
-      }
     }
   }
 }

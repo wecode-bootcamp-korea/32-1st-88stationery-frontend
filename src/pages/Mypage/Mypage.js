@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Welcome from "../Welcome";
-import ProductList from "../ProductList";
+import Welcome from "../../components/Welcome/Welcome";
+import ProductList from "../../components/OrderItems/OrderItems";
 import "./Mypage.scss";
 
 const Mypage = () => {
