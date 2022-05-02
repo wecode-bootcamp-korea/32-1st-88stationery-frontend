@@ -1,0 +1,43 @@
+.limitBox {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+.limitBox {
+  select {
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+    border: none;
+
+    option:checked {
+      background-color: #2ac1bc;
+    }
+  }
+}
+
+.indexBtn {
+  display: flex;
+  margin-top: 30px;
+
+  button {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    border: 1px solid #2ac1bc;
+    border-radius: 5px;
+    color: #2ac1bc;
+    background-color: #fff;
+    transition: all 0.4s;
+  }
+
+  button:last-child {
+    margin-right: 0;
+  }
+
+  .active {
+    color: white;
+    background-color: #2ac1bc;
+  }
+}

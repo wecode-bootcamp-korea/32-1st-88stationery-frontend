@@ -1,8 +1,8 @@
 .myPageContentBox {
-  height: 100vh;
-  margin-top: 200px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 90vh;
 
   .myPageAllBox {
     display: flex;
@@ -15,13 +15,13 @@
       font-weight: 700;
     }
     .asideWelcomeBox {
-      width: 40%;
+      width: 50%;
       display: flex;
       .asideBar {
         width: 20%;
 
         h2 {
-          margin-bottom: 30px;
+          margin-bottom: 35px;
           font-size: 25px;
           font-weight: bold;
         }
@@ -31,7 +31,7 @@
         }
       }
       .showInfo {
-        width: 70%;
+        width: 60%;
         display: flex;
         justify-content: center;
         .welcomeBox {
@@ -41,7 +41,7 @@
           width: 100%;
         }
         span {
-          font-size: 50px;
+          font-size: 40px;
           color: #2ac1bc;
         }
       }

@@ -1,0 +1,122 @@
+.gsb {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  width: 380px;
+  height: 100%;
+  padding-top: 60px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  overflow: hidden;
+  transition: right 0.4s ease 0s;
+  z-index: 100;
+
+  &Hidden {
+    @extend .gsb;
+    right: -380px;
+  }
+
+  .gsbHeader {
+    padding: 0px 40px 60px;
+
+    h2 {
+      width: 260px;
+      line-height: 42px;
+      color: rgb(68, 68, 68);
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -1px;
+    }
+  }
+
+  .gsbNavCategory {
+    height: 100%;
+    padding: 0px 40px 40px;
+    overflow-y: auto;
+
+    i {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      cursor: pointer;
+    }
+
+    h2 {
+      color: #999999;
+    }
+
+    li {
+      padding-top: 14px;
+      font-size: 55px;
+      font-weight: 600;
+      cursor: pointer;
+
+      a {
+        text-decoration-line: none;
+        color: #000;
+
+        &:hover {
+          color: #58e8e3;
+          transition: 0.4s ease 0s;
+        }
+      }
+    }
+  }
+
+  .gsbFooter {
+    display: flex;
+    justify-content: center;
+    padding: 27px 40px;
+
+    .footerContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      i {
+        transform: translateY(-5px);
+      }
+
+      ul {
+        display: flex;
+        line-height: 19px;
+        font-size: 16px;
+        font-weight: 700;
+
+        li {
+          display: flex;
+
+          &:nth-last-child(1)::before {
+            display: block;
+            width: 1px;
+            height: 16px;
+            margin: 0px 10px;
+            background-color: rgb(221, 221, 221);
+            content: "";
+          }
+
+          span {
+            padding: 0 20px;
+          }
+        }
+      }
+    }
+  }
+}
+.sideScreen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.4s ease 0.2s;
+  opacity: 0;
+}
+.sideScreenHide {
+  @extend .sideScreen;
+  z-index: 1;
+  opacity: 1;
+  ::after body {
+    overflow: hidden;
+  }
+}
