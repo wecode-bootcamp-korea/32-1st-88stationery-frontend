@@ -35,6 +35,7 @@ const Login = () => {
           alert("올바르지 않은 패스워드입니다.");
         } else {
           alert("88문방구에 오신걸 환영합니다.");
+          localStorage.setItem("token", result.token);
           navigate("/Main");
         }
       });
