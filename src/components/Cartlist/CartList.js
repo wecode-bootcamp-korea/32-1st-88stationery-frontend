@@ -1,18 +1,9 @@
 import { React, useState, useEffect, cloneElement } from "react";
 import "./CartList.scss";
 
-const CartList = ({
-  productPrice,
-  name,
-  id,
-  setSumPrice,
-  handleCheckBox,
-  setIsCheckedAll,
-  cartLists,
-}) => {
+const CartList = ({ productPrice, name, id, setSumPrice }) => {
   const [quantity, setQuantity] = useState(1);
   const itemPrice = productPrice * quantity;
-  const [isCheckedEach, setIsCheckedEach] = useState(true);
 
   useEffect(() => {
     setSumPrice(prev => ({ ...prev, [name]: itemPrice }));
@@ -31,12 +22,6 @@ const CartList = ({
   const onChangeHandler = e => {
     setQuantity(e.target.value);
   };
-  const onIsCheckedEach = (targetChecked, id) => {
-    setIsCheckedEach(!isCheckedEach);
-    if (targetChecked === false) {
-      setIsCheckedAll(false);
-    }
-  };
 
   const onKeyDown = e => {
     if (e.code.includes("Digit") || e.code.includes("Backspace")) {
@@ -49,12 +34,7 @@ const CartList = ({
     <ul className="cartList">
       <li className="cartListLi">
         <div className="cartListCheckBox">
-          <input
-            type="checkbox"
-            // onChange={e => handleCheckBox(id, e.target.checked)}
-            onChange={e => onIsCheckedEach(e.target.checked, id)}
-            checked={isCheckedEach}
-          />
+          <input type="checkbox" />
         </div>
         <div className="cartListProductBox">
           <a ahref="#">이미지</a>

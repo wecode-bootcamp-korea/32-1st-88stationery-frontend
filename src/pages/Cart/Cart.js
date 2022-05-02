@@ -7,46 +7,12 @@ const Cart = () => {
   const [sumPrice, setSumPrice] = useState({ default: 0 });
   const [cartLists, setCartLists] = useState(mockData);
   const [deliveryPrice, setDeliveryPrice] = useState(3000);
-  const [isCheckedAll, setIsCheckedAll] = useState(true);
 
   useEffect(() => {
     sumPrice > 30000 ? setDeliveryPrice(0) : setDeliveryPrice(3000);
   }, [sumPrice]);
 
   const totalPrice = Object.values(sumPrice).reduce((acc, cur) => acc + cur);
-
-  const onIsCheckedAll = () => {};
-
-  const checkBoxAllHandler = () => {
-    // const checkAll = [...cartLists];
-    // checkAll.map(e => {
-    //   if (e.isChecked === true) {
-    //     e.isChecked = false;
-    //     setIsCheckedAll(false);
-    //     setCartLists(checkAll);
-    //     console.log(checkAll);
-    //   } else if (e.isChecked === false) {
-    //     e.isChecked = true;
-    //     setIsCheckedAll(true);
-    //     setCartLists(checkAll);
-    //   }
-    // });
-  };
-
-  const handleCheckBox = (id, currentChecked) => {
-    const taretCartLists = cartLists.findIndex(list => list.id === id);
-    const newCartLists = [...cartLists];
-    newCartLists[taretCartLists].isChecked = currentChecked;
-    setCartLists(newCartLists);
-
-    // cartLists.map(e => {
-    //   if (e.isChecked !== isCheckedAll) {
-    //     setIsCheckedAll(!isCheckedAll);
-    //   }
-    // });
-    // console.log(cartLists[id - 1].isChecked);
-  };
-
   return (
     <div className="cartContainer">
       <h1 className="cartTitle">장바구니</h1>
@@ -54,11 +20,7 @@ const Cart = () => {
         <div className="cartContent">
           <div className="cartContentHeader">
             <div>
-              <input
-                type="checkbox"
-                onChange={onIsCheckedAll}
-                checked={isCheckedAll}
-              />
+              <input type="checkbox" />
               <button>전체선택</button>
             </div>
             <div>
@@ -70,13 +32,9 @@ const Cart = () => {
               <CartList
                 key={cartList.id}
                 productPrice={cartList.price}
-                cartLists={cartLists}
                 name={cartList.name}
                 id={cartList.id}
                 setSumPrice={setSumPrice}
-                setIsCheckedAll={setIsCheckedAll}
-                // handleCheckBox={handleCheckBox}
-                // isChecked={cartList.isChecked}
               />
             );
           })}
@@ -100,25 +58,21 @@ const mockData = [
     id: 1,
     name: "공책",
     price: 4000,
-    // isChecked: true,
   },
   {
     id: 2,
     name: "지우개",
     price: 5000,
-    // isChecked: true,
   },
   {
     id: 3,
     name: "연필",
     price: 2000,
-    // isChecked: true,
   },
   {
     id: 4,
     name: "볼펜",
     price: 1000,
-    // isChecked: true,
   },
 ];
 
