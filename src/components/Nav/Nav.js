@@ -7,11 +7,12 @@ import LoginModal from "../Modal/LoginModal";
 import "./Nav.scss";
 
 const CATEGORY_LIST = [
-  { path: "baseball", category: "야구" },
-  { path: "swim", category: "수영" },
-  { path: "running", category: "육상" },
-  { path: "sky", category: "체조" },
-  { path: "arrow", category: "양궁" },
+  { category: "전체" },
+  { category: "문구" },
+  { category: "리빙" },
+  { category: "책" },
+  { category: "완구" },
+  { category: "식품" },
 ];
 
 const Nav = () => {

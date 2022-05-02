@@ -36,6 +36,7 @@ const LoginModal = ({ isLoginModalOn, handleisLoginModalOn }) => {
           : result.message === "INVALID_PASSWORD"
           ? alert("올바르지 않은 패스워드입니다.")
           : alert("88문방구에 오신걸 환영합니다.");
+        localStorage.setItem("token", result.token);
         navigate("/Main");
       });
   };
