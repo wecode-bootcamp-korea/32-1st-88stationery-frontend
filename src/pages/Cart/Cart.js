@@ -5,49 +5,10 @@ import "./Cart.scss";
 
 const Cart = () => {
   const [sumPrice, setSumPrice] = useState({ default: 0 });
-  const [cartLists, setCartLists] = useState(mockData);
   const [deliveryPrice, setDeliveryPrice] = useState(3000);
   const [checkedList, setCheckedList] = useState(mockData.map(el => el.name));
   const [isAllChecked, setIsAllChecked] = useState(true);
-
-  // useEffect(
-  //   () =>
-  //     fetch("http://10.58.1.245:8000/users/tokencheck", {
-  //       method: "GET",
-  //       headers: {
-  //         Authorization:
-  //           "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6N30.u8tQmYe21yFLPlb5ABDzRHAG7XGE2zugyDhD3IA5K1s",
-  //       },
-  //     })
-  //       .then(response => response.json())
-  //       .then(json => {
-  //         console.log(json);
-  //       }),
-  //   []
-  // );
-
-  const TOKEN_KEY =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6N30.u8tQmYe21yFLPlb5ABDzRHAG7XGE2zugyDhD3IA5K1s";
-  useEffect(() => {
-    fetch("10.58.1.230:8000/orders/carts", {
-      method: "GET",
-      headers: {
-        Authorization: TOKEN_KEY,
-      },
-    })
-      .then(response => response)
-      .then(data => console.log(data));
-  }, []);
-
-  // fetch("http://10.58.1.245:8000/users/tokencheck", {
-  //   method: "GET",
-  //   headers: {
-  //     Authorization:
-  //       "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6N30.u8tQmYe21yFLPlb5ABDzRHAG7XGE2zugyDhD3IA5K1s",
-  //   },
-  // })
-  //   .then(response => response.json())
-  //   .then(data => console.log(data));
+  const cartLists = mockData;
 
   useEffect(() => {
     checkedList.length === cartLists.length
@@ -65,8 +26,6 @@ const Cart = () => {
     setIsAllChecked(!isAllChecked);
     isAllChecked === true && setCheckedList([]);
   };
-  console.log(checkedList);
-  console.log(sumPrice);
 
   return (
     <div className="cartContainer">

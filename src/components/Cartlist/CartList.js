@@ -1,10 +1,9 @@
-import { React, useState, useEffect, cloneElement } from "react";
+import { React, useState, useEffect } from "react";
 import "./CartList.scss";
 
 const CartList = ({
   productPrice,
   name,
-  id,
   setSumPrice,
   setCheckedList,
   checkedList,
