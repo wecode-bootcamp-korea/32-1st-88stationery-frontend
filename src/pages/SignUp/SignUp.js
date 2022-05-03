@@ -48,7 +48,6 @@ const SignUp = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data.message);
         if (data.message === "SUCCESS") {
           alert("회원가입에 성공했습니다");
           goToMain();
