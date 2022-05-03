@@ -8,13 +8,16 @@ const CartList = ({
   setCheckedList,
   checkedList,
   isAllChecked,
+  img,
 }) => {
   const [quantity, setQuantity] = useState(1);
   const itemPrice = productPrice * quantity;
   const [isChecked, setIsChecked] = useState(checkedList.includes(name));
+
   useEffect(() => {
     setIsChecked(checkedList.includes(name));
   });
+
   useEffect(() => {
     isAllChecked === true &&
       !checkedList.includes(name) &&
@@ -66,7 +69,7 @@ const CartList = ({
           />
         </div>
         <div className="cartListProductBox">
-          <a href="#">이미지</a>
+          <img alt="제품사진" src={img} />
           <div className="cartListProductText">
             <p>{name}</p>
           </div>

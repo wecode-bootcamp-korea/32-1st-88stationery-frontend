@@ -6,9 +6,25 @@ import "./Cart.scss";
 const Cart = () => {
   const [sumPrice, setSumPrice] = useState({ default: 0 });
   const [deliveryPrice, setDeliveryPrice] = useState(3000);
-  const [checkedList, setCheckedList] = useState(mockData.map(el => el.name));
   const [isAllChecked, setIsAllChecked] = useState(true);
-  const cartLists = mockData;
+  const [cartLists, setCartLists] = useState([]);
+  const [checkedList, setCheckedList] = useState([]);
+
+  useEffect(() => {
+    fetch("http://10.58.1.230:8000/orders/carts", {
+      method: "GET",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6N30.u8tQmYe21yFLPlb5ABDzRHAG7XGE2zugyDhD3IA5K1s",
+      },
+    })
+      .then(res => res.json())
+      .then(data => {
+        setCheckedList(data.carts.map(cart => cart.product));
+        setCartLists(data.carts);
+        console.log(data.carts);
+      });
+  }, []);
 
   useEffect(() => {
     checkedList.length === cartLists.length
@@ -51,10 +67,11 @@ const Cart = () => {
                 setCheckedList={setCheckedList}
                 checkedList={checkedList}
                 isAllChecked={isAllChecked}
-                key={cartList.id}
+                key={cartList.cart_id}
                 productPrice={cartList.price}
-                name={cartList.name}
+                name={cartList.product}
                 id={cartList.id}
+                img={cartList.product_image_1}
                 setSumPrice={setSumPrice}
               />
             );
@@ -73,28 +90,5 @@ const Cart = () => {
     </div>
   );
 };
-
-const mockData = [
-  {
-    id: 1,
-    name: "공책",
-    price: 4000,
-  },
-  {
-    id: 2,
-    name: "지우개",
-    price: 5000,
-  },
-  {
-    id: 3,
-    name: "연필",
-    price: 2000,
-  },
-  {
-    id: 4,
-    name: "볼펜",
-    price: 1000,
-  },
-];
 
 export default Cart;
