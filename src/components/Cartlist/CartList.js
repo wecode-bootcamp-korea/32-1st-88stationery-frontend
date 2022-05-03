@@ -66,7 +66,7 @@ const CartList = ({
           />
         </div>
         <div className="cartListProductBox">
-          <a ahref="#">이미지</a>
+          <a href="#">이미지</a>
           <div className="cartListProductText">
             <p>{name}</p>
           </div>
