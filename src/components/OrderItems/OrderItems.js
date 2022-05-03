@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./OrderItems.scss";
 
-const Productlist = ({ orderedItems, setOrderedItems }) => {
+const Productlist = ({ orderedItems }) => {
   return (
     <ul className="OrderedItemUl">
       {orderedItems.map(e => {
@@ -9,7 +9,7 @@ const Productlist = ({ orderedItems, setOrderedItems }) => {
           <li key={e.id} className="orderedListLi">
             <span className="orderedListOrder">{e.id}</span>
             <div className="orderedProductBox">
-              <a ahref="#">이미지</a>
+              <a href="#">이미지</a>
               <div className="orderedListProductText">
                 <p>{e.name}</p>
               </div>

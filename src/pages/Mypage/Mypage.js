@@ -6,7 +6,7 @@ import "./Mypage.scss";
 
 const Mypage = () => {
   const [BtnMove, setBtnMove] = useState(true);
-  const [orderedItems, setOrderedItems] = useState(mockData);
+  const orderedItems = mockData;
 
   const onClick = () => {
     setBtnMove(!BtnMove);
@@ -19,7 +19,6 @@ const Mypage = () => {
           <aside className="asideBar">
             <div>
               <h2>쇼핑 정보</h2>
-
               <span href="#" onClick={onClick}>
                 주문 상품 조회
               </span>
@@ -29,14 +28,7 @@ const Mypage = () => {
               <Link to="/inquiry">문의 내역 </Link>
             </div>
           </aside>
-          {BtnMove ? (
-            <Welcome />
-          ) : (
-            <ProductList
-              orderedItems={orderedItems}
-              setOrderedItems={setOrderedItems}
-            />
-          )}
+          {BtnMove ? <Welcome /> : <ProductList orderedItems={orderedItems} />}
         </div>
       </div>
     </div>
