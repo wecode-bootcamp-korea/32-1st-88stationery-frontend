@@ -136,7 +136,7 @@ const SignUp = () => {
               onBlur={showAlertText}
             />
             {valueCheck.id && (
-              <>
+              <div>
                 {userInfo.id.length > 0 ? (
                   userInfo.id.includes("@") ? (
                     ""
@@ -146,7 +146,7 @@ const SignUp = () => {
                 ) : (
                   <p className="showAlertText" />
                 )}
-              </>
+              </div>
             )}
           </div>
           <div className="inputPwBox relativeText">
@@ -160,7 +160,7 @@ const SignUp = () => {
               onBlur={showAlertText}
             />
             {valueCheck.pw && (
-              <>
+              <div>
                 {userInfo.pw.length > 0 ? (
                   userInfo.pw.length >= 8 ? (
                     ""
@@ -170,7 +170,7 @@ const SignUp = () => {
                 ) : (
                   <p className="showAlertText" />
                 )}
-              </>
+              </div>
             )}
           </div>
           <div className="inputPwCheckBox relativeText">
@@ -188,7 +188,7 @@ const SignUp = () => {
               onBlur={showAlertText}
             />
             {valueCheck.pwCheck && (
-              <>
+              <div>
                 {userInfo.pwCheck.length > 0 ? (
                   userInfo.pwCheck === userInfo.pw ? (
                     ""
@@ -198,7 +198,7 @@ const SignUp = () => {
                 ) : (
                   <p className="showAlertText" />
                 )}
-              </>
+              </div>
             )}
           </div>
           <div className="inputNameBox relativeText">
@@ -212,7 +212,7 @@ const SignUp = () => {
               autoComplete="off"
             />
             {valueCheck.name && (
-              <>
+              <div>
                 {userInfo.name.length > 0 ? (
                   userInfo.name ? (
                     ""
@@ -222,7 +222,7 @@ const SignUp = () => {
                 ) : (
                   <p className="showAlertText" />
                 )}
-              </>
+              </div>
             )}
           </div>
           <div className="inputPhoneBox relativeText">
@@ -236,7 +236,7 @@ const SignUp = () => {
               autoComplete="off"
             />
             {valueCheck.phone && (
-              <>
+              <div>
                 {userInfo.phone.length > 0 ? (
                   userInfo.phone ? (
                     ""
@@ -246,7 +246,7 @@ const SignUp = () => {
                 ) : (
                   <p className="showAlertText" />
                 )}
-              </>
+              </div>
             )}
           </div>
           <div className="inputAddressBox relativeText">
@@ -260,7 +260,7 @@ const SignUp = () => {
               autoComplete="off"
             />
             {valueCheck.address && (
-              <>
+              <div>
                 {userInfo.address.length > 0 ? (
                   userInfo.address ? (
                     ""
@@ -270,7 +270,7 @@ const SignUp = () => {
                 ) : (
                   <p className="showAlertText" />
                 )}
-              </>
+              </div>
             )}
           </div>
 
@@ -285,7 +285,7 @@ const SignUp = () => {
               autoComplete="off"
             />
             {valueCheck.detailAddress && (
-              <>
+              <div>
                 {userInfo.detailAddress.length > 0 ? (
                   userInfo.detailAddress ? (
                     ""
@@ -295,7 +295,7 @@ const SignUp = () => {
                 ) : (
                   <p className="showAlertText" />
                 )}
-              </>
+              </div>
             )}
           </div>
           <div className="inputBirthBox relativeText">
@@ -316,7 +316,7 @@ const SignUp = () => {
               autoComplete="off"
             />
             {valueCheck.birth && (
-              <>
+              <div>
                 {userInfo.birth.length > 0 ? (
                   userInfo.birth[4] === "-" &&
                   userInfo.birth[7] === "-" &&
@@ -328,7 +328,7 @@ const SignUp = () => {
                 ) : (
                   <p className="showAlertText" />
                 )}
-              </>
+              </div>
             )}
             <p>생일을 정확하게 입력해주세요.(예: 2000-12-31)</p>
             <p>만 14세 이상만 회원가입이 가능합니다.</p>
