@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./SignUp.scss";
 
 const SignUp = () => {
@@ -25,9 +26,15 @@ const SignUp = () => {
   });
   const [disabled, setDisabled] = useState(true);
 
+  const navigate = useNavigate();
+
+  const goToMain = () => {
+    navigate("/main");
+  };
+
   const onSubmit = e => {
     e.preventDefault();
-    fetch("http://10.58.5.120:8000/users/signup", {
+    fetch("http://10.58.1.19:8000/users/signup", {
       method: "POST",
       body: JSON.stringify({
         email: userInfo.id,
@@ -41,8 +48,12 @@ const SignUp = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-      });
+        console.log(data.message);
+        if (data.message === "SUCCESS") {
+          alert("회원가입에 성공했습니다");
+          goToMain();
+        }
+      }, []);
   };
 
   const isDisabled = () => {
