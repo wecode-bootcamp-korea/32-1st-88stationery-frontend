@@ -1,0 +1,27 @@
+// 현석 시작 !
+
+@mixin inputInSideText {
+  position: absolute;
+  top: 40%;
+  right: 10px;
+  font-size: 13px;
+  color: #000;
+  font-weight: 600;
+  background: linear-gradient(
+    to top,
+    rgba(42, 193, 188, 0.7) 25%,
+    transparent 0%
+  );
+  transform: translateY(-50%);
+  display: block;
+  content: "필수";
+}
+
+@mixin singUpDetailText {
+  p {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+}
+
+// 현석 끝 !
