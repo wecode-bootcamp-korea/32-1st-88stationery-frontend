@@ -1,9 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { config } from "../../config";
 import "./Login.scss";
+import AsideGlobalChange from "../Aside/AsideGlobalChange";
+import LoginFormLayout from "./LoginFormLayout";
 
-const Login = () => {
+const LoginModal = ({ isLoginModalOn, handleisLoginModalOn }) => {
   const navigate = useNavigate();
 
   const [userInfo, setUserInfo] = useState({
@@ -29,15 +31,13 @@ const Login = () => {
     })
       .then(response => response.json())
       .then(result => {
-        if (result.message === "INVALID_EMAIL") {
-          alert("존재하지 않는 아이디입니다.");
-        } else if (result.message === "INVALID_PASSWORD") {
-          alert("올바르지 않은 패스워드입니다.");
-        } else {
-          alert("88문방구에 오신걸 환영합니다.");
-          localStorage.setItem("token", result.token);
-          navigate("/Main");
-        }
+        result.message === "INVALID_EMAIL"
+          ? alert("존재하지 않는 아이디입니다.")
+          : result.message === "INVALID_PASSWORD"
+          ? alert("올바르지 않은 패스워드입니다.")
+          : alert("88문방구에 오신걸 환영합니다.");
+        localStorage.setItem("token", result.token);
+        navigate("/Main");
       });
   };
 
@@ -56,11 +56,11 @@ const Login = () => {
   const buttonActive = emailValid && !pwisValid;
 
   return (
-    <div className="login">
-      <div className="loginContainer">
+    <>
+      <LoginFormLayout>
         <form action="" onSubmit={onSubmit}>
           <h1>로그인</h1>
-          <div className="acountContent">
+          <div className="accountContent">
             <ul className="loginForm">
               <li>
                 <input
@@ -107,16 +107,19 @@ const Login = () => {
             </button>
           </footer>
         </form>
-        <ul className="loginNav">
-          <li>
-            <Link to="/Signup">회원가입</Link>
-          </li>
-          <li>아이디 찾기</li>
-          <li>비밀번호 찾기</li>
-        </ul>
-      </div>
-    </div>
+      </LoginFormLayout>
+
+      {isLoginModalOn && (
+        <>
+          <div
+            className={isLoginModalOn ? "loginScreenHide" : "loginScreen"}
+            onClick={handleisLoginModalOn}
+          />
+          <AsideGlobalChange />
+        </>
+      )}
+    </>
   );
 };
 
-export default Login;
+export default LoginModal;
