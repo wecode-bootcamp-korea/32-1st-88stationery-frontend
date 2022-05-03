@@ -1,12 +1,13 @@
 @import "../../styles/mixins.scss";
 
 .signUp {
-  height: 100vh;
+  position: relative;
+  top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 150px;
 
   .signUpTitle {
     margin-top: 30px;
@@ -82,6 +83,12 @@
         }
       }
 
+      .inputBirthBox {
+        &::before {
+          top: 23px;
+        }
+      }
+
       .showAlertText {
         margin-bottom: 10px;
         &::before {
@@ -153,16 +160,14 @@
     width: 100%;
 
     .disabled {
-      width: 35%;
-      padding: 15px 8px;
-      margin-left: 14px;
+      width: 100%;
+      padding: 15px 50px;
       background: transparent;
     }
 
     .abled {
-      width: 35%;
+      width: 100%;
       padding: 15px 8px;
-      margin-left: 14px;
       background-color: #2ac1bc;
     }
   }
