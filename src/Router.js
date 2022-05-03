@@ -4,7 +4,6 @@ import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
 import SignUp from "./pages/SignUp/SignUp";
 import Main from "./pages/Main/Main";
-import Login from "./pages/Login/Login";
 import Cart from "./pages/Cart/Cart";
 import Inquiry from "./pages/Inquiry/Inquiry";
 import Category from "./pages/Category/Category";
@@ -14,7 +13,6 @@ function Router() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/main" element={<Main />} />
         <Route path="/cart" element={<Cart />} />
