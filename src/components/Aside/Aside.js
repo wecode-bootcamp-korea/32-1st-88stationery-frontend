@@ -4,12 +4,18 @@ import "./Aside.scss";
 import AsideGlobalChange from "./AsideGlobalChange";
 
 const Aside = ({ CATEGORY_LIST, isSideBarOn, handleSideBarOn }) => {
+  const loginAvalid = "";
+
   return (
     <>
       <aside className={isSideBarOn ? "gsb" : "gsbHidden"}>
         <header className="gsbHeader">
           <h2>
-            앗<p>로그인이 필요합니다</p>
+            {loginAvalid ? (
+              <strong>{loginAvalid}님 환영합니다</strong>
+            ) : (
+              <p>로그인이 필요합니다</p>
+            )}
           </h2>
         </header>
         <nav className="gsbNavCategory">

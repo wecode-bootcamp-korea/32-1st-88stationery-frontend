@@ -1,0 +1,33 @@
+.inquiryContainer {
+  width: 1200px;
+
+  margin: 0 auto;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 42px;
+      margin-bottom: 30px;
+    }
+
+    .writeInquiry {
+      border: none;
+      background: none;
+      font-weight: 700;
+      line-height: 42px;
+      color: #4bb8b4;
+    }
+  }
+
+  .inquiryContent {
+    border-top: 1px solid #dfdfdf;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 20px;
+  }
+}
