@@ -1,46 +1,61 @@
+import { config } from "../../../config";
 import React, { useEffect, useState } from "react";
 import Comment from "./Comments/Comment";
 
-function ItemsComment({
-  id,
-  text,
-  btnValue,
-  comment,
-  setComment,
-  deleteHandler,
-}) {
+function ItemsComment({ id, text, btnValue }) {
+  const [comment, setComment] = useState();
+  const [depend, setDepend] = useState("");
   const [inputComments, setInputComments] = useState("");
-  // const [counter, setCounter] = useState(3);
   const token = localStorage.getItem("token");
 
+  useEffect(() => {
+    fetch(`${config.answer}`, {
+      headers: { Authorization: token },
+      method: "GET",
+    })
+      .then(res => res.json())
+      .then(data => {
+        setComment(data.result);
+      });
+  }, [depend]);
+
   const inputHandler = e => {
-    setInputComments(prev => {
-      return { ...prev, [e.target.name]: e.target.value };
-    });
+    setInputComments(e.target.value);
   };
+
   const enterCatch = e => {
     if (e.key === "Enter") {
-      // inputBtn();
+      inputBtn();
     }
+  };
+
+  const deleteHandler = id => {
+    fetch("http://10.58.1.19:8000/questions/answer", {
+      method: "DELETE",
+      headers: { Authorization: token },
+      body: JSON.stringify({
+        answer_id: id,
+      }),
+    }).then(res => {
+      setDepend(res);
+    });
   };
 
   const inputBtn = e => {
     e.preventDefault();
-    setInputComments(prev => [...prev, inputComments]);
-    // setInputComments(prev => [...prev, inputComments]);
-    fetch("http://10.58.7.20:8000/questions/answer", {
+
+    fetch(`${config.answer}`, {
       method: "POST",
       headers: { Authorization: token },
       body: JSON.stringify({
         detail: inputComments,
-        question_id: inputComments.question_id,
+        question_id: id,
       }),
     })
-      .then(response => console.log(response))
-      .then(result => console.log(result));
+      .then(response => response.json())
+      .then(data => setDepend(data));
+    setInputComments("");
   };
-
-  console.log(inputComments);
 
   return (
     btnValue && (
@@ -48,20 +63,25 @@ function ItemsComment({
         <div className="itemMain">
           <p>{text}</p>
         </div>
+
         <div className="itemBottom">
           <ul>
             {comment &&
-              comment.map(comment => (
-                <Comment
-                  key={comment.id}
-                  comment={comment}
-                  deleteHandler={deleteHandler}
-                />
-              ))}
+              comment.map(
+                comment =>
+                  comment.question_id === id && (
+                    <Comment
+                      key={comment.id}
+                      comment={comment}
+                      deleteHandler={deleteHandler}
+                    />
+                  )
+              )}
           </ul>
         </div>
+
         <div className="commentInput">
-          <form action="" onKeyDown={enterCatch}>
+          <form onKeyDown={enterCatch}>
             <input
               type="text"
               placeholder="내용을 입력하세요."
