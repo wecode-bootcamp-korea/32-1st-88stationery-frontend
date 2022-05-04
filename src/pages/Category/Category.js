@@ -5,11 +5,11 @@ import "./Category.scss";
 import { config } from "../../config";
 
 const LIMIT = 4;
-let PAGE = 1;
 
 const Category = () => {
   const [itemLists, setItemLists] = useState([]);
   const [categoryInfo, setCategoryInfo] = useState([]);
+  const [page, setPage] = useState(1);
   const navigate = useNavigate();
   const location = useLocation();
   const params = useParams();
@@ -22,28 +22,29 @@ const Category = () => {
     )
       .then(res => res.json())
       .then(res => {
-        // itemLists.length===0 ? setItemLists(res.products) :
+        setItemLists(res.products);
+      });
+  }, [params.id]);
+
+  useEffect(() => {
+    fetch(
+      `${config.category}/${params.id}${
+        location.search || `?limit=${LIMIT}&offset=0`
+      }`
+    )
+      .then(res => res.json())
+      .then(res => {
         const copyArray = [...res.products];
         setItemLists(itemLists.concat(copyArray));
       });
-  }, [PAGE, params.id]);
+  }, [page]);
 
   const updateOffset = e => {
-    const offset = PAGE * LIMIT;
+    const offset = page * LIMIT;
     const queryString = `?limit=${LIMIT}&offset=${offset}`;
-    PAGE += 1;
+    setPage(page + 1);
     navigate(`${queryString}`);
   };
-  // useEffect(() => {
-  //   fetch(
-  //     `http://10.58.1.230:8000/products/category/${params.id}?sort_method=0&offset=0&limit=4`
-  //   )
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       setItemLists(res.products);
-  //       setCategoryInfo(res.category);
-  //     });
-  // }, [params.id]);
 
   return (
     <>
