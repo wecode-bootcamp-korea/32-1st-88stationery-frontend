@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { config } from "../../../config";
 import React, { useEffect, useState } from "react";
 import Comment from "./Comments/Comment";
