@@ -94,7 +94,9 @@ const Nav = () => {
               onClick={handleSearchBarOn}
             />
             <i className="fa fa-light fa-cart-shopping" />
-
+            <Link to="/mypage">
+              <i className="fa-solid fa-user" />
+            </Link>
             {localStorage.getItem("token") ? (
               <span>{userName}</span>
             ) : (
