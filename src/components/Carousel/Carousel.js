@@ -85,7 +85,10 @@ const Carousel = () => {
           ))}
       </div>
       <i className="fa-solid fa-arrow-left-long fa-3x" onClick={swipeHandler} />
-      <i className="fa-solid fa-arrow-right-long" onClick={swipeHandler} />
+      <i
+        className="fa-solid fa-arrow-right-long fa-3x"
+        onClick={swipeHandler}
+      />
     </div>
   );
 };
