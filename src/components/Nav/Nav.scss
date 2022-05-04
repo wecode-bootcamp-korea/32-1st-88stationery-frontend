@@ -1,3 +1,6 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .gnb {
   position: fixed;
   left: 0px;
@@ -10,8 +13,8 @@
 
   &Action {
     @extend .gnb;
-    border-bottom: 1px solid black;
-    background-color: #fff;
+    border-bottom: 1px solid $blackColor;
+    background-color: $background;
     opacity: 0.8;
     z-index: 100;
   }
@@ -22,16 +25,15 @@
   }
 
   .gnbContainer {
-    display: flex;
-    align-items: center;
-    height: 90px;
-    width: 100%;
+    @include size(100%, 90px);
+    @include commonDisplayAttributes(flex, null, center);
     padding: 0 40px;
 
     .gnbLogo {
       flex: 1;
     }
   }
+
   .gnbCategory {
     flex: 2;
     cursor: pointer;
@@ -43,38 +45,35 @@
       li {
         font-family: "BMDOHYEON";
         padding-right: 20px;
-        color: #000;
+        color: $blackColor;
         font-size: inherit;
         font-weight: 500;
         text-decoration-line: none;
         transition: all 0.5s;
 
         &:hover {
-          color: #39c5c0;
+          color: $commonColor;
           transition: all 0.5s;
         }
       }
     }
   }
   .gnbEtc {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    @include commonDisplayAttributes(flex, space-evenly, center);
     flex: 1;
 
     i {
       cursor: pointer;
-      color: black;
+      color: $blackColor;
     }
     a {
       text-decoration: none;
     }
 
     .gnbLogin {
-      display: inline-flex;
-      align-items: center;
+      @include commonDisplayAttributes(inline-flex, null, center);
+      @include size(null, 33px);
       min-width: 69px;
-      height: 33px;
       margin: 0px 2px;
       padding: 0px 16px;
       background: transparent;
@@ -87,30 +86,29 @@
       transition: all 0.5s;
 
       &:hover {
-        color: white;
-        background-color: black;
+        color: $background;
+        background-color: $blackColor;
         transition: all 0.5s;
       }
     }
   }
 }
 .fa-hand-pointer {
+  @include size(70px, 70px);
   position: fixed;
-  width: 70px;
-  height: 70px;
   bottom: 10%;
   right: 5%;
   line-height: 70px;
   border-radius: 50px;
-  background-color: #58e8e3;
-  color: #fff;
+  background-color: $commonColor;
+  color: $background;
   text-align: center;
   vertical-align: middle;
   z-index: 500;
 
   &:hover {
-    color: #58e8e3;
-    border: 2px solid #58e8e3;
-    background-color: #fff;
+    color: $commonColor;
+    border: 2px solid $commonColor;
+    background-color: $background;
   }
 }

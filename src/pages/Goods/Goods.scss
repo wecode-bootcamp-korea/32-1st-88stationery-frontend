@@ -1,3 +1,6 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .goods {
   width: 100%;
   padding: 90px;
@@ -9,14 +12,12 @@
   }
 
   .goodsInfo {
-    display: flex;
-    align-items: center;
+    @include commonDisplayAttributes(flex, null, center);
     width: 100%;
 
     .goodsTitle {
-      display: flex;
+      @include commonDisplayAttributes(flex, center, null);
       flex-direction: column;
-      justify-content: center;
       flex: 1;
 
       .goodsName {
@@ -40,8 +41,7 @@
       margin: 0 35px;
 
       img {
-        width: 100%;
-        height: 500px;
+        @include size(100%, 500px);
         transition: opacity 0.3s;
       }
 
@@ -57,10 +57,9 @@
 
       .swipePrev,
       .swipeNext {
+        @include size(30px, 50px);
         position: absolute;
-        width: 30px;
-        height: 50px;
-        background-color: #2ac1bc;
+        background-color: $commonColor;
         top: 50%;
         transform: translateY(-50%);
       }
@@ -74,14 +73,12 @@
       }
 
       .indexButton {
-        display: flex;
-        justify-content: center;
+        @include commonDisplayAttributes(flex, center, null);
         margin-top: 5px;
 
         span {
-          width: 10px;
-          height: 10px;
-          background-color: black;
+          @include size(10px, 10px);
+          background-color: $blackColor;
           border-radius: 50%;
           margin-right: 10px;
           text-indent: -1000em;
@@ -100,15 +97,14 @@
     }
 
     .goodsOrder {
-      display: flex;
+      @include commonDisplayAttributes(flex, center, null);
       flex-direction: column;
-      justify-content: center;
       flex: 1;
 
       .shippingGuide {
         padding: 20px 0;
-        border-top: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
+        border-top: 1px solid $borderColor;
+        border-bottom: 1px solid $borderColor;
 
         p {
           line-height: 20px;
@@ -116,31 +112,27 @@
         }
 
         p:first-child {
-          color: black;
+          color: $blackColor;
           margin-bottom: 10px;
         }
       }
 
       .orderOption {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        @include commonDisplayAttributes(flex, space-between, center);
         padding: 20px 0;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid $borderColor;
 
         p {
           padding-top: 2px;
         }
 
         .orderQuantity {
-          display: flex;
-          justify-content: space-between;
+          @include commonDisplayAttributes(flex, space-between, null);
           width: 120px;
 
           input {
-            width: 50px;
-            height: 25px;
-            border: 1px solid #ddd;
+            @include size(50px, 25px);
+            border: 1px solid $borderColor;
             border-radius: 3px;
             font-size: 19px;
             text-align: center;
@@ -148,16 +140,15 @@
 
           button {
             width: 25px;
-            background-color: white;
-            border: 1px solid #ddd;
+            background-color: $background;
+            border: 1px solid $borderColor;
             border-radius: 5px;
             font-size: 20px;
           }
         }
       }
       .orderTotal {
-        display: flex;
-        justify-content: space-between;
+        @include commonDisplayAttributes(flex, space-between, null);
         margin-top: 40px;
 
         p {
@@ -172,15 +163,13 @@
       }
 
       .btnGroup {
-        display: flex;
-        justify-content: space-between;
+        @include commonDisplayAttributes(flex, space-between, null);
         margin-top: 20px;
 
         .cartButton {
-          width: 50px;
-          height: 50px;
+          @include size(50px, 50px);
           color: #ccc;
-          background-color: #fff;
+          background-color: $background;
           border: 1px solid #ccc;
           border-radius: 6px;
           font-size: 20px;
@@ -188,8 +177,8 @@
         }
 
         .cartButton:hover {
-          border-color: #2ac1bc;
-          color: #2ac1bc;
+          border-color: $commonColor;
+          color: $commonColor;
         }
 
         .buyButton {
@@ -197,7 +186,7 @@
           width: 100%;
           font-size: 16px;
           color: #fff;
-          background-color: #2ac1bc;
+          background-color: $commonColor;
           border-radius: 6px;
           margin-left: 10px;
           border: none;
@@ -205,29 +194,25 @@
         }
 
         .buyButton:hover {
-          color: #2ac1bc;
+          color: $commonColor;
           background-color: #fff;
-          border: 1px solid #2ac1bc;
+          border: 1px solid $commonColor;
         }
       }
     }
   }
 
   .goodsTab {
-    width: 1200px;
-    height: 60px;
+    @include size(1200px, 60px);
     margin: 0 auto;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 
     ul {
-      display: flex;
-      align-items: center;
+      @include commonDisplayAttributes(flex, null, center);
 
       li {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include commonDisplayAttributes(flex, center, center);
         height: 60px;
         flex: 1;
         transition: 0.4s;

@@ -1,14 +1,15 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .Main {
-  display: flex;
+  @include commonDisplayAttributes(flex, null, center);
   flex-direction: column;
-  align-items: center;
   width: 100%;
 }
 
 .itemContainer {
-  display: flex;
+  @include commonDisplayAttributes(flex, null, center);
   flex-direction: column;
-  align-items: center;
   width: 1200px;
 
   img {

@@ -1,3 +1,6 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .limitBox {
   display: flex;
   flex-direction: row-reverse;
@@ -48,9 +51,8 @@
     transform: scale(1.2);
   }
   .w-btn-neon2:hover::after {
+    @include size(30px, 30px);
     content: "";
-    width: 30px;
-    height: 30px;
     border-radius: 100%;
     border: 6px solid #00ffcb;
     position: absolute;
@@ -67,13 +69,14 @@
   margin-top: 30px;
 
   button {
+    @include size(30px, 30px);
     width: 30px;
     height: 30px;
     margin-right: 20px;
     border: 1px solid #2ac1bc;
     border-radius: 5px;
     color: #2ac1bc;
-    background-color: #fff;
+    background-color: $background;
     transition: all 0.4s;
   }
 
@@ -82,20 +85,18 @@
   }
 
   .active {
-    color: white;
+    color: $background;
     background-color: #2ac1bc;
   }
 }
 
 @keyframes ring {
   0% {
-    width: 30px;
-    height: 30px;
+    @include size(30px, 30px);
     opacity: 1;
   }
   100% {
-    width: 300px;
-    height: 300px;
+    @include size(300px, 300px);
     opacity: 0;
   }
 }

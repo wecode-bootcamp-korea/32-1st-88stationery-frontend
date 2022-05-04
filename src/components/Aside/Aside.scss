@@ -1,12 +1,14 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .gsb {
+  @include size(380px, 100%);
   position: fixed;
   display: flex;
   flex-direction: column;
   right: 0;
-  width: 380px;
-  height: 100%;
   padding-top: 60px;
-  background-color: rgb(255, 255, 255);
+  background-color: $background;
   overflow: hidden;
   transition: right 0.4s ease 0s;
   z-index: 100;
@@ -41,7 +43,7 @@
 
     .gsbNavBtn:hover {
       transition: all 0.5s;
-      color: #58e8e3;
+      color: $commonColor;
     }
 
     i {
@@ -64,21 +66,18 @@
       font-family: "BMDOHYEON";
 
       &:hover {
-        color: #58e8e3;
+        color: $commonColor;
         transition: 0.4s ease 0s;
       }
     }
   }
 
   .gsbFooter {
-    display: flex;
-    justify-content: center;
+    @include commonDisplayAttributes(flex, null, center);
     padding: 27px 40px;
 
     .footerContainer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include commonDisplayAttributes(flex, center, center);
 
       i {
         transform: translateY(-5px);
@@ -94,9 +93,8 @@
           display: flex;
 
           &:nth-last-child(1)::before {
+            @include size(1px, 16px);
             display: block;
-            width: 1px;
-            height: 16px;
             margin: 0px 10px;
             background-color: rgb(221, 221, 221);
             content: "";
@@ -112,9 +110,8 @@
   }
 }
 .sideScreen {
+  @include size(100%, 100%);
   position: fixed;
-  width: 100%;
-  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 0.4s ease 0.2s;
   opacity: 0;
