@@ -67,7 +67,7 @@ const Inquiry = () => {
   };
 
   const deleteItem = id => {
-    fetch("http://10.58.1.19:8000/questions/question", {
+    fetch(`${config.question}`, {
       method: "DELETE",
       headers: { Authorization: token },
       body: JSON.stringify({

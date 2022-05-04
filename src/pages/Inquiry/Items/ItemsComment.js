@@ -32,7 +32,7 @@ function ItemsComment({ id, text, btnValue }) {
   };
 
   const deleteHandler = id => {
-    fetch("http://10.58.1.19:8000/questions/answer", {
+    fetch(`${config.answer}`, {
       method: "DELETE",
       headers: { Authorization: token },
       body: JSON.stringify({
