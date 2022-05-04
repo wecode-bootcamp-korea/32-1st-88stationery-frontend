@@ -124,7 +124,10 @@ const Nav = () => {
         handleSideBarOn={handleSideBarOn}
       />
       {scrollY > 200 && (
-        <div onClick={scrollUpHandler} className="scrollButton" />
+        <i
+          className="fa-regular fa-hand-pointer fa-3x"
+          onClick={scrollUpHandler}
+        />
       )}
       {isLoginModalOn && (
         <LoginModal

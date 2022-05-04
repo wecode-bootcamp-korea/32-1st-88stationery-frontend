@@ -1,13 +1,14 @@
 import React from "react";
 
-const Items = ({ itemList }) => {
-  const { name, price, src1, src2 } = itemList;
+const Items = ({ bestItems }) => {
+  const { name, price, thumnail_url_1, thumnail_url_2 } = bestItems;
+
   return (
     <div className="item">
       <div className="itemDetail">
         <figure className="thumbnail">
-          <img src={src1} alt="itemimage" />
-          <img src={src2} alt="itemimage" />
+          <img src={thumnail_url_1} alt="itemimage" />
+          <img src={thumnail_url_2} alt="itemimage" />
         </figure>
         <div className="itemInfo">
           <p className="itemName">{name}</p>

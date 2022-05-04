@@ -7,4 +7,6 @@ export const config = {
   answer: `${MAIN_URL}questions/answer`,
   main: `${MAIN_URL}main`,
   category: `${MAIN_URL}products/category`,
+  goods: `${MAIN_URL}products`,
+  carts: `${MAIN_URL}orders/carts`,
 };

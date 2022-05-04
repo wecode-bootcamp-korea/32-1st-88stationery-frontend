@@ -2,7 +2,7 @@ import { useState } from "react";
 import Items from "./Items";
 import "./ItemsCarousel.scss";
 
-const ItemsCarousel = () => {
+const ItemsCarousel = ({ bestItems }) => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const moveCarouselHandler = event => {
@@ -30,7 +30,7 @@ const ItemsCarousel = () => {
           style: { transform: "translateX(80px)" },
         }
       : null;
-
+  console.log(bestItems[0]);
   return (
     <div className="ItemsCarousel">
       <button
@@ -45,8 +45,8 @@ const ItemsCarousel = () => {
         className="carouselWrapper"
         style={{ transform: `translateX(${slideIndex * -1020}px)` }}
       >
-        {dataList.map(items => (
-          <Items key={items.id} itemList={items} />
+        {bestItems.map(bestItem => (
+          <Items key={bestItem.product_id} bestItems={bestItem} />
         ))}
       </div>
       <button
@@ -62,7 +62,7 @@ const ItemsCarousel = () => {
         <div
           className="current"
           style={{
-            width: `calc(100% / ${dataList.length - 4})`,
+            width: `calc(100% / ${bestItems.length - 4})`,
             transform: `translateX(calc(100% * ${slideIndex}))`,
           }}
         />
@@ -70,50 +70,5 @@ const ItemsCarousel = () => {
     </div>
   );
 };
-
-const dataList = [
-  {
-    id: 0,
-    name: "요거트",
-    price: 4000,
-    src1: "https://images.unsplash.com/photo-1643114917776-78071774f6b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    src2: "https://cdn.pixabay.com/photo/2022/04/15/11/23/dog-7134183_1280.jpg",
-  },
-  {
-    id: 1,
-    name: "빵",
-    price: 4000,
-    src1: "https://images.unsplash.com/photo-1643114917776-78071774f6b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    src2: "https://cdn.pixabay.com/photo/2022/04/15/11/23/dog-7134183_1280.jpg",
-  },
-  {
-    id: 2,
-    name: "샐러드",
-    price: 4000,
-    src1: "https://images.unsplash.com/photo-1643114917776-78071774f6b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    src2: "https://cdn.pixabay.com/photo/2022/04/15/11/23/dog-7134183_1280.jpg",
-  },
-  {
-    id: 3,
-    name: "과일",
-    price: 4000,
-    src1: "https://images.unsplash.com/photo-1643114917776-78071774f6b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    src2: "https://cdn.pixabay.com/photo/2022/04/15/11/23/dog-7134183_1280.jpg",
-  },
-  {
-    id: 4,
-    name: "케이크",
-    price: 4000,
-    src1: "https://images.unsplash.com/photo-1643114917776-78071774f6b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    src2: "https://cdn.pixabay.com/photo/2022/04/15/11/23/dog-7134183_1280.jpg",
-  },
-  {
-    id: 5,
-    name: "케이크",
-    price: 4000,
-    src1: "https://images.unsplash.com/photo-1643114917776-78071774f6b8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    src2: "https://cdn.pixabay.com/photo/2022/04/15/11/23/dog-7134183_1280.jpg",
-  },
-];
 
 export default ItemsCarousel;
