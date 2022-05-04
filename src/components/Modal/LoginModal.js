@@ -5,6 +5,11 @@ import "./Login.scss";
 import AsideGlobalChange from "../Aside/AsideGlobalChange";
 import LoginFormLayout from "./LoginFormLayout";
 
+const ERROR_MESSAGE = {
+  INVALID_EMAIL: "존재하지 않는 아이디입니다",
+  INVALID_PASSWORD: "올바르지 않은 패스워드 입니다",
+};
+
 const LoginModal = ({ isLoginModalOn, handleisLoginModalOn }) => {
   const navigate = useNavigate();
 
@@ -31,14 +36,15 @@ const LoginModal = ({ isLoginModalOn, handleisLoginModalOn }) => {
     })
       .then(response => response.json())
       .then(result => {
-        result.message === "INVALID_EMAIL"
-          ? alert("존재하지 않는 아이디입니다.")
-          : result.message === "INVALID_PASSWORD"
-          ? alert("올바르지 않은 패스워드입니다.")
-          : alert("88문방구에 오신걸 환영합니다.");
+        alert(ERROR_MESSAGE[result.message]) ||
+          alert("88문방구에 오신걸 환영합니다.");
         localStorage.setItem("token", result.token);
         navigate("/Main");
       });
+  };
+
+  const goToSignUp = () => {
+    navigate("/signup");
   };
 
   const idisValid = userInfo.id.length === 0;
@@ -57,7 +63,7 @@ const LoginModal = ({ isLoginModalOn, handleisLoginModalOn }) => {
 
   return (
     <>
-      <LoginFormLayout>
+      <LoginFormLayout goToSignUp={goToSignUp}>
         <form action="" onSubmit={onSubmit}>
           <h1>로그인</h1>
           <div className="accountContent">

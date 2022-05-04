@@ -19,7 +19,7 @@ function Router() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/goods" element={<Goods />} />
         <Route path="/inquiry" element={<Inquiry />} />
-        <Route path="/category" element={<Category />} />
+        <Route path="/category/:id" element={<Category />} />
       </Routes>
       <Footer />
     </BrowserRouter>
