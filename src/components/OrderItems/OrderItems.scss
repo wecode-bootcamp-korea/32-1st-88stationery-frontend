@@ -2,7 +2,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   overflow: scroll;
   margin-left: 50px;
@@ -14,7 +13,6 @@
     .orderedProductBox {
       width: 100%;
       display: flex;
-      margin-right: 50px;
       .orderImgBox {
         position: relative;
 
@@ -41,19 +39,19 @@
       }
 
       .orderedListProductText {
+        width: 100%;
         display: flex;
         align-items: center;
 
         p {
           font-size: 18px;
           font-weight: 500;
-          white-space: nowrap;
         }
       }
     }
 
     .orderedListInfoBox {
-      width: 30%;
+      width: 50%;
       display: flex;
       align-items: center;
     }
