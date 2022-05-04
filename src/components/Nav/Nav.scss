@@ -66,6 +66,7 @@
       cursor: pointer;
       color: $blackColor;
     }
+
     a {
       text-decoration: none;
     }
@@ -91,8 +92,20 @@
         transition: all 0.5s;
       }
     }
+
+    .userName {
+      font-size: 20px;
+      font-weight: 900;
+      color: #39c5c0;
+      transform: translateY(-2px);
+    }
+
+    .gnbLogOut {
+      @extend .gnbLogin;
+    }
   }
 }
+
 .fa-hand-pointer {
   @include size(70px, 70px);
   position: fixed;

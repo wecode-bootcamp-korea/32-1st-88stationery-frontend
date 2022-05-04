@@ -1,17 +1,18 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .login {
+  @include sizeLeftorRight(50%, 50%);
   position: fixed;
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1001;
 
   .loginContainer {
-    width: 500px;
-    height: 600px;
+    @include size(500px, 600px);
     margin: 0 auto;
     padding-top: 20px;
     border-radius: 30px;
-    background: #fff;
+    background: $background;
 
     h1 {
       padding-top: 26px;
@@ -30,14 +31,13 @@
     }
 
     .loginForm {
-      display: flex;
+      @include commonDisplayAttributes(flex, null, null);
       flex-direction: column;
       text-align: center;
 
       input {
+        @include size(400px, 62px);
         margin-top: 10px;
-        width: 400px;
-        height: 62px;
         padding: 20px;
         border: 1px solid #b4b4b4;
         border-radius: 7px;
@@ -86,12 +86,11 @@
       margin: 0 auto;
 
       .btnLogin {
+        @include size(100%, 62px);
         font-family: "BMDOHYEON";
         letter-spacing: 10px;
         margin-top: 50px;
         border-radius: 7px;
-        width: 100%;
-        height: 62px;
         border: none;
         background-color: #eeeeee;
         color: #acadae;
@@ -99,7 +98,7 @@
 
         &.active {
           background-color: #2ac1bc;
-          color: white;
+          color: $background;
           transition: all 1s;
           cursor: pointer;
         }
@@ -108,7 +107,6 @@
   }
   .loginNav {
     display: flex;
-    justify-content: space-evenly;
     margin-top: 30px;
     margin-bottom: 30px;
 
@@ -119,6 +117,7 @@
       color: #acadae;
       cursor: pointer;
       transition: all 0.5s;
+      flex: 1;
 
       &:hover {
         color: #2ac1bc;
@@ -139,11 +138,9 @@
 }
 
 .loginScreen {
+  @include size(100%, 100%);
+  @include sizeLeftorRight(0, 0);
   position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 0.4s ease 0.2s;
   opacity: 0;

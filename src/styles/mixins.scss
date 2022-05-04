@@ -32,6 +32,18 @@
   height: $height;
 }
 
+@mixin sizeLeftorRight($left, $right) {
+  left: $left;
+  right: $right;
+}
+
+@mixin marginHandler($bottom: null, $top: null, $left: null, $right: null) {
+  bottom: $bottom;
+  top: $top;
+  left: $left;
+  right: $right;
+}
+
 @mixin commonDisplayAttributes($display, $justify: null, $align: null) {
   display: $display;
   justify-content: $justify;
