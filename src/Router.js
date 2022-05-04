@@ -6,7 +6,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import Main from "./pages/Main/Main";
 import Cart from "./pages/Cart/Cart";
 import Goods from "./pages/Goods/Goods";
-import Inquiry from "./pages/Inquiry/Inquiry";
+// import Inquiry from "./pages/Inquiry/Inquiry";
 import Category from "./pages/Category/Category";
 
 function Router() {
@@ -18,7 +18,7 @@ function Router() {
         <Route path="/main" element={<Main />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/goods" element={<Goods />} />
-        <Route path="/inquiry" element={<Inquiry />} />
+        {/* <Route path="/inquiry" element={<Inquiry />} /> */}
         <Route path="/category" element={<Category />} />
       </Routes>
       <Footer />
