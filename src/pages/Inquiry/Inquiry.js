@@ -96,7 +96,7 @@ const Inquiry = () => {
         <>
           <div onClick={actionWriteBtn} className="popBack" />
           <div className="inquiryPop">
-            <h1>1:1 문의 작성 🔔</h1>
+            <h1>1:1 문의 작성🔔</h1>
             <div className="popInput">
               <form action="" onSubmit={onSubmit}>
                 <input
