@@ -81,6 +81,8 @@ const Cart = () => {
   //   }).then(response => response.json());
   // };
 
+  console.log(cartLists);
+
   return (
     <div className="cartContainer">
       <h1 className="cartTitle">장바구니</h1>

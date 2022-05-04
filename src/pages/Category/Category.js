@@ -10,41 +10,31 @@ const Category = () => {
   const [itemLists, setItemLists] = useState([]);
   const [categoryInfo, setCategoryInfo] = useState([]);
   const [page, setPage] = useState(1);
-  const navigate = useNavigate();
   const location = useLocation();
   const params = useParams();
 
   useEffect(() => {
     fetch(
       `${config.category}/${params.id}${
-        location.search || `?limit=${LIMIT}&offset=0`
-      }`
-    )
-      .then(res => res.json())
-      .then(res => {
-        setItemLists(res.products);
-      });
-  }, [params.id]);
-
-  useEffect(() => {
-    fetch(
-      `${config.category}/${params.id}${
-        location.search || `?limit=${LIMIT}&offset=0`
+        location.search || `?limit=${LIMIT}&offset=${(page - 1) * LIMIT}`
       }`
     )
       .then(res => res.json())
       .then(res => {
         const copyArray = [...res.products];
+        setCategoryInfo(res.category[0]);
         setItemLists(itemLists.concat(copyArray));
       });
   }, [page]);
 
   const updateOffset = e => {
-    const offset = page * LIMIT;
-    const queryString = `?limit=${LIMIT}&offset=${offset}`;
+    // const offset = page * LIMIT;
+    // const queryString = `?limit=${LIMIT}&offset=${offset}`;
     setPage(page + 1);
-    navigate(`${queryString}`);
+    // navigate(`${queryString}`);
   };
+
+  console.log(location.search);
 
   return (
     <>
@@ -54,12 +44,12 @@ const Category = () => {
             <>
               <div className="categoryHeader">
                 <h1>
-                  {categoryInfo[0].category_name}
+                  {categoryInfo.category_name}
                   <p>총{itemLists.length}개</p>
                 </h1>
               </div>
               <div className="categoryInfo">
-                <p>{categoryInfo[0].category_detail}</p>
+                <p>{categoryInfo.category_detail}</p>
               </div>
             </>
           )}
