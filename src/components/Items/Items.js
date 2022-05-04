@@ -1,7 +1,7 @@
 import React from "react";
 import "./items.scss";
 
-const Items = ({ itemList, idx }) => {
+const Items = ({ itemList }) => {
   return (
     <div className="items">
       <div className="itemDetail">

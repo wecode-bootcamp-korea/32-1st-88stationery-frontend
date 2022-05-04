@@ -5,9 +5,11 @@ import "./ItemsCarousel.scss";
 const ItemsCarousel = () => {
   const [slideIndex, setSlideIndex] = useState(0);
 
-  const onClick = event => {
-    const isPrev = event.target.className.includes("prev");
-    const isNext = event.target.className.includes("next");
+  const moveCarouselHandler = event => {
+    const { className } = event.target;
+    const isPrev = className.includes("prev");
+    const isNext = className.includes("next");
+
     if (isPrev) {
       setSlideIndex(curr => --curr);
     }
@@ -30,10 +32,10 @@ const ItemsCarousel = () => {
       : null;
 
   return (
-    <div className="carouselContainer">
+    <div className="ItemsCarousel">
       <button
         className="navigation prev"
-        onClick={onClick}
+        onClick={moveCarouselHandler}
         style={firstSlide && firstSlide.style}
         disabled={firstSlide}
       >
@@ -49,7 +51,7 @@ const ItemsCarousel = () => {
       </div>
       <button
         className="navigation next"
-        onClick={onClick}
+        onClick={moveCarouselHandler}
         style={lastSlide && lastSlide.style}
         disabled={lastSlide}
       >

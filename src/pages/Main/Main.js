@@ -3,28 +3,29 @@ import Carousel from "../../components/Carousel/Carousel";
 import ItemsCarousel from "../../components/ItemsCarousel/ItemsCarousel";
 import ItemContainer from "../../components/ItemContainer/ItemContainer";
 import "./Main.scss";
-
+import { useLocation } from "react-router-dom";
 const Main = () => {
   const [productList, setProductList] = useState([]);
+  const location = useLocation();
+
   useEffect(() => {
-    fetch("http://10.58.4.183:8000/products", {
-      method: "GET",
-    })
+    fetch(
+      `http://10.58.1.230:8000/main${location.search || "offset=0&limit=4"}`,
+      {}
+    )
       .then(res => res.json())
       .then(data => {
-        setProductList(data);
+        setProductList(data.new_products);
       });
   }, []);
 
   return (
-    <main className="mainContainer">
+    <main className="Main">
       <Carousel />
       <div className="itemContainer">
         <img src="/images/main/mainBanner.png" alt="mainBanner" />
         <ItemsCarousel />
-        <ItemContainer title="요즘 잘 나가요" />
-        <ItemContainer title="새로 나왔어요" />
-        <ItemContainer title="내가 제일 잘나가" />
+        <ItemContainer title="요즘 잘 나가요" itemLists={productList} />
       </div>
     </main>
   );

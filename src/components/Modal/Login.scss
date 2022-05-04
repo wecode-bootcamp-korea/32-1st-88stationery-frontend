@@ -102,6 +102,11 @@
       width: 120px;
       text-align: center;
       color: #acadae;
+      cursor: pointer;
+
+      &:hover {
+        color: #2ac1bc;
+      }
 
       a {
         text-decoration: none;

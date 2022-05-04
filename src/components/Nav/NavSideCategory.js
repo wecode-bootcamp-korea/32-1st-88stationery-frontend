@@ -1,12 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function NavSideCategory({ CATEGORY_LIST }) {
+  const navigate = useNavigate();
+
   return CATEGORY_LIST.map((list, index) => {
-    const { path, category } = list;
+    const { category } = list;
+
+    const goToCategoryHandler = () => {
+      navigate(`/category/${list.id}`);
+    };
     return (
-      <li key={index}>
-        <Link to="/">{category}</Link>
+      <li key={index} onClick={goToCategoryHandler}>
+        {category}
       </li>
     );
   });

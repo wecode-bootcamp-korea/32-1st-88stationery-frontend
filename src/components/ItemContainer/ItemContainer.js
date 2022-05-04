@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Items from "../Items/Items";
 import "./ItemContainer.scss";
 
-const ItemContainer = ({ title, name }) => {
-  const [itemLists, setitemLists] = useState(PRODUCT);
+const ItemContainer = ({ title, name, itemLists }) => {
   const [limit, setLimit] = useState(8);
   const [page, setPage] = useState(1);
 
@@ -14,15 +13,6 @@ const ItemContainer = ({ title, name }) => {
     setLimit(Number(value));
   };
 
-  const handlerSortCategory = e => {
-    const newSortItems = [...itemLists];
-    return e.target.type === "sortByLowPrice"
-      ? setitemLists(newSortItems.sort((a, b) => a.price - b.price))
-      : e.target.type === "sortByHighPrice"
-      ? setitemLists(newSortItems.sort((a, b) => b.price - a.price))
-      : null;
-  };
-
   return (
     <div className="itemContainer">
       <h3 className="mainTitle">{title}</h3>
@@ -31,15 +21,9 @@ const ItemContainer = ({ title, name }) => {
           <div className="sortCategoriesList">
             <div className="sortCategory">
               <ul>
-                <li type="sortByLowPrice" onClick={handlerSortCategory}>
-                  가격 낮은 순
-                </li>
-                <li type="sortByHighPrice" onClick={handlerSortCategory}>
-                  가격 높은 순
-                </li>
-                <li type="sortByNewItems" onClick={handlerSortCategory}>
-                  신상품
-                </li>
+                <li type="sortByLowPrice">가격 낮은 순</li>
+                <li type="sortByHighPrice">가격 높은 순</li>
+                <li type="sortByNewItems">신상품</li>
               </ul>
             </div>
           </div>
@@ -51,8 +35,8 @@ const ItemContainer = ({ title, name }) => {
         )}
       </div>
       <div className="itemList">
-        {itemLists.slice(offset, offset + limit).map((itemList, idx) => {
-          return <Items key={idx} itemList={itemList} />;
+        {itemLists.slice(offset, offset + limit).map((itemLists, idx) => {
+          return <Items key={idx} itemList={itemLists} />;
         })}
       </div>
       <div className="indexBtn">
@@ -76,110 +60,3 @@ const ItemContainer = ({ title, name }) => {
 };
 
 export default ItemContainer;
-
-const PRODUCT = [
-  {
-    id: 1,
-    name: "고양이",
-    context: "...",
-    price: 1000,
-    src1: "/images/items/2.jpeg",
-    src2: "/images/items/3.jpeg",
-  },
-  {
-    id: 1,
-    name: "고양이1",
-    context: "...",
-    price: 2000,
-    src1: "/images/items/2.jpeg",
-    src2: "/images/items/3.jpeg",
-  },
-  {
-    id: 1,
-    name: "고양이3",
-    context: "...",
-    price: 3000,
-    src1: "/images/items/2.jpeg",
-    src2: "/images/items/3.jpeg",
-  },
-  {
-    id: 1,
-    name: "고양이4",
-    context: "...",
-    price: 4000,
-    src1: "/images/items/2.jpeg",
-    src2: "/images/items/3.jpeg",
-  },
-  {
-    id: 1,
-    name: "고양이5",
-    context: "...",
-    price: 5000,
-    src1: "/images/items/2.jpeg",
-    src2: "/images/items/3.jpeg",
-  },
-  {
-    id: 1,
-    name: "고양이6",
-    context: "...",
-    price: 6000,
-    src1: "/images/items/2.jpeg",
-    src2: "/images/items/3.jpeg",
-  },
-  {
-    id: 1,
-    name: "고양이7",
-    context: "...",
-    price: 7000,
-    src1: "/images/items/2.jpeg",
-    src2: "/images/items/3.jpeg",
-  },
-  {
-    id: 1,
-    name: "고양이8",
-    context: "...",
-    price: 8000,
-    src1: "/images/items/2.jpeg",
-    src2: "/images/items/3.jpeg",
-  },
-  {
-    id: 1,
-    name: "고양이9",
-    context: "...",
-    price: 9000,
-    src1: "/images/items/2.jpeg",
-    src2: "/images/items/3.jpeg",
-  },
-  {
-    id: 1,
-    name: "고양이10",
-    context: "...",
-    price: 10000,
-    src1: "/images/items/2.jpeg",
-    src2: "/images/items/3.jpeg",
-  },
-  {
-    id: 1,
-    name: "고양이11",
-    context: "...",
-    price: 11000,
-    src1: "/images/items/2.jpeg",
-    src2: "/images/items/3.jpeg",
-  },
-  {
-    id: 1,
-    name: "고양이12",
-    context: "...",
-    price: 12000,
-    src1: "/images/items/2.jpeg",
-    src2: "/images/items/3.jpeg",
-  },
-  {
-    id: 1,
-    name: "고양이13",
-    context: "...",
-    price: 13000,
-    src1: "/images/items/2.jpeg",
-    src2: "/images/items/3.jpeg",
-  },
-];

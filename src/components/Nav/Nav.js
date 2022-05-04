@@ -7,12 +7,12 @@ import LoginModal from "../Modal/LoginModal";
 import "./Nav.scss";
 
 const CATEGORY_LIST = [
-  { category: "전체" },
-  { category: "문구" },
-  { category: "리빙" },
-  { category: "책" },
-  { category: "완구" },
-  { category: "식품" },
+  { id: 6, category: "전체" },
+  { id: 1, category: "문구" },
+  { id: 2, category: "리빙" },
+  { id: 3, category: "책" },
+  { id: 4, category: "완구" },
+  { id: 5, category: "식품" },
 ];
 
 const Nav = () => {
@@ -22,6 +22,7 @@ const Nav = () => {
   const [isLoginModalOn, setIstLoginModalOn] = useState(false);
   const [userInput, setUserInput] = useState("");
   const userName = "";
+
   function handleScroll() {
     setScrollY(window.pageYOffset);
   }
@@ -50,6 +51,7 @@ const Nav = () => {
   const handleChange = e => {
     setUserInput(e.target.value);
   };
+
   const filterInputValue = PRODUCT.filter(search => {
     return search.name.includes(userInput);
   });

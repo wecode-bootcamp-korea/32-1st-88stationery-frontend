@@ -41,6 +41,10 @@ const LoginModal = ({ isLoginModalOn, handleisLoginModalOn }) => {
       });
   };
 
+  const goToSignUp = () => {
+    navigate("/signup");
+  };
+
   const idisValid = userInfo.id.length === 0;
   const pwisValid = userInfo.pw.length === 0;
 
@@ -57,7 +61,7 @@ const LoginModal = ({ isLoginModalOn, handleisLoginModalOn }) => {
 
   return (
     <>
-      <LoginFormLayout>
+      <LoginFormLayout goToSignUp={goToSignUp}>
         <form action="" onSubmit={onSubmit}>
           <h1>로그인</h1>
           <div className="accountContent">
