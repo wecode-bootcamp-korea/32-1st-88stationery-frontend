@@ -1,3 +1,6 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .ItemsCarousel {
   position: relative;
   margin: 0 auto;
@@ -5,8 +8,7 @@
   overflow: hidden;
 
   .carouselWrapper {
-    display: flex;
-    justify-content: space-between;
+    @include commonDisplayAttributes(flex, space-between, null);
     transition: all 0.7s ease 0.2s;
 
     .item {
@@ -18,8 +20,7 @@
 
       .thumbnail {
         img {
-          width: 300px;
-          height: 300px;
+          @include size(300px, 300px);
           transition: opacity 0.7s ease-in-out;
 
           &:nth-last-child(1) {
@@ -38,7 +39,7 @@
 
       &:hover {
         p {
-          color: #39c5c0;
+          color: $commonColor;
         }
 
         img:nth-last-child(1) {
@@ -50,13 +51,12 @@
   }
 
   button.navigation {
+    @include size(50px, 50px);
     position: absolute;
     top: calc(50% - 33px);
-    width: 50px;
-    height: 50px;
-    background-color: #39c5c0;
+    background-color: $commonColor;
     border-radius: 30px;
-    color: #fff;
+    color: $background;
     text-align: center;
     font-size: 16px;
     z-index: 1;
@@ -86,7 +86,7 @@
 
     .current {
       height: 100%;
-      background-color: #000;
+      background-color: $blackColor;
       transition: transform cubic-bezier(0.22, 0.61, 0.36, 1) 0.5s;
     }
   }

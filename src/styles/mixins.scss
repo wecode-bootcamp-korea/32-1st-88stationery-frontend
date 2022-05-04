@@ -25,3 +25,15 @@
 }
 
 // 현석 끝 !
+
+//규성 시작
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin commonDisplayAttributes($display, $justify: null, $align: null) {
+  display: $display;
+  justify-content: $justify;
+  align-items: $align;
+}
