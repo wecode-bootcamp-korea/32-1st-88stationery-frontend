@@ -5,15 +5,15 @@ import "./Main.scss";
 
 const Main = () => {
   const [productList, setProductList] = useState([]);
-  useEffect(() => {
-    fetch("http://10.58.4.183:8000/products", {
-      method: "GET",
-    })
-      .then(res => res.json())
-      .then(data => {
-        setProductList(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://10.58.4.183:8000/products", {
+  //     method: "GET",
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setProductList(data);
+  //     });
+  // }, []);
 
   return (
     <main className="mainContainer">
