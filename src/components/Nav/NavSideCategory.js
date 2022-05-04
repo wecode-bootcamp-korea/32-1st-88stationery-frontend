@@ -9,6 +9,7 @@ function NavSideCategory({ CATEGORY_LIST }) {
 
     const goToCategoryHandler = () => {
       navigate(`/category/${list.id}`);
+      window.location.reload();
     };
     return (
       <li key={index} onClick={goToCategoryHandler}>

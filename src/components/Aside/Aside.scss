@@ -101,8 +101,22 @@
           }
 
           span {
+            position: relative;
             padding: 0 20px;
             font-family: "BMDOHYEON";
+            cursor: pointer;
+            transition: all 0.5s;
+
+            i {
+              position: absolute;
+              left: -30px;
+              top: -5px;
+            }
+          }
+
+          span:hover {
+            color: #58e8e3;
+            transition: all 0.5s;
           }
         }
       }

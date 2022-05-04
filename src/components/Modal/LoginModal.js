@@ -98,7 +98,6 @@ const LoginModal = ({
                   placeholder="비밀번호"
                   name="pw"
                   onChange={inputHandler}
-                  // style={{ fontFamily: "BMJUA" }}
                 />
                 {pwisValid && <p>ℹ 비밀번호를 입력해주세요</p>}
                 {!pwisValid && (
