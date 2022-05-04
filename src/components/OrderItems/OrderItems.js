@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./OrderItems.scss";
 
-const Productlist = ({ orderLists }) => {
+const OrderItems = ({ orderLists }) => {
   return (
     <ul className="OrderedItemUl">
       {orderLists.map(e => {
@@ -28,6 +28,6 @@ const Productlist = ({ orderLists }) => {
   );
 };
 
-export default Productlist;
+export default OrderItems;
 
 // 배송준비 배송중 배송완료

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import ProductList from "../../components/OrderItems/OrderItems";
+import OrderItems from "../../components/OrderItems/OrderItems";
 import "./Mypage.scss";
 
 const Mypage = () => {
@@ -40,7 +40,7 @@ const Mypage = () => {
               <Link to="/inquiry">문의 내역 </Link>
             </div>
           </aside>
-          <ProductList orderLists={orderLists} />
+          <OrderItems orderLists={orderLists} />
         </div>
       </div>
     </div>
