@@ -118,10 +118,12 @@
   text-align: center;
   vertical-align: middle;
   z-index: 500;
+  transition: all 1s;
 
   &:hover {
     color: $commonColor;
     border: 2px solid $commonColor;
     background-color: $background;
+    transition: all 1s;
   }
 }

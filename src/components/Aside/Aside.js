@@ -8,7 +8,6 @@ const Aside = ({ CATEGORY_LIST, isSideBarOn, handleSideBarOn }) => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const loginAvalid = token;
-  console.log(token);
 
   const goToInquiry = () => {
     if (token) {
