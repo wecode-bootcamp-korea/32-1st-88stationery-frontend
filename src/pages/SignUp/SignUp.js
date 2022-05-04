@@ -117,7 +117,9 @@ const SignUp = () => {
         <div className="accountTitleProcess">
           <h3>회원정보</h3>
           <ul className="processBox">
-            <li className="process">01</li>
+            <li className="process">
+              <i class="fa-solid fa-user" />
+            </li>
           </ul>
         </div>
         <form

@@ -1,27 +1,34 @@
 import React, { useState, useEffect } from "react";
+import { config } from "../../config";
 import Carousel from "../../components/Carousel/Carousel";
+import ItemsCarousel from "../../components/ItemsCarousel/ItemsCarousel";
 import ItemContainer from "../../components/ItemContainer/ItemContainer";
 import "./Main.scss";
 
 const Main = () => {
-  const [productList, setProductList] = useState([]);
-  // useEffect(() => {
-  //   fetch("http://10.58.4.183:8000/products", {
-  //     method: "GET",
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setProductList(data);
-  //     });
-  // }, []);
+  const [itemLists, setItemLists] = useState([]);
+  const [bestItems, setBestItems] = useState([]);
+
+  useEffect(() => {
+    fetch(`${config.main}`)
+      .then(res => res.json())
+      .then(data => {
+        setItemLists(data.new_products);
+        setBestItems(data.best_products);
+      });
+  }, []);
 
   return (
-    <main className="mainContainer">
+    <main className="Main">
       <Carousel />
       <div className="itemContainer">
-        <ItemContainer title="요즘 잘 나가요" />
-        <ItemContainer title="새로 나왔어요" />
-        <ItemContainer title="내가 제일 잘나가" />
+        <img src="/images/main/mainBanner.png" alt="mainBanner" />
+        <ItemsCarousel bestItems={bestItems} />
+        <ItemContainer
+          title="요즘 잘 나가요"
+          itemLists={itemLists}
+          setItemLists={setItemLists}
+        />
       </div>
     </main>
   );

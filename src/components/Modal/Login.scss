@@ -1,24 +1,27 @@
 .login {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 20%);
-  z-index: 1000;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
 
   .loginContainer {
     width: 500px;
-    height: 555px;
+    height: 600px;
     margin: 0 auto;
     padding-top: 20px;
-    border-radius: 55px;
+    border-radius: 30px;
     background: #fff;
 
     h1 {
+      padding-top: 26px;
       margin-bottom: 40px;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 32px;
       line-height: 42px;
+      letter-spacing: 8px;
       text-align: center;
+      font-family: "BMDOHYEON";
     }
 
     .accountContent {
@@ -40,6 +43,7 @@
         border-radius: 7px;
         transition: all 1s;
         outline: none;
+        font-family: "BMJUA";
       }
 
       .inputDisable {
@@ -58,6 +62,7 @@
         text-align: start;
         padding: 10px;
         color: #f77f7e;
+        font-family: "BMJUA";
       }
 
       & .loginInputText {
@@ -66,7 +71,8 @@
     }
     .loginCheckBox {
       margin-top: 20px;
-      padding-left: 20px;
+      padding-left: 5px;
+      font-family: "BMJUA";
     }
 
     .buttonGroup {
@@ -74,6 +80,8 @@
       margin: 0 auto;
 
       .btnLogin {
+        font-family: "BMDOHYEON";
+        letter-spacing: 10px;
         margin-top: 50px;
         border-radius: 7px;
         width: 100%;
@@ -99,9 +107,17 @@
     margin-bottom: 30px;
 
     li {
+      font-family: "BMDOHYEON";
       width: 120px;
       text-align: center;
       color: #acadae;
+      cursor: pointer;
+      transition: all 0.5s;
+
+      &:hover {
+        color: #2ac1bc;
+        transition: all 0.5s;
+      }
 
       a {
         text-decoration: none;
@@ -127,6 +143,6 @@
 }
 .loginScreenHide {
   @extend .loginScreen;
-  z-index: 1;
+  z-index: 1000;
   opacity: 1;
 }
