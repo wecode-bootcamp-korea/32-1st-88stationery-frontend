@@ -98,7 +98,9 @@ const Nav = () => {
               className=" fa fa-light fa-magnifying-glass"
               onClick={handleSearchBarOn}
             />
-            <i className="fa fa-light fa-cart-shopping" />
+            <Link to="/cart">
+              <i className="fa fa-light fa-cart-shopping" />
+            </Link>
             <Link to="/mypage">
               <i className="fa-solid fa-user" />
             </Link>
