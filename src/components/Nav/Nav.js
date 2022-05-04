@@ -130,6 +130,7 @@ const Nav = () => {
         <LoginModal
           isLoginModalOn={isLoginModalOn}
           handleisLoginModalOn={handleisLoginModalOn}
+          setIstLoginModalOn={setIstLoginModalOn}
         />
       )}
     </nav>
