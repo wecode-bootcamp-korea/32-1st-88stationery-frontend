@@ -1,18 +1,16 @@
 @import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
 .signUp {
+  @include commonDisplayAttributes(flex, center, center);
   position: relative;
   top: 100px;
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   margin-bottom: 150px;
 
   .signUpTitle {
+    @include marginHandler(30px, 30px, null null);
     font-family: "BMDOHYEON";
-    margin-bottom: 30px;
-    margin-top: 30px;
     padding: 10px 0;
     text-align: center;
     font-size: 40px;
@@ -20,17 +18,14 @@
   }
 
   .accountContent {
-    display: flex;
+    @include commonDisplayAttributes(flex, null, center);
     flex-direction: column;
-    align-items: center;
     width: 35%;
     padding: 20px 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 
     .accountTitleProcess {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include commonDisplayAttributes(flex, space-between, center);
       width: 100%;
       margin-bottom: 20px;
 
@@ -40,8 +35,7 @@
       }
 
       .processBox {
-        display: flex;
-        justify-content: center;
+        @include commonDisplayAttributes(flex, center, null);
         margin-top: 10px;
 
         .processUnderBar {
@@ -49,14 +43,11 @@
         }
 
         .process {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 26px;
-          height: 26px;
+          @include commonDisplayAttributes(flex, center, center);
+          @include size(26px, 26px);
           border-radius: 50%;
           background-color: #2ac1bc;
-          color: white;
+          color: $background;
           font-size: 12px;
           font-weight: 800;
         }
@@ -177,9 +168,8 @@
   }
 
   .signUpBtn {
+    @include commonDisplayAttributes(flex, center, null);
     margin-top: 40px;
-    display: flex;
-    justify-content: center;
     width: 100%;
     background-color: #eeeeee;
     border-radius: 13px;
