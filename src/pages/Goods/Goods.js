@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { config } from "../../config";
 import "./Goods.scss";
 
 const Goods = () => {
   const [quantity, setQuantity] = useState(1);
   const [isActive, setisActive] = useState(true);
-  const [imageList, setImageList] = useState([]);
+  const [goodsInfo, setGoodsInfo] = useState([]);
+  const params = useParams();
+
+  console.log(goodsInfo);
 
   useEffect(() => {
-    setImageList(IMAGE);
-  }, []);
+    fetch(`${config.goods}/${params.id}`)
+      .then(res => res.json())
+      .then(res => setGoodsInfo(res.product[0]));
+  }, [params]);
 
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
@@ -30,29 +37,46 @@ const Goods = () => {
     setisActive(!isActive);
   };
 
+  const goCart = e => {
+    e.preventDefault();
+    fetch(`${config.carts}`, {
+      method: "POST",
+      headers: {
+        Authorization: `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6N30.u8tQmYe21yFLPlb5ABDzRHAG7XGE2zugyDhD3IA5K1s`,
+      },
+      body: JSON.stringify({
+        product_id: String(goodsInfo.product_id),
+        price: String(quantity * goodsInfo.price),
+        quantity: String(quantity),
+      }),
+    })
+      .then(response => response.json())
+      .then(result => console.log(result));
+  };
+
   return (
     <main className="goods">
       <header className="goodsView">
         <div className="goodsInfo">
           <div className="goodsTitle">
-            <h3 className="goodsName">을지로 목장갑</h3>
-            <p className="goodsPrice">3,000원</p>
+            <h3 className="goodsName">{goodsInfo.name}</h3>
+            <p className="goodsPrice">{Number(goodsInfo.price)} 원</p>
           </div>
           <figure className="goodsImage">
-            {imageList.map(({ src }, idx) => (
-              <img
-                key={idx}
-                src={src}
-                alt="goodsImage"
-                style={{
-                  opacity: idx === 0 ? (isActive ? 1 : 0) : isActive ? 0 : 1,
-                }}
-              />
-            ))}
+            <img
+              className={isActive ? "active" : ""}
+              src={goodsInfo.thumnail_url_1}
+              alt="goodsImage"
+            />
+            <img
+              className={!isActive ? "active" : ""}
+              src={goodsInfo.thumnail_url_2}
+              alt="goodsImage"
+            />
             <div onClick={swipeHandler} className="swipePrev" />
             <div onClick={swipeHandler} className="swipeNext" />
             <div className="indexButton">
-              {Array(imageList.length)
+              {Array(2)
                 .fill()
                 .map((_, idx) => (
                   <span
@@ -93,10 +117,10 @@ const Goods = () => {
             </div>
             <div className="orderTotal">
               <p>총 금액</p>
-              <p>{(quantity * 3000).toLocaleString("ko-KR")}원</p>
+              <p>{(quantity * goodsInfo.price).toLocaleString("ko-KR")}원</p>
             </div>
             <footer className="btnGroup">
-              <button className="cartButton">
+              <button onClick={goCart} className="cartButton">
                 <i className="fa-solid fa-cart-shopping" />
               </button>
               <button className="buyButton">바로 구매하기</button>
@@ -116,8 +140,3 @@ const Goods = () => {
 };
 
 export default Goods;
-
-const IMAGE = [
-  { id: 1, src: "/images/items/2.jpeg" },
-  { id: 2, src: "/images/items/3.jpeg" },
-];

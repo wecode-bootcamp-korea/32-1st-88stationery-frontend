@@ -17,7 +17,7 @@ const Main = () => {
         setBestItems(data.best_products);
       });
   }, []);
-  console.log(bestItems);
+
   return (
     <main className="Main">
       <Carousel />

@@ -10,7 +10,11 @@ const ERROR_MESSAGE = {
   INVALID_PASSWORD: "올바르지 않은 패스워드 입니다",
 };
 
-const LoginModal = ({ isLoginModalOn, handleisLoginModalOn }) => {
+const LoginModal = ({
+  isLoginModalOn,
+  handleisLoginModalOn,
+  setIstLoginModalOn,
+}) => {
   const navigate = useNavigate();
 
   const [userInfo, setUserInfo] = useState({
@@ -45,6 +49,7 @@ const LoginModal = ({ isLoginModalOn, handleisLoginModalOn }) => {
 
   const goToSignUp = () => {
     navigate("/signup");
+    setIstLoginModalOn(false);
   };
 
   const idisValid = userInfo.id.length === 0;

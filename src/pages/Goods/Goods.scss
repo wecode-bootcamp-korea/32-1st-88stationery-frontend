@@ -51,6 +51,10 @@
         top: 0;
       }
 
+      .active {
+        opacity: 0;
+      }
+
       .swipePrev,
       .swipeNext {
         position: absolute;
