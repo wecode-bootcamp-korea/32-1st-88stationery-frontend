@@ -14,10 +14,10 @@ const Main = () => {
     fetch(`${config.main}/${location.search || "offset=0&limit=4"}`)
       .then(res => res.json())
       .then(data => {
-        setItemLists(data.new_products);
+        console.log(data);
       });
   }, []);
-  //console.log()
+
   return (
     <main className="Main">
       <Carousel />

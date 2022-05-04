@@ -22,10 +22,11 @@ const Category = () => {
     )
       .then(res => res.json())
       .then(res => {
+        // itemLists.length===0 ? setItemLists(res.products) :
         const copyArray = [...res.products];
         setItemLists(itemLists.concat(copyArray));
       });
-  }, [PAGE]);
+  }, [PAGE, params.id]);
 
   const updateOffset = e => {
     const offset = PAGE * LIMIT;
