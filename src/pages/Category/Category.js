@@ -4,7 +4,7 @@ import ItemContainer from "../../components/ItemContainer/ItemContainer";
 import "./Category.scss";
 
 const Category = () => {
-  const [itemLists, setitemLists] = useState([]);
+  const [itemLists, setItemLists] = useState([]);
   const [categoryInfo, setCategoryInfo] = useState([]);
   const params = useParams();
 
@@ -14,7 +14,7 @@ const Category = () => {
     )
       .then(res => res.json())
       .then(res => {
-        setitemLists(res.products);
+        setItemLists(res.products);
         setCategoryInfo(res.category);
       });
   }, [params.id]);
@@ -42,6 +42,7 @@ const Category = () => {
         name="itemsInCategory"
         title="요즘 잘 나가요"
         itemLists={itemLists}
+        setItemLists={setItemLists}
       />
     </>
   );

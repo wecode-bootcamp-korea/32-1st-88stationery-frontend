@@ -17,7 +17,7 @@ const Main = () => {
         setItemLists(data.new_products);
       });
   }, []);
-
+  //console.log()
   return (
     <main className="Main">
       <Carousel />
