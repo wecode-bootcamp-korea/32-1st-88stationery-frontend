@@ -2,7 +2,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   overflow: scroll;
   margin-left: 50px;
@@ -14,28 +13,45 @@
     .orderedProductBox {
       width: 100%;
       display: flex;
-      margin-right: 50px;
+      .orderImgBox {
+        position: relative;
 
-      img {
-        width: 100px;
-        height: 100px;
-        margin-right: 30px;
+        &:hover .orderHoverImg {
+          opacity: 0;
+          transition: opacity 0.3s ease-out;
+          cursor: pointer;
+        }
+        .orderProductImg {
+          width: 100px;
+          height: 100px;
+          margin-right: 30px;
+        }
+
+        .orderHoverImg {
+          position: absolute;
+          left: 0;
+          z-index: 1;
+          transition: opacity 0.3s ease-in;
+          width: 100px;
+          height: 100px;
+          margin-right: 30px;
+        }
       }
 
       .orderedListProductText {
+        width: 100%;
         display: flex;
         align-items: center;
 
         p {
           font-size: 18px;
           font-weight: 500;
-          white-space: nowrap;
         }
       }
     }
 
     .orderedListInfoBox {
-      width: 30%;
+      width: 50%;
       display: flex;
       align-items: center;
     }
@@ -54,7 +70,7 @@
     }
 
     .orderedStatus {
-      width: 20%;
+      width: 100%;
       margin-right: 10px;
       display: flex;
       align-items: center;
