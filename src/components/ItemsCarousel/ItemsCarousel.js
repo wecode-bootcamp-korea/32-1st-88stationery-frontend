@@ -30,7 +30,7 @@ const ItemsCarousel = ({ bestItems }) => {
           style: { transform: "translateX(80px)" },
         }
       : null;
-  console.log(bestItems[0]);
+
   return (
     <div className="ItemsCarousel">
       <button

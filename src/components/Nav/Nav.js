@@ -21,8 +21,7 @@ const Nav = () => {
   const [isSearchOn, setisSearchOn] = useState(false);
   const [isLoginModalOn, setIstLoginModalOn] = useState(false);
   const [userInput, setUserInput] = useState("");
-
-  const userName = "";
+  const [userName, setUserName] = useState("");
 
   function handleScroll() {
     setScrollY(window.pageYOffset);
@@ -48,6 +47,11 @@ const Nav = () => {
 
   const handleChange = e => {
     setUserInput(e.target.value);
+  };
+
+  const logOutHandler = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
   };
 
   //TODO : 백엔드에서 데이터 받아와서 구현할 예정
@@ -101,7 +105,12 @@ const Nav = () => {
               <i className="fa-solid fa-user" />
             </Link>
             {localStorage.getItem("token") ? (
-              <span>{userName}</span>
+              <>
+                <h1 className="userName">{userName}</h1>
+                <button className="gnbLogOut" onClick={logOutHandler}>
+                  로그아웃
+                </button>
+              </>
             ) : (
               <button className="gnbLogin" onClick={handleisLoginModalOn}>
                 로그인
@@ -137,6 +146,7 @@ const Nav = () => {
           isLoginModalOn={isLoginModalOn}
           handleisLoginModalOn={handleisLoginModalOn}
           setIstLoginModalOn={setIstLoginModalOn}
+          setUserName={setUserName}
         />
       )}
     </nav>
