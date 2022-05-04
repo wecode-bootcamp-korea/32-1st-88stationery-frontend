@@ -10,7 +10,7 @@ const Category = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.1.230:8000/products/category/${params.id}?sort_method=0&offset=0&limit=8`
+      `http://10.58.1.230:8000/products/category/${params.id}?sort_method=0&offset=0&limit=4`
     )
       .then(res => res.json())
       .then(res => {

@@ -6,8 +6,8 @@ const Items = ({ itemList }) => {
     <div className="items">
       <div className="itemDetail">
         <figure className="thumbnail">
-          <img src={itemList.src1} alt="itemimage" />
-          <img src={itemList.src2} alt="itemimage" />
+          <img src={itemList.thumnail_url_1} alt="itemimage" />
+          <img src={itemList.thumnail_url_2} alt="itemimage" />
         </figure>
         <div className="itemInfo">
           <p className="itemName">{itemList.name}</p>

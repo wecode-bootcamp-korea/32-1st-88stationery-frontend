@@ -72,8 +72,8 @@ const Nav = () => {
   }, []);
 
   return (
-    <>
-      <nav className={scrollY !== 0 ? "gnbAction" : "gnbBase"}>
+    <nav className="navigation">
+      <div className={scrollY !== 0 ? "gnbAction" : "gnbBase"}>
         <div className="gnbContainer">
           <div className="gnbLogo">
             <Link to="/main">
@@ -103,20 +103,13 @@ const Nav = () => {
               </button>
             )}
 
-            {isLoginModalOn && (
-              <LoginModal
-                isLoginModalOn={isLoginModalOn}
-                handleisLoginModalOn={handleisLoginModalOn}
-              />
-            )}
-
             <i
               className="fa fa-light fa-align-justify"
               onClick={handleSideBarOn}
             />
           </div>
         </div>
-      </nav>
+      </div>
       <Search
         isSearchOn={isSearchOn}
         handleSearchBarOn={handleSearchBarOn}
@@ -131,7 +124,13 @@ const Nav = () => {
       {scrollY > 200 && (
         <div onClick={scrollUpHandler} className="scrollButton" />
       )}
-    </>
+      {isLoginModalOn && (
+        <LoginModal
+          isLoginModalOn={isLoginModalOn}
+          handleisLoginModalOn={handleisLoginModalOn}
+        />
+      )}
+    </nav>
   );
 };
 

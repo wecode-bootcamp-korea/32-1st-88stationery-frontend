@@ -1,9 +1,9 @@
 .login {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 20%);
-  z-index: 1000;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
 
   .loginContainer {
     width: 500px;
@@ -132,6 +132,6 @@
 }
 .loginScreenHide {
   @extend .loginScreen;
-  z-index: 1;
+  z-index: 1000;
   opacity: 1;
 }

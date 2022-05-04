@@ -1,15 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Items from "../Items/Items";
+import { config } from "../../config";
 import "./ItemContainer.scss";
 
-const ItemContainer = ({ title, name, itemLists }) => {
-  const [limit, setLimit] = useState(8);
-  const [page, setPage] = useState(1);
-  const offset = (page - 1) * limit;
-  const numPages = Math.ceil(itemLists.length / limit);
+const LIMIT = 4;
 
-  const limitHandler = ({ target: { value } }) => {
-    setLimit(Number(value));
+const ItemContainer = ({ title, name, itemLists, setItemLists }) => {
+  const [page, setPage] = useState(1);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const params = useParams();
+
+  useEffect(() => {
+    fetch(
+      `${config.category}/${params.id}${
+        location.search || `?limit=${LIMIT}&offset=0`
+      }`
+    )
+      .then(res => res.json())
+      .then(res => setItemLists(res.products));
+  }, [location.search]);
+
+  const updateOffset = e => {
+    const offset = page * LIMIT;
+    const queryString = `?limit=${LIMIT}&offset=${offset}`;
+    setPage(page + 1);
+    navigate(`${queryString}`);
   };
 
   return (
@@ -26,33 +43,13 @@ const ItemContainer = ({ title, name, itemLists }) => {
               </ul>
             </div>
           </div>
-        ) : (
-          <select onChange={limitHandler}>
-            <option value="8">8개씩 보기</option>
-            <option value="12">12개씩 보기</option>
-          </select>
-        )}
+        ) : null}
       </div>
       <div className="itemList">
-        {itemLists.slice(offset, offset + limit).map((itemLists, idx) => {
-          return <Items key={idx} itemList={itemLists} />;
+        {itemLists.map((itemList, idx) => {
+          return <Items key={idx} itemList={itemList} />;
         })}
-      </div>
-      <div className="indexBtn">
-        {Array(numPages)
-          .fill()
-          .map((_, i) => {
-            return (
-              <button
-                className={page === i + 1 ? "active" : undefined}
-                key={i + 1}
-                onClick={() => setPage(i + 1)}
-                aria-current={page === i + 1 ? "page" : undefined}
-              >
-                {i + 1}
-              </button>
-            );
-          })}
+        <button onClick={updateOffset}>더 보기</button>
       </div>
     </div>
   );
