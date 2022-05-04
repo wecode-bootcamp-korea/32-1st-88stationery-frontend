@@ -1,0 +1,42 @@
+.myPageContentBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+
+  .myPageAllBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    h1 {
+      margin-bottom: 100px;
+      font-size: 40px;
+      font-weight: 700;
+      color: #2ac1bc;
+    }
+    .asideWelcomeBox {
+      width: 50%;
+      display: flex;
+
+      .asideBar {
+        width: 20%;
+        span {
+          color: #2ac1bc;
+        }
+        h2 {
+          margin-top: 35px;
+          margin-bottom: 35px;
+          font-size: 25px;
+          font-weight: bold;
+        }
+        a {
+          text-decoration: none;
+          color: #2ac1bc;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
