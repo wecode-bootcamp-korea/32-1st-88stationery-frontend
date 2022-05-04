@@ -74,17 +74,16 @@
     .gnbLogin {
       @include commonDisplayAttributes(inline-flex, null, center);
       @include size(null, 33px);
-      min-width: 69px;
-      margin: 0px 2px;
-      padding: 0px 16px;
       background: transparent;
       border: 2px solid rgb(68, 68, 68);
       border-radius: 17px;
       font-size: 14px;
       font-weight: 700;
+      padding: 10px 10px;
       text-align: center;
       cursor: pointer;
       transition: all 0.5s;
+      transform: translateY(-1px);
 
       &:hover {
         color: $background;
@@ -97,11 +96,12 @@
       font-size: 20px;
       font-weight: 900;
       color: #39c5c0;
-      transform: translateY(-2px);
+      transform: translateY(1px);
     }
 
     .gnbLogOut {
       @extend .gnbLogin;
+      transform: translateY(-3px);
     }
   }
 }

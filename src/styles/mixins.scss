@@ -26,15 +26,17 @@
 
 // 현석 끝 !
 
-//규성 시작
+//규성 시
 @mixin size($width, $height) {
   width: $width;
   height: $height;
 }
 
-@mixin sizeLeftorRight($left, $right) {
+@mixin sizeLeftorRight($left: null, $right: null, $top: null, $bottom: null) {
   left: $left;
   right: $right;
+  top: $top;
+  bottom: $bottom;
 }
 
 @mixin marginHandler($bottom: null, $top: null, $left: null, $right: null) {
