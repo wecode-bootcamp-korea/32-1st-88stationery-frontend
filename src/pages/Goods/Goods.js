@@ -96,7 +96,9 @@ const Goods = () => {
               <p>{(quantity * 3000).toLocaleString("ko-KR")}원</p>
             </div>
             <footer className="btnGroup">
-              <button className="cartButton"></button>
+              <button className="cartButton">
+                <i className="fa-solid fa-cart-shopping"></i>
+              </button>
               <button className="buyButton">바로 구매하기</button>
             </footer>
           </div>
