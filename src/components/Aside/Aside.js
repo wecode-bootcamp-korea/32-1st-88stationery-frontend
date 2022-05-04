@@ -4,14 +4,16 @@ import AsideGlobalChange from "./AsideGlobalChange";
 import "./Aside.scss";
 
 const Aside = ({ CATEGORY_LIST, isSideBarOn, handleSideBarOn }) => {
-  const loginAvalid = "";
+  const token = localStorage.getItem("token");
+  const loginAvalid = token.user_name;
+  console.log(token);
 
   return (
     <>
       <aside className={isSideBarOn ? "gsb" : "gsbHidden"}>
         <header className="gsbHeader">
           <h2>
-            {loginAvalid ? (
+            {localStorage.getItem("token") ? (
               <strong>{loginAvalid}님 환영합니다</strong>
             ) : (
               <p>

@@ -21,6 +21,7 @@ const Nav = () => {
   const [isSearchOn, setisSearchOn] = useState(false);
   const [isLoginModalOn, setIstLoginModalOn] = useState(false);
   const [userInput, setUserInput] = useState("");
+
   const userName = "";
 
   function handleScroll() {
