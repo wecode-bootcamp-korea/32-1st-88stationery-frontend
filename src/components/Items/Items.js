@@ -19,7 +19,9 @@ const Items = ({ itemList }) => {
         </figure>
         <div className="itemInfo">
           <p className="itemName">{itemList.name}</p>
-          <p className="itemPrice">{itemList.price}</p>
+          <p className="itemPrice">
+            {Number(itemList.price).toLocaleString()}원
+          </p>
         </div>
       </div>
     </div>
