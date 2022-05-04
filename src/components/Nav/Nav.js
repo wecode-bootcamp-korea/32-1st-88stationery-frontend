@@ -94,7 +94,9 @@ const Nav = () => {
               onClick={handleSearchBarOn}
             />
             <i className="fa fa-light fa-cart-shopping" />
-
+            <Link to="/mypage">
+              <i className="fa-solid fa-user" />
+            </Link>
             {localStorage.getItem("token") ? (
               <span>{userName}</span>
             ) : (
@@ -122,12 +124,16 @@ const Nav = () => {
         handleSideBarOn={handleSideBarOn}
       />
       {scrollY > 200 && (
-        <div onClick={scrollUpHandler} className="scrollButton" />
+        <i
+          className="fa-regular fa-hand-pointer fa-3x"
+          onClick={scrollUpHandler}
+        />
       )}
       {isLoginModalOn && (
         <LoginModal
           isLoginModalOn={isLoginModalOn}
           handleisLoginModalOn={handleisLoginModalOn}
+          setIstLoginModalOn={setIstLoginModalOn}
         />
       )}
     </nav>

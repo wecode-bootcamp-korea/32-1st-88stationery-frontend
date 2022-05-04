@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { config } from "../../config";
 import Carousel from "../../components/Carousel/Carousel";
 import ItemsCarousel from "../../components/ItemsCarousel/ItemsCarousel";
@@ -8,13 +7,14 @@ import "./Main.scss";
 
 const Main = () => {
   const [itemLists, setItemLists] = useState([]);
-  const location = useLocation();
+  const [bestItems, setBestItems] = useState([]);
 
   useEffect(() => {
-    fetch(`${config.main}/${location.search || "offset=0&limit=4"}`)
+    fetch(`${config.main}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        setItemLists(data.new_products);
+        setBestItems(data.best_products);
       });
   }, []);
 
@@ -23,7 +23,7 @@ const Main = () => {
       <Carousel />
       <div className="itemContainer">
         <img src="/images/main/mainBanner.png" alt="mainBanner" />
-        <ItemsCarousel />
+        <ItemsCarousel bestItems={bestItems} />
         <ItemContainer
           title="요즘 잘 나가요"
           itemLists={itemLists}
