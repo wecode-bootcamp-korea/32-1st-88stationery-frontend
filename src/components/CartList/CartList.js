@@ -15,19 +15,19 @@ const CartList = ({
 }) => {
   const [quantity, setQuantity] = useState(quantities);
   const [isChecked, setIsChecked] = useState(checkedList.includes(name));
-  const itemPrice = productPrice * quantity;
+  const itemPrice = Number(productPrice);
 
-  useEffect(() => {
-    // 원본 배열은 건드리면 안되기 때문에 배열 복제
-    // 수정하고자 하는 product가 어떤 건지 알아야 함 => id
-    // 복제된 배열에서, 해당하는 product의 quantity를 바꿔줌 => findIndex
-    // setState
+  // useEffect(() => {
+  //   // 원본 배열은 건드리면 안되기 때문에 배열 복제
+  //   // 수정하고자 하는 product가 어떤 건지 알아야 함 => id
+  //   // 복제된 배열에서, 해당하는 product의 quantity를 바꿔줌 => findIndex
+  //   // setState
 
-    const copyArray = [...cartLists];
-    const selectedIndex = copyArray.findIndex(e => e.category_id === id);
-    copyArray[selectedIndex].quantity = quantity;
-    setCartLists(copyArray);
-  }, [quantity]);
+  //   const copyArray = [...cartLists];
+  //   const selectedIndex = copyArray.findIndex(e => e.category_id === id);
+  //   copyArray[selectedIndex].quantity = quantity;
+  //   setCartLists(copyArray);
+  // }, [quantity]);
 
   useEffect(() => {
     setIsChecked(checkedList.includes(name));
@@ -46,12 +46,18 @@ const CartList = ({
   }, [itemPrice, isChecked]);
 
   const increaseCount = () => {
-    setQuantity(prev => Number(prev) + 1);
+    const copyArray = [...cartLists];
+    const selectedIndex = copyArray.findIndex(e => e.category_id === id);
+    copyArray[selectedIndex].quantity++;
+    setCartLists(copyArray);
   };
 
   const decreaseCount = () => {
     if (quantity > 0) {
-      setQuantity(prev => Number(prev) - 1);
+      const copyArray = [...cartLists];
+      const selectedIndex = copyArray.findIndex(e => e.category_id === id);
+      copyArray[selectedIndex].quantity--;
+      setCartLists(copyArray);
     }
   };
 
@@ -95,7 +101,7 @@ const CartList = ({
           </button>
           <input
             type="text"
-            value={quantity}
+            value={quantities}
             onChange={onChangeHandler}
             onKeyDown={onKeyDown}
           />
