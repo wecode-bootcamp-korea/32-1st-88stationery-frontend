@@ -42,6 +42,7 @@
       .processBox {
         display: flex;
         justify-content: center;
+        margin-top: 10px;
 
         .processUnderBar {
           opacity: 0.1;
@@ -71,10 +72,16 @@
         padding: 15px 8px;
         border: 1px solid #ddd;
         border-radius: 6px;
+        font-family: sans-serif;
+        transition: all 1s;
 
         &:focus {
           outline: none;
         }
+      }
+
+      input::placeholder {
+        font-family: "BMDOHYEON";
       }
 
       .relativeText {
@@ -83,16 +90,24 @@
         &::before {
           @include inputInSideText();
         }
+        font-family: "BMDOHYEON";
       }
 
       .inputBirthBox {
         &::before {
           top: 23px;
         }
+
+        p {
+          text-align: end;
+          font-family: "BMJUA";
+          font-weight: 200;
+        }
       }
 
       .showAlertText {
         margin-bottom: 10px;
+        font-family: "BMJUA";
         &::before {
           content: "필수 입력 값입니다 !";
           color: #f45452;
@@ -103,6 +118,7 @@
 
       .showValueFail {
         margin-bottom: 10px;
+        font-family: "BMJUA";
 
         &::before {
           content: "형식에 맞게 작성해주세요!";
@@ -114,6 +130,7 @@
 
       .showValuePwFail {
         margin-bottom: 10px;
+        font-family: "BMJUA";
 
         &::before {
           content: "8자 이상 작성해주세요!";
@@ -125,6 +142,7 @@
 
       .showValuePwCheckFail {
         margin-bottom: 10px;
+        font-family: "BMJUA";
 
         &::before {
           content: "비밀번호가 일치하지 않습니다!";
@@ -136,6 +154,7 @@
 
       .showValueBirthFail {
         margin-bottom: 10px;
+        font-family: "BMJUA";
 
         &::before {
           content: "생일형식에 맞게 작성해주세요!";
@@ -146,7 +165,8 @@
       }
 
       .successBox {
-        border: 3px solid #2ac1bc;
+        border: 2px solid #2ac1bc;
+        transition: all 0.5s;
       }
 
       .inputEmailBox,
@@ -157,20 +177,33 @@
   }
 
   .signUpBtn {
+    margin-top: 40px;
     display: flex;
     justify-content: center;
     width: 100%;
+    background-color: #eeeeee;
+    border-radius: 13px;
 
     .disabled {
       width: 100%;
       padding: 15px 50px;
       background: transparent;
+      border: none;
+      border-radius: 13px;
+      font-family: "BMDOHYEON";
+      color: #acadae;
+      transition: all 0.5s;
     }
 
     .abled {
       width: 100%;
       padding: 15px 8px;
       background-color: #2ac1bc;
+      border: none;
+      border-radius: 13px;
+      font-family: "BMDOHYEON";
+      color: white;
+      transition: all 0.5s;
     }
   }
 }

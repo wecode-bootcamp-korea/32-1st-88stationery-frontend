@@ -43,7 +43,11 @@
         border-radius: 7px;
         transition: all 1s;
         outline: none;
-        font-family: "BMJUA";
+        font-family: sans-serif;
+      }
+
+      input::placeholder {
+        font-family: "BMDOHYEON";
       }
 
       .inputDisable {
@@ -69,10 +73,12 @@
         color: #2ac1bc;
       }
     }
+
     .loginCheckBox {
       margin-top: 20px;
       padding-left: 5px;
       font-family: "BMJUA";
+      color: #474747;
     }
 
     .buttonGroup {
@@ -131,6 +137,7 @@
     }
   }
 }
+
 .loginScreen {
   position: fixed;
   width: 100%;
@@ -141,6 +148,7 @@
   transition: opacity 0.4s ease 0.2s;
   opacity: 0;
 }
+
 .loginScreenHide {
   @extend .loginScreen;
   z-index: 1000;
