@@ -6,7 +6,7 @@ function NavSideCategory({ CATEGORY_LIST }) {
     const { path, category } = list;
     return (
       <li key={index}>
-        <Link to={path}>{category}</Link>
+        <Link to="/">{category}</Link>
       </li>
     );
   });

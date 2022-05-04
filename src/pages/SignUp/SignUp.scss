@@ -1,0 +1,174 @@
+@import "../../styles/mixins.scss";
+
+.signUp {
+  position: relative;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 150px;
+
+  .signUpTitle {
+    margin-top: 30px;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  .accountContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 35%;
+    padding: 20px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    .accountTitleProcess {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 20px;
+
+      h3 {
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .processBox {
+        display: flex;
+        justify-content: center;
+
+        .processUnderBar {
+          opacity: 0.1;
+        }
+
+        .process {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 26px;
+          height: 26px;
+          border-radius: 50%;
+          background-color: #2ac1bc;
+          color: white;
+          font-size: 12px;
+          font-weight: 800;
+        }
+      }
+    }
+
+    .signUpInfoInputs {
+      width: 100%;
+
+      input {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 15px 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .relativeText {
+        position: relative;
+
+        &::before {
+          @include inputInSideText();
+        }
+      }
+
+      .inputBirthBox {
+        &::before {
+          top: 23px;
+        }
+      }
+
+      .showAlertText {
+        margin-bottom: 10px;
+        &::before {
+          content: "필수 입력 값입니다 !";
+          color: #f45452;
+          margin-left: 5px;
+          font-size: 12px;
+        }
+      }
+
+      .showValueFail {
+        margin-bottom: 10px;
+
+        &::before {
+          content: "형식에 맞게 작성해주세요!";
+          color: #f45452;
+          margin-left: 5px;
+          font-size: 12px;
+        }
+      }
+
+      .showValuePwFail {
+        margin-bottom: 10px;
+
+        &::before {
+          content: "8자 이상 작성해주세요!";
+          color: #f45452;
+          margin-left: 5px;
+          font-size: 12px;
+        }
+      }
+
+      .showValuePwCheckFail {
+        margin-bottom: 10px;
+
+        &::before {
+          content: "비밀번호가 일치하지 않습니다!";
+          color: #f45452;
+          margin-left: 5px;
+          font-size: 12px;
+        }
+      }
+
+      .showValueBirthFail {
+        margin-bottom: 10px;
+
+        &::before {
+          content: "생일형식에 맞게 작성해주세요!";
+          color: #f45452;
+          margin-left: 5px;
+          font-size: 12px;
+        }
+      }
+
+      .successBox {
+        border: 3px solid #2ac1bc;
+      }
+
+      .inputEmailBox,
+      .inputBirthBox {
+        @include singUpDetailText();
+      }
+    }
+  }
+
+  .signUpBtn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .disabled {
+      width: 100%;
+      padding: 15px 50px;
+      background: transparent;
+    }
+
+    .abled {
+      width: 100%;
+      padding: 15px 8px;
+      background-color: #2ac1bc;
+    }
+  }
+}
