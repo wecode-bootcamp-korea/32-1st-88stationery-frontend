@@ -41,10 +41,11 @@
       rgba(79, 209, 197, 1) 100%
     );
     border-radius: 1000px;
-    color: darkslategray;
+    color: white;
     cursor: pointer;
     box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
-    font-weight: 700;
+    font-weight: 500;
+    font-family: "BMDOHYEON";
     transition: 0.3s;
   }
   .w-btn-neon2:hover {
