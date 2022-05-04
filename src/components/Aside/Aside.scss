@@ -7,7 +7,6 @@
   height: 100%;
   padding-top: 60px;
   background-color: rgb(255, 255, 255);
-  border: 1px solid black;
   overflow: hidden;
   transition: right 0.4s ease 0s;
   z-index: 100;
@@ -23,10 +22,11 @@
     h2 {
       width: 260px;
       line-height: 42px;
-      color: rgb(68, 68, 68);
-      font-size: 32px;
-      font-weight: 400;
+      color: #41454a;
+      font-size: 35px;
+      font-weight: 500;
       letter-spacing: -1px;
+      font-family: "BMJUA";
     }
   }
 
@@ -34,6 +34,15 @@
     height: 100%;
     padding: 0px 40px 40px;
     overflow-y: auto;
+
+    .gsbNavBtn {
+      transition: all 0.5s;
+    }
+
+    .gsbNavBtn:hover {
+      transition: all 0.5s;
+      color: #58e8e3;
+    }
 
     i {
       position: absolute;
@@ -44,13 +53,15 @@
 
     h2 {
       color: #999999;
+      font-family: "BMJUA";
     }
 
     li {
       padding-top: 14px;
       font-size: 55px;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
+      font-family: "BMDOHYEON";
 
       &:hover {
         color: #58e8e3;
@@ -93,6 +104,7 @@
 
           span {
             padding: 0 20px;
+            font-family: "BMDOHYEON";
           }
         }
       }
