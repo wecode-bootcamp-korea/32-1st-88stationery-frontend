@@ -20,9 +20,9 @@ const Cart = () => {
     })
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         setCheckedList(data.carts.map(cart => cart.product));
         setCartLists(data.carts);
-        console.log(data.carts);
       });
   }, []);
 
@@ -42,6 +42,13 @@ const Cart = () => {
     setIsAllChecked(!isAllChecked);
     isAllChecked === true && setCheckedList([]);
   };
+
+  console.log(
+    cartLists
+      .filter(e => checkedList.includes(e.product))
+      .map(list => list.cart_id)
+  );
+  console.log(checkedList);
 
   return (
     <div className="cartContainer">
@@ -70,7 +77,7 @@ const Cart = () => {
                 key={cartList.cart_id}
                 productPrice={cartList.price}
                 name={cartList.product}
-                id={cartList.id}
+                id={cartList.cart_id}
                 img={cartList.product_image_1}
                 setSumPrice={setSumPrice}
               />
