@@ -5,4 +5,6 @@ export const config = {
   login: `${BASE_URL}users/signin`,
   main: `${MAIN_URL}main`,
   category: `${MAIN_URL}products/category`,
+  goods: `${MAIN_URL}products`,
+  carts: `${MAIN_URL}orders/carts`,
 };
