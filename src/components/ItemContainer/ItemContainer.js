@@ -28,8 +28,6 @@ const ItemContainer = ({ title, name, itemLists, updateOffset }) => {
   //   navigate(`${queryString}`);
   // };
 
-  console.log(itemLists);
-
   return (
     <div className="itemContainer">
       <h3 className="mainTitle">{title}</h3>
