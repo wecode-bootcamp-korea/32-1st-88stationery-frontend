@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Carousel from "../../components/Carousel/Carousel";
 import ItemsCarousel from "../../components/ItemsCarousel/ItemsCarousel";
 import ItemContainer from "../../components/ItemContainer/ItemContainer";
 import "./Main.scss";
-import { useLocation } from "react-router-dom";
 const Main = () => {
   const [productList, setProductList] = useState([]);
   const location = useLocation();

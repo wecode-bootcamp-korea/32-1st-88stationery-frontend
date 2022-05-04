@@ -20,8 +20,6 @@ const Category = () => {
       });
   }, [params.id]);
 
-  console.log(categoryInfo);
-  console.log(params.id);
   return (
     <>
       <header className="category">

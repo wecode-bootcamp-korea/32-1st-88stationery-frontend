@@ -8,7 +8,6 @@ const ItemContainer = ({ title, name, itemLists }) => {
 
   const offset = (page - 1) * limit;
   const numPages = Math.ceil(itemLists.length / limit);
-
   const limitHandler = ({ target: { value } }) => {
     setLimit(Number(value));
   };
