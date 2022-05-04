@@ -49,7 +49,11 @@ const ItemContainer = ({ title, name, itemLists, setItemLists }) => {
         {itemLists.map((itemList, idx) => {
           return <Items key={idx} itemList={itemList} />;
         })}
-        <button onClick={updateOffset}>더 보기</button>
+      </div>
+      <div className="nextItems">
+        <button className="w-btn-neon2 " onClick={updateOffset}>
+          더 보기
+        </button>
       </div>
     </div>
   );
