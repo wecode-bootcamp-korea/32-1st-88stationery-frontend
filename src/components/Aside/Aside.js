@@ -1,7 +1,7 @@
 import React from "react";
 import NavSideCategory from "../Nav/NavSideCategory";
-import "./Aside.scss";
 import AsideGlobalChange from "./AsideGlobalChange";
+import "./Aside.scss";
 
 const Aside = ({ CATEGORY_LIST, isSideBarOn, handleSideBarOn }) => {
   const loginAvalid = "";

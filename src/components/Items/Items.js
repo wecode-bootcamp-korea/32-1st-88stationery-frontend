@@ -1,13 +1,13 @@
 import React from "react";
 import "./items.scss";
 
-const Items = ({ itemList, idx }) => {
+const Items = ({ itemList }) => {
   return (
-    <div className="item">
+    <div className="items">
       <div className="itemDetail">
         <figure className="thumbnail">
-          <img src={itemList.src1} alt="itemimage" />
-          <img src={itemList.src2} alt="itemimage" />
+          <img src={itemList.thumnail_url_1} alt="itemimage" />
+          <img src={itemList.thumnail_url_2} alt="itemimage" />
         </figure>
         <div className="itemInfo">
           <p className="itemName">{itemList.name}</p>
