@@ -6,7 +6,6 @@ import "./Category.scss";
 const Category = () => {
   const [itemLists, setitemLists] = useState([]);
   const [categoryInfo, setCategoryInfo] = useState([]);
-
   const params = useParams();
 
   useEffect(() => {

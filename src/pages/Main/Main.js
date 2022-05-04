@@ -4,6 +4,7 @@ import Carousel from "../../components/Carousel/Carousel";
 import ItemsCarousel from "../../components/ItemsCarousel/ItemsCarousel";
 import ItemContainer from "../../components/ItemContainer/ItemContainer";
 import "./Main.scss";
+
 const Main = () => {
   const [productList, setProductList] = useState([]);
   const location = useLocation();

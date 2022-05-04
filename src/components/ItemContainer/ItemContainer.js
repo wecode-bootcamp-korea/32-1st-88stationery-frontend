@@ -5,9 +5,9 @@ import "./ItemContainer.scss";
 const ItemContainer = ({ title, name, itemLists }) => {
   const [limit, setLimit] = useState(8);
   const [page, setPage] = useState(1);
-
   const offset = (page - 1) * limit;
   const numPages = Math.ceil(itemLists.length / limit);
+
   const limitHandler = ({ target: { value } }) => {
     setLimit(Number(value));
   };
