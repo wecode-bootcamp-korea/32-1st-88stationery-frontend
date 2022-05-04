@@ -97,7 +97,7 @@ const Goods = () => {
             </div>
             <footer className="btnGroup">
               <button className="cartButton">
-                <i className="fa-solid fa-cart-shopping"></i>
+                <i className="fa-solid fa-cart-shopping" />
               </button>
               <button className="buyButton">바로 구매하기</button>
             </footer>
