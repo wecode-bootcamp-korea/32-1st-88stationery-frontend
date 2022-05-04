@@ -9,7 +9,10 @@ const OrderItems = ({ orderLists }) => {
           <li key={e.order_id} className="orderedListLi">
             <span className="orderedListOrder">{e.id}</span>
             <div className="orderedProductBox">
-              <img src={e.product_image_1} />
+              <div className="orderImgBox">
+                <img className="orderProductImg" src={e.product_image_1} />
+                <img className="orderHoverImg" src={e.product_image_2} />
+              </div>
               <div className="orderedListProductText">
                 <p>{e.product}</p>
               </div>
