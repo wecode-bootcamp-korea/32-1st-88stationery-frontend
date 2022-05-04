@@ -74,45 +74,43 @@ const CartList = ({
   };
 
   return (
-    <ul className="cartList">
-      <li className="cartListLi">
-        <div className="cartListCheckBox">
+    <li className="cartListLi">
+      <div className="cartListCheckBox">
+        <input
+          type="checkbox"
+          onChange={checkHandler}
+          checked={checkedList.includes(name)}
+        />
+      </div>
+      <div className="cartListProductBox">
+        <img alt="제품사진" src={img} />
+        <div className="cartListProductText">
+          <p>{name}</p>
+        </div>
+      </div>
+      <div className="cartListInfoBox">
+        <div className="cartListQuantity">
+          <button type="button" onClick={decreaseCount}>
+            -
+          </button>
           <input
-            type="checkbox"
-            onChange={checkHandler}
-            checked={checkedList.includes(name)}
+            type="text"
+            value={quantity}
+            onChange={onChangeHandler}
+            onKeyDown={onKeyDown}
           />
+          <button type="button" onClick={increaseCount}>
+            +
+          </button>
         </div>
-        <div className="cartListProductBox">
-          <img alt="제품사진" src={img} />
-          <div className="cartListProductText">
-            <p>{name}</p>
-          </div>
+        <div className="cartListPrice">
+          <p>{itemPrice.toLocaleString("ko-KR")}원</p>
         </div>
-        <div className="cartListInfoBox">
-          <div className="cartListQuantity">
-            <button type="button" onClick={decreaseCount}>
-              -
-            </button>
-            <input
-              type="text"
-              value={quantity}
-              onChange={onChangeHandler}
-              onKeyDown={onKeyDown}
-            />
-            <button type="button" onClick={increaseCount}>
-              +
-            </button>
-          </div>
-          <div className="cartListPrice">
-            <p>{itemPrice.toLocaleString("ko-KR")}원</p>
-          </div>
-        </div>
-        <div className="cartListDeleteBox">
-          <button>:x:</button>
-        </div>
-      </li>
-    </ul>
+      </div>
+      <div className="cartListDeleteBox">
+        <button>:x:</button>
+      </div>
+    </li>
   );
 };
 export default CartList;

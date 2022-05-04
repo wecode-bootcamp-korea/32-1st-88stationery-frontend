@@ -81,10 +81,6 @@ const Cart = () => {
   //   }).then(response => response.json());
   // };
 
-  console.log(cartLists);
-  console.log(cartInfo);
-  // console.log(cartInfo);
-
   return (
     <div className="cartContainer">
       <h1 className="cartTitle">장바구니</h1>
@@ -103,24 +99,26 @@ const Cart = () => {
               <button>선택삭제</button>
             </div>
           </div>
-          {cartLists.map((cartList, index) => {
-            return (
-              <CartList
-                cartLists={cartLists}
-                setCartLists={setCartLists}
-                setCheckedList={setCheckedList}
-                checkedList={checkedList}
-                isAllChecked={isAllChecked}
-                key={index}
-                productPrice={cartList.price}
-                name={cartList.product}
-                id={cartList.category_id}
-                img={cartList.product_image_1}
-                setSumPrice={setSumPrice}
-                quantities={cartList.quantity}
-              />
-            );
-          })}
+          <ul className="cartList">
+            {cartLists.map((cartList, index) => {
+              return (
+                <CartList
+                  cartLists={cartLists}
+                  setCartLists={setCartLists}
+                  setCheckedList={setCheckedList}
+                  checkedList={checkedList}
+                  isAllChecked={isAllChecked}
+                  key={index}
+                  productPrice={cartList.price}
+                  name={cartList.product}
+                  id={cartList.category_id}
+                  img={cartList.product_image_1}
+                  setSumPrice={setSumPrice}
+                  quantities={cartList.quantity}
+                />
+              );
+            })}
+          </ul>
         </div>
         <div className="cartPayment">
           <CartPaymentResult
@@ -136,22 +134,3 @@ const Cart = () => {
   );
 };
 export default Cart;
-
-const CARTLIST = [
-  {
-    category_id: 3,
-    product: "그냥컵",
-    product_image_1: "",
-    product_image_2: "",
-    quantity: 4,
-    price: 1000,
-  },
-  {
-    category_id: 4,
-    product: "그냥빵",
-    product_image_1: "",
-    product_image_2: "",
-    quantity: 1,
-    price: 2000,
-  },
-];
