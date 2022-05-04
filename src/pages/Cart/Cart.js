@@ -82,6 +82,12 @@ const Cart = () => {
   // };
 
   console.log(cartLists);
+  console.log(checkedList);
+  console.log(
+    cartLists
+      .filter(list => checkedList.includes(list.product))
+      .map(e => e.cart_id)
+  );
 
   return (
     <div className="cartContainer">

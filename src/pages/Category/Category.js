@@ -34,8 +34,6 @@ const Category = () => {
     // navigate(`${queryString}`);
   };
 
-  console.log(location.search);
-
   return (
     <>
       <header className="category">
