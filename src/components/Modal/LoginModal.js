@@ -15,7 +15,6 @@ const LoginModal = ({
   isLoginModalOn,
   handleisLoginModalOn,
   setIstLoginModalOn,
-  setUserName,
 }) => {
   const navigate = useNavigate();
 
@@ -43,8 +42,9 @@ const LoginModal = ({
       .then(response => response.json())
       .then(result => {
         alert(ERROR_MESSAGE[result.message]);
-        setUserName(result.user_name);
+
         localStorage.setItem("token", result.Authorization);
+        localStorage.setItem("userName", result.user_name);
         setIstLoginModalOn(false);
       });
   };

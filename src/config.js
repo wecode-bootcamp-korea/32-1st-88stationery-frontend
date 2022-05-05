@@ -9,4 +9,6 @@ export const config = {
   category: `${MAIN_URL}products/category`,
   goods: `${MAIN_URL}products`,
   carts: `${MAIN_URL}orders/carts`,
+  search: `${MAIN_URL}search`,
+  orders: `${MAIN_URL}orders`,
 };

@@ -73,7 +73,7 @@
   }
 
   .gsbFooter {
-    @include commonDisplayAttributes(flex, null, center);
+    @include commonDisplayAttributes(flex, space-evenly, center);
     padding: 27px 40px;
 
     .footerContainer {
