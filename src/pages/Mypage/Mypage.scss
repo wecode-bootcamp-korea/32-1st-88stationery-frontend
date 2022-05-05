@@ -4,7 +4,8 @@
 .myPageContentBox {
   @include commonDisplayAttributes(flex, center, center);
   height: 90vh;
-
+  padding: 800px 20px;
+  margin-bottom: 100px;
   .myPageAllBox {
     @include commonDisplayAttributes(flex, null, center);
     flex-direction: column;
