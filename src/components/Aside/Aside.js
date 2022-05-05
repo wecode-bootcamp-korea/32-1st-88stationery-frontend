@@ -23,7 +23,10 @@ const Aside = ({ CATEGORY_LIST, isSideBarOn, handleSideBarOn, userName }) => {
         <header className="gsbHeader">
           <h2>
             {token ? (
-              <strong>{localStorage.getItem("userName")}님 환영합니다</strong>
+              <strong>
+                {localStorage.getItem("userName")}
+                <span>님 환영합니다</span>
+              </strong>
             ) : (
               <p>
                 앗!
