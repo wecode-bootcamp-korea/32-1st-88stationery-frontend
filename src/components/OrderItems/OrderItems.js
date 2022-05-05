@@ -4,29 +4,34 @@ import "./OrderItems.scss";
 const OrderItems = ({ orderLists }) => {
   return (
     <ul className="OrderedItemUl">
-      {orderLists.map(e => {
-        return (
-          <li key={e.order_id} className="orderedListLi">
-            <span className="orderedListOrder">{e.id}</span>
-            <div className="orderedProductBox">
-              <div className="orderImgBox">
-                <img className="orderProductImg" src={e.product_image_1} />
-                <img className="orderHoverImg" src={e.product_image_2} />
+      {orderLists.map(
+        ({
+          order_id,
+          product_image_1,
+          product_image_2,
+          product,
+          price,
+          quantity,
+          status,
+        }) => {
+          return (
+            <li key={order_id} className="orderedListLi">
+              <div className="orderedProductBox">
+                <div className="orderImgBox">
+                  <img className="orderProductImg" src={product_image_1} />
+                  <img className="orderHoverImg" src={product_image_2} />
+                </div>
+                <p className="orderedListProductText">{product}</p>
               </div>
-              <div className="orderedListProductText">
-                <p>{e.product}</p>
-              </div>
-            </div>
-            <div className="orderedListInfoBox">
-              <div className="orderedCount">{e.quantity}개</div>
-            </div>
-            <div className="orderedSumPrice">
-              {(e.quantity * e.price).toLocaleString("ko-KR")}원
-            </div>
-            <div className="orderedStatus">{e.status}</div>
-          </li>
-        );
-      })}
+              <p className="orderedCount">{quantity} 개</p>
+              <p className="orderedSumPrice">
+                {(quantity * price).toLocaleString()}원
+              </p>
+              <div className="orderedStatus">{status}</div>
+            </li>
+          );
+        }
+      )}
     </ul>
   );
 };

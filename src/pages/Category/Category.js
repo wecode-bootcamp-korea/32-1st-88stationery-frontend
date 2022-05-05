@@ -10,13 +10,16 @@ const Category = () => {
   const [itemLists, setItemLists] = useState([]);
   const [categoryInfo, setCategoryInfo] = useState([]);
   const [page, setPage] = useState(1);
+  const [sortUrl, setSortUrl] = useState("");
   const location = useLocation();
   const params = useParams();
 
+  console.log(location);
+
   useEffect(() => {
     fetch(
-      `${config.category}/${params.id}${
-        location.search || `?limit=${LIMIT}&offset=${(page - 1) * LIMIT}`
+      `${config.category}/${params.id}?${sortUrl}&${
+        location.search || `limit=${LIMIT}&offset=${(page - 1) * LIMIT}`
       }`
     )
       .then(res => res.json())
@@ -26,14 +29,26 @@ const Category = () => {
         setCategoryInfo(res.category[0]);
         setItemLists(itemLists.concat(copyArray));
       });
-  }, [page]);
+  }, [page, sortUrl]);
 
   const updateOffset = e => {
-    // const offset = page * LIMIT;
-    // const queryString = `?limit=${LIMIT}&offset=${offset}`;
     setPage(page + 1);
-    // LIMIT += 4;
-    // navigate(`${queryString}`);
+  };
+
+  const sortCategoryHandler = e => {
+    if (e.target.type === "sortByLowPrice") {
+      setItemLists([]);
+      setPage(1);
+      setSortUrl("sort_method=1");
+    } else if (e.target.type === "sortByHighPrice") {
+      setItemLists([]);
+      setPage(1);
+      setSortUrl("sort_method=2");
+    } else if (e.target.type === "sortByNewItems") {
+      setItemLists([]);
+      setPage(1);
+      setSortUrl("sort_method=3");
+    }
   };
 
   return (
@@ -61,6 +76,7 @@ const Category = () => {
         itemLists={itemLists}
         updateOffset={updateOffset}
         setItemLists={setItemLists}
+        sortCategoryHandler={sortCategoryHandler}
       />
     </>
   );

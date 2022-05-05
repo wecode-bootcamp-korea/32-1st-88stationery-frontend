@@ -3,9 +3,8 @@
 
 .myPageContentBox {
   @include commonDisplayAttributes(flex, center, center);
-  height: 90vh;
-  padding: 800px 20px;
-  margin-bottom: 100px;
+  padding: 200px 0;
+
   .myPageAllBox {
     @include commonDisplayAttributes(flex, null, center);
     flex-direction: column;
@@ -18,9 +17,9 @@
       color: $commonColor;
     }
     .asideWelcomeBox {
-      margin-left: 150px;
-      padding: 0 20px;
-      width: 80%;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 100%;
       display: flex;
 
       .asideBar {
