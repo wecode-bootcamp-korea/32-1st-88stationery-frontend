@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./OrderItems.scss";
 
 const OrderItems = ({ orderLists }) => {
@@ -16,9 +16,26 @@ const OrderItems = ({ orderLists }) => {
         }) => {
           return (
             <li key={order_id} className="orderedListLi">
+<<<<<<< HEAD
+              <div className="orderedProductBox">
+                <div className="orderImgBox">
+                  <img
+                    alt="productImage"
+                    className="orderProductImg"
+                    src={product_image_1}
+                  />
+                  <img
+                    alt="productImage"
+                    className="orderHoverImg"
+                    src={product_image_2}
+                  />
+                </div>
+                <p className="orderedListProductText">{product}</p>
+=======
               <div className="orderImgBox">
                 <img className="orderProductImg" src={product_image_1} />
                 <img className="orderHoverImg" src={product_image_2} />
+>>>>>>> master
               </div>
               <p className="orderedListProductText">{product}</p>
 

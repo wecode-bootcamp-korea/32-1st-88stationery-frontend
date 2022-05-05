@@ -1,5 +1,6 @@
 import React from "react";
 import "./CartPaymentResult.scss";
+
 const CartPaymentResult = ({ totalPrice, deliveryPrice }) => {
   return (
     <div className="paymentResult">

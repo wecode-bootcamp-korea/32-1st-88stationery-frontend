@@ -73,8 +73,6 @@
 
   button {
     @include size(30px, 30px);
-    width: 30px;
-    height: 30px;
     margin-right: 20px;
     border: 1px solid #2ac1bc;
     border-radius: 5px;
@@ -98,6 +96,7 @@
     @include size(30px, 30px);
     opacity: 1;
   }
+
   100% {
     @include size(300px, 300px);
     opacity: 0;
