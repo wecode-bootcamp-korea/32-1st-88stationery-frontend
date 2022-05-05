@@ -54,6 +54,22 @@ const Goods = () => {
       .then(result => console.log(result));
   };
 
+  const buyItems = e => {
+    e.preventDefault();
+    fetch("http://10.58.1.230:8000/orders", {
+      method: "POST",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6N30.u8tQmYe21yFLPlb5ABDzRHAG7XGE2zugyDhD3IA5K1s",
+      },
+      body: JSON.stringify({
+        product_id: goodsInfo.product_id,
+        quantity: quantity,
+      }),
+    }).then(response => response.json());
+    window.location.reload();
+  };
+
   return (
     <main className="goods">
       <header className="goodsView">
@@ -123,7 +139,9 @@ const Goods = () => {
               <button onClick={goCart} className="cartButton">
                 <i className="fa-solid fa-cart-shopping" />
               </button>
-              <button className="buyButton">바로 구매하기</button>
+              <button onClick={buyItems} className="buyButton">
+                바로 구매하기
+              </button>
             </footer>
           </div>
         </div>
