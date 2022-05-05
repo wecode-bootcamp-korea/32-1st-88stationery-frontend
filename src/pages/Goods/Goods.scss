@@ -59,20 +59,25 @@
         opacity: 0;
       }
 
-      .swipePrev,
-      .swipeNext {
+      .fa-arrow-left-long,
+      .fa-arrow-right-long {
         @include size(30px, 50px);
         position: absolute;
-        background-color: $commonColor;
         top: 50%;
+        color: #999;
         transform: translateY(-50%);
+        cursor: pointer;
+
+        &:hover {
+          color: $blackColor;
+        }
       }
 
-      .swipePrev {
+      .fa-arrow-left-long {
         left: 10px;
       }
 
-      .swipeNext {
+      .fa-arrow-right-long {
         right: 10px;
       }
 

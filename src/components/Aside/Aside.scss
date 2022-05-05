@@ -29,6 +29,14 @@
       font-weight: 500;
       letter-spacing: -1px;
       font-family: "BMJUA";
+
+      strong {
+        color: $commonColor;
+
+        span {
+          color: $blackColor;
+        }
+      }
     }
   }
 
