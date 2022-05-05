@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { config } from "../../config";
-import "./Login.scss";
 import AsideGlobalChange from "../Aside/AsideGlobalChange";
 import LoginFormLayout from "./LoginFormLayout";
+import "./Login.scss";
 
 const ERROR_MESSAGE = {
   INVALID_EMAIL: "존재하지 않는 아이디입니다",

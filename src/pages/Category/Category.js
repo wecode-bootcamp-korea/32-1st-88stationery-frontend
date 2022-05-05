@@ -14,8 +14,6 @@ const Category = () => {
   const location = useLocation();
   const params = useParams();
 
-  console.log(location);
-
   useEffect(() => {
     fetch(
       `${config.category}/${params.id}?${sortUrl}&${
@@ -24,7 +22,6 @@ const Category = () => {
     )
       .then(res => res.json())
       .then(res => {
-        console.log(res);
         const copyArray = [...res.products];
         setCategoryInfo(res.category[0]);
         setItemLists(itemLists.concat(copyArray));

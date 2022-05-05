@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { config } from "../../config";
-import "../Search/Search.scss";
 import SearchItems from "./SearchItems";
+import "../Search/Search.scss";
 
 function Search({ isSearchOn, handleSearchBarOn }) {
   const [userInput, setUserInput] = useState("");

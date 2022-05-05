@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CartList from "../../components/CartList/CartList";
 import CartPaymentResult from "../../components/CartPaymentResult/CartPaymentResult";
+import { config } from "../../config";
 import "./Cart.scss";
 
 const Cart = () => {
@@ -12,7 +13,7 @@ const Cart = () => {
   const [cartInfo, setCartInfo] = useState();
 
   useEffect(() => {
-    fetch("http://10.58.1.230:8000/orders/carts", {
+    fetch(`${config.carts}`, {
       method: "GET",
       headers: {
         Authorization:
@@ -38,17 +39,13 @@ const Cart = () => {
       ? setIsAllChecked(true)
       : setIsAllChecked(false);
   }, [checkedList]);
+
   useEffect(() => {
     sumPrice > 30000 ? setDeliveryPrice(0) : setDeliveryPrice(3000);
   }, [sumPrice]);
-  const totalPrice = Object.values(sumPrice).reduce((acc, cur) => acc + cur);
-  const allCheckHandler = () => {
-    setIsAllChecked(!isAllChecked);
-    isAllChecked === true && setCheckedList([]);
-  };
 
   useEffect(() => {
-    fetch("http://10.58.1.230:8000/orders/carts", {
+    fetch(`${config.carts}`, {
       method: "PATCH",
       headers: {
         Authorization:
@@ -66,9 +63,16 @@ const Cart = () => {
     });
   }, [cartLists]);
 
+  const totalPrice = Object.values(sumPrice).reduce((acc, cur) => acc + cur);
+
+  const allCheckHandler = () => {
+    setIsAllChecked(!isAllChecked);
+    isAllChecked === true && setCheckedList([]);
+  };
+
   const buyItems = e => {
     e.preventDefault();
-    fetch("http://10.58.1.230:8000/orders", {
+    fetch(`${config.orders}`, {
       method: "POST",
       headers: {
         Authorization:

@@ -4,7 +4,6 @@ import Aside from "../Aside/Aside";
 import Search from "../Search/Search";
 import NavSideCategory from "./NavSideCategory";
 import LoginModal from "../Modal/LoginModal";
-import { config } from "../../config";
 import "./Nav.scss";
 
 const CATEGORY_LIST = [
@@ -33,9 +32,11 @@ const Nav = () => {
   function handleSearchBarOn() {
     setisSearchOn(!isSearchOn);
   }
+
   function handleisLoginModalOn() {
     setIstLoginModalOn(!isLoginModalOn);
   }
+
   function scrollUpHandler() {
     window.scrollTo({
       top: 0,
@@ -49,6 +50,7 @@ const Nav = () => {
     localStorage.removeItem("userName");
     window.location.reload();
   };
+
   useEffect(() => {
     function scrollListener() {
       window.addEventListener("scroll", handleScroll);

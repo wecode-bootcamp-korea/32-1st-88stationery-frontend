@@ -58,6 +58,7 @@
       }
     }
   }
+
   .gnbEtc {
     @include commonDisplayAttributes(flex, space-evenly, center);
     flex: 1;

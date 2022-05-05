@@ -57,6 +57,7 @@
           color: #2ac1bc;
         }
       }
+
       .searchResult:hover {
         .lastImg {
           opacity: 1;
@@ -83,9 +84,8 @@
   }
 
   .searchBarHeader {
-    display: flex;
+    @include commonDisplayAttributes(flex, null, center);
     position: relative;
-    align-items: center;
     margin: 0 auto;
     width: 600px;
 
