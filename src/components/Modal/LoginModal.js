@@ -41,11 +41,15 @@ const LoginModal = ({
     })
       .then(response => response.json())
       .then(result => {
-        alert(ERROR_MESSAGE[result.message]);
-
-        localStorage.setItem("token", result.Authorization);
-        localStorage.setItem("userName", result.user_name);
-        setIstLoginModalOn(false);
+        if (result.message === "SUCCESS") {
+          alert(ERROR_MESSAGE[result.message]);
+          localStorage.setItem("token", result.Authorization);
+          localStorage.setItem("userName", result.user_name);
+          setIstLoginModalOn(false);
+        } else {
+          alert(ERROR_MESSAGE[result.message]);
+          setIstLoginModalOn(false);
+        }
       });
   };
 
