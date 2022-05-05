@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { config } from "../../config";
 import "../Search/Search.scss";
+import SearchItems from "./SearchItems";
+
 function Search({ isSearchOn, handleSearchBarOn }) {
   const [userInput, setUserInput] = useState("");
   const [userSearch, setUserSearch] = useState([]);
@@ -39,12 +41,12 @@ function Search({ isSearchOn, handleSearchBarOn }) {
         <div className="searchResultContainer">
           {userInput.length > 0 ? (
             filterInputValue.map(list => {
-              const { product_id, name, thumnail_url_1 } = list;
               return (
-                <div className="searchResult" key={product_id}>
-                  <img src={thumnail_url_1} alt="searchImg" />
-                  <h2>{name}</h2>
-                </div>
+                <SearchItems
+                  key={list.product_id}
+                  list={list}
+                  handleSearchBarOn={handleSearchBarOn}
+                />
               );
             })
           ) : (
