@@ -4,6 +4,7 @@
   align-items: center;
   height: 100vh;
   padding: 200px 100px;
+  margin-bottom: 300px;
   .cartTitle {
     font-size: 35px;
     margin-bottom: 5%;
@@ -13,9 +14,11 @@
     justify-content: space-between;
     align-items: center;
     width: 1200px;
+    height: 1000vh;
     .cartContent {
       width: 100%;
       margin-right: 100px;
+      height: 100%;
       .cartContentHeader {
         display: flex;
         justify-content: space-between;
