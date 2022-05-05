@@ -1,7 +1,9 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .bannerContainer {
+  @include size(100vw, 810px);
   position: relative;
-  width: 100vw;
-  height: 810px;
   overflow: hidden;
 
   .imageWrapper {
@@ -9,8 +11,7 @@
     width: 500vw;
 
     img {
-      width: 100%;
-      height: 810px;
+      @include size(100%, 810px);
       overflow: hidden;
     }
   }
@@ -24,13 +25,13 @@
     z-index: 1;
 
     span {
-      width: 10px;
-      height: 10px;
+      @include size(10px, 10px);
       margin-left: 12px;
       text-indent: -1000px;
       overflow: hidden;
-      background-color: #fff;
+      background-color: $blackColor;
       border-radius: 50%;
+      background-color: $blackColor;
       opacity: 0.2;
       flex: 1;
       cursor: pointer;
@@ -47,9 +48,8 @@
 
   .fa-arrow-left-long,
   .fa-arrow-right-long {
+    @include size(30px, 100px);
     position: absolute;
-    width: 30px;
-    height: 100px;
     top: 50%;
     color: #fafaf9;
     transform: translateY(-50%);

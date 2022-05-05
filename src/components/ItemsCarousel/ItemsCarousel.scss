@@ -1,0 +1,94 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.ItemsCarousel {
+  position: relative;
+  margin: 0 auto;
+  width: 1000px;
+  overflow: hidden;
+
+  .carouselWrapper {
+    @include commonDisplayAttributes(flex, space-between, null);
+    transition: all 0.7s ease 0.2s;
+
+    .item {
+      margin: 20px 20px;
+    }
+
+    .itemDetail {
+      position: relative;
+
+      .thumbnail {
+        img {
+          @include size(300px, 300px);
+          transition: opacity 0.7s ease-in-out;
+
+          &:nth-last-child(1) {
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            z-index: -1;
+          }
+        }
+      }
+
+      .itemInfo {
+        text-align: center;
+        line-height: 25px;
+      }
+
+      &:hover {
+        p {
+          color: $commonColor;
+        }
+
+        img:nth-last-child(1) {
+          opacity: 1;
+          z-index: 1;
+        }
+      }
+    }
+  }
+
+  button.navigation {
+    @include size(50px, 50px);
+    position: absolute;
+    top: calc(50% - 33px);
+    background-color: $commonColor;
+    border-radius: 30px;
+    color: $background;
+    text-align: center;
+    font-size: 16px;
+    z-index: 1;
+    transition: transform cubic-bezier(0.22, 0.61, 0.36, 1) 0.5s;
+    cursor: pointer;
+    border: none;
+
+    &.prev {
+      left: 0;
+      transform: translateX(-80px);
+    }
+
+    &.next {
+      right: 0;
+      transform: translateX(80px);
+    }
+  }
+
+  &:hover {
+    button.navigation {
+      transform: translateX(0);
+    }
+  }
+  .pagination {
+    height: 2px;
+    margin: 0 80px 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    .current {
+      height: 100%;
+      background-color: $blackColor;
+      transition: transform cubic-bezier(0.22, 0.61, 0.36, 1) 0.5s;
+    }
+  }
+}

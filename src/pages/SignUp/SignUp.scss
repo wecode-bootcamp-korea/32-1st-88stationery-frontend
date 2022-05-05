@@ -1,16 +1,16 @@
 @import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
 .signUp {
+  @include commonDisplayAttributes(flex, center, center);
   position: relative;
   top: 100px;
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   margin-bottom: 150px;
 
   .signUpTitle {
-    margin-top: 30px;
+    @include marginHandler(30px, 30px, null null);
+    font-family: "BMDOHYEON";
     padding: 10px 0;
     text-align: center;
     font-size: 40px;
@@ -18,17 +18,14 @@
   }
 
   .accountContent {
-    display: flex;
+    @include commonDisplayAttributes(flex, null, center);
     flex-direction: column;
-    align-items: center;
     width: 35%;
     padding: 20px 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 
     .accountTitleProcess {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include commonDisplayAttributes(flex, space-between, center);
       width: 100%;
       margin-bottom: 20px;
 
@@ -38,22 +35,19 @@
       }
 
       .processBox {
-        display: flex;
-        justify-content: center;
+        @include commonDisplayAttributes(flex, center, null);
+        margin-top: 10px;
 
         .processUnderBar {
           opacity: 0.1;
         }
 
         .process {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 26px;
-          height: 26px;
+          @include commonDisplayAttributes(flex, center, center);
+          @include size(26px, 26px);
           border-radius: 50%;
           background-color: #2ac1bc;
-          color: white;
+          color: $background;
           font-size: 12px;
           font-weight: 800;
         }
@@ -69,10 +63,16 @@
         padding: 15px 8px;
         border: 1px solid #ddd;
         border-radius: 6px;
+        font-family: sans-serif;
+        transition: all 1s;
 
         &:focus {
           outline: none;
         }
+      }
+
+      input::placeholder {
+        font-family: "BMDOHYEON";
       }
 
       .relativeText {
@@ -81,16 +81,24 @@
         &::before {
           @include inputInSideText();
         }
+        font-family: "BMDOHYEON";
       }
 
       .inputBirthBox {
         &::before {
           top: 23px;
         }
+
+        p {
+          text-align: end;
+          font-family: "BMJUA";
+          font-weight: 200;
+        }
       }
 
       .showAlertText {
         margin-bottom: 10px;
+        font-family: "BMJUA";
         &::before {
           content: "필수 입력 값입니다 !";
           color: #f45452;
@@ -101,6 +109,7 @@
 
       .showValueFail {
         margin-bottom: 10px;
+        font-family: "BMJUA";
 
         &::before {
           content: "형식에 맞게 작성해주세요!";
@@ -112,6 +121,7 @@
 
       .showValuePwFail {
         margin-bottom: 10px;
+        font-family: "BMJUA";
 
         &::before {
           content: "8자 이상 작성해주세요!";
@@ -123,6 +133,7 @@
 
       .showValuePwCheckFail {
         margin-bottom: 10px;
+        font-family: "BMJUA";
 
         &::before {
           content: "비밀번호가 일치하지 않습니다!";
@@ -134,6 +145,7 @@
 
       .showValueBirthFail {
         margin-bottom: 10px;
+        font-family: "BMJUA";
 
         &::before {
           content: "생일형식에 맞게 작성해주세요!";
@@ -144,7 +156,8 @@
       }
 
       .successBox {
-        border: 3px solid #2ac1bc;
+        border: 2px solid #2ac1bc;
+        transition: all 0.5s;
       }
 
       .inputEmailBox,
@@ -155,20 +168,32 @@
   }
 
   .signUpBtn {
-    display: flex;
-    justify-content: center;
+    @include commonDisplayAttributes(flex, center, null);
+    margin-top: 40px;
     width: 100%;
+    background-color: #eeeeee;
+    border-radius: 13px;
 
     .disabled {
       width: 100%;
       padding: 15px 50px;
       background: transparent;
+      border: none;
+      border-radius: 13px;
+      font-family: "BMDOHYEON";
+      color: #acadae;
+      transition: all 0.5s;
     }
 
     .abled {
       width: 100%;
       padding: 15px 8px;
       background-color: #2ac1bc;
+      border: none;
+      border-radius: 13px;
+      font-family: "BMDOHYEON";
+      color: white;
+      transition: all 0.5s;
     }
   }
 }

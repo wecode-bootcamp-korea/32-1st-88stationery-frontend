@@ -1,24 +1,65 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
+import ItemContainer from "../../components/ItemContainer/ItemContainer";
 import "./Category.scss";
+import { config } from "../../config";
+
+const LIMIT = 4;
 
 const Category = () => {
+  const [itemLists, setItemLists] = useState([]);
+  const [categoryInfo, setCategoryInfo] = useState([]);
+  const [page, setPage] = useState(1);
+  const location = useLocation();
+  const params = useParams();
+
+  useEffect(() => {
+    fetch(
+      `${config.category}/${params.id}${
+        location.search || `?limit=${LIMIT}&offset=${(page - 1) * LIMIT}`
+      }`
+    )
+      .then(res => res.json())
+      .then(res => {
+        const copyArray = [...res.products];
+        setCategoryInfo(res.category[0]);
+        setItemLists(itemLists.concat(copyArray));
+      });
+  }, [page]);
+
+  const updateOffset = e => {
+    // const offset = page * LIMIT;
+    // const queryString = `?limit=${LIMIT}&offset=${offset}`;
+    setPage(page + 1);
+    // navigate(`${queryString}`);
+  };
+
   return (
-    <header className="category">
-      <div className="categoryContainer">
-        <div className="categoryHeader">
-          <h1>
-            리빙
-            <p>총 13개</p>
-          </h1>
+    <>
+      <header className="category">
+        <div className="categoryContainer">
+          {categoryInfo.length !== 0 && (
+            <>
+              <div className="categoryHeader">
+                <h1>
+                  {categoryInfo.category_name}
+                  <p>총{itemLists.length}개</p>
+                </h1>
+              </div>
+              <div className="categoryInfo">
+                <p>{categoryInfo.category_detail}</p>
+              </div>
+            </>
+          )}
         </div>
-        <div className="categoryInfo">
-          <p>
-            자주쓰는 물건과 이야기해 보는거 어때요?
-            <br /> 혼자 풋! 하고 웃게도 될걸요.
-          </p>
-        </div>
-      </div>
-    </header>
+      </header>
+      <ItemContainer
+        name="itemsInCategory"
+        title="요즘 잘 나가요"
+        itemLists={itemLists}
+        updateOffset={updateOffset}
+      />
+    </>
   );
 };
 

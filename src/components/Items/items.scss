@@ -1,4 +1,7 @@
-.item {
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.items {
   display: flex;
   flex-direction: column;
   width: 282px;
@@ -10,7 +13,7 @@
     width: 100%;
 
     img {
-      width: 100%;
+      @include size(300px, 300px);
     }
 
     img:last-child {
@@ -24,9 +27,8 @@
   }
 
   .itemInfo {
-    display: flex;
+    @include commonDisplayAttributes(flex, null, center);
     flex-direction: column;
-    align-items: center;
     margin-top: 20px;
 
     p {
@@ -39,7 +41,7 @@
   }
 }
 
-.item:hover {
+.items:hover {
   img:last-child {
     opacity: 1;
     z-index: 1;

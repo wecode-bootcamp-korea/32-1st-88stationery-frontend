@@ -1,3 +1,6 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .gnb {
   position: fixed;
   left: 0px;
@@ -10,8 +13,8 @@
 
   &Action {
     @extend .gnb;
-    border-bottom: 1px solid black;
-    background-color: #fff;
+    border-bottom: 1px solid $blackColor;
+    background-color: $background;
     opacity: 0.8;
     z-index: 100;
   }
@@ -22,16 +25,15 @@
   }
 
   .gnbContainer {
-    display: flex;
-    align-items: center;
-    height: 90px;
-    width: 100%;
+    @include size(100%, 90px);
+    @include commonDisplayAttributes(flex, null, center);
     padding: 0 40px;
 
     .gnbLogo {
       flex: 1;
     }
   }
+
   .gnbCategory {
     flex: 2;
     cursor: pointer;
@@ -40,48 +42,88 @@
       display: flex;
       font-size: 18px;
 
-      a {
+      li {
+        font-family: "BMDOHYEON";
         padding-right: 20px;
-        color: #000;
+        color: $blackColor;
         font-size: inherit;
-        font-weight: 700;
+        font-weight: 500;
         text-decoration-line: none;
+        transition: all 0.5s;
 
         &:hover {
-          color: #39c5c0;
+          color: $commonColor;
+          transition: all 0.5s;
         }
       }
     }
   }
   .gnbEtc {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    @include commonDisplayAttributes(flex, space-evenly, center);
     flex: 1;
 
     i {
       cursor: pointer;
+      color: $blackColor;
+    }
+
+    a {
+      text-decoration: none;
     }
 
     .gnbLogin {
-      display: inline-flex;
-      align-items: center;
-      min-width: 69px;
-      height: 33px;
-      margin: 0px 2px;
-      padding: 0px 16px;
+      @include commonDisplayAttributes(inline-flex, null, center);
+      @include size(null, 33px);
       background: transparent;
       border: 2px solid rgb(68, 68, 68);
       border-radius: 17px;
       font-size: 14px;
       font-weight: 700;
+      padding: 10px 10px;
       text-align: center;
       cursor: pointer;
+      transition: all 0.5s;
+      transform: translateY(-1px);
 
       &:hover {
-        background-color: #58e8e3;
-        border: 2px solid transparent;
+        color: $background;
+        background-color: $blackColor;
+        transition: all 0.5s;
       }
     }
+
+    .userName {
+      font-size: 20px;
+      font-weight: 900;
+      color: #39c5c0;
+      transform: translateY(1px);
+    }
+
+    .gnbLogOut {
+      @extend .gnbLogin;
+      transform: translateY(-3px);
+    }
+  }
+}
+
+.fa-hand-pointer {
+  @include size(70px, 70px);
+  position: fixed;
+  bottom: 10%;
+  right: 5%;
+  line-height: 70px;
+  border-radius: 50px;
+  background-color: $commonColor;
+  color: $background;
+  text-align: center;
+  vertical-align: middle;
+  z-index: 500;
+  transition: all 1s;
+
+  &:hover {
+    color: $commonColor;
+    border: 2px solid $commonColor;
+    background-color: $background;
+    transition: all 1s;
   }
 }

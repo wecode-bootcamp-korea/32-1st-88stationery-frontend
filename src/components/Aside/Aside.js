@@ -1,28 +1,44 @@
 import React from "react";
 import NavSideCategory from "../Nav/NavSideCategory";
-import "./Aside.scss";
 import AsideGlobalChange from "./AsideGlobalChange";
+import { useNavigate } from "react-router-dom";
+import "./Aside.scss";
 
 const Aside = ({ CATEGORY_LIST, isSideBarOn, handleSideBarOn }) => {
-  const loginAvalid = "";
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  const loginAvalid = token;
+
+  const goToInquiry = () => {
+    if (token) {
+      navigate("/inquiry");
+    } else {
+      alert("로그인 후 이용 가능한 서비스입니다🤗");
+    }
+  };
 
   return (
     <>
       <aside className={isSideBarOn ? "gsb" : "gsbHidden"}>
         <header className="gsbHeader">
           <h2>
-            {loginAvalid ? (
+            {localStorage.getItem("token") ? (
               <strong>{loginAvalid}님 환영합니다</strong>
             ) : (
-              <p>로그인이 필요합니다</p>
+              <p>
+                앗!
+                <br /> 로그인이 필요합니다
+              </p>
             )}
           </h2>
         </header>
         <nav className="gsbNavCategory">
-          <i
-            className="fa fa-duotone fa-xmark fa-2x"
-            onClick={handleSideBarOn}
-          />
+          <span className="gsbNavBtn">
+            <i
+              className="fa fa-duotone fa-xmark fa-2x"
+              onClick={handleSideBarOn}
+            />
+          </span>
           <h2>카테고리</h2>
           <ul className="gsbCategoryList">
             <NavSideCategory CATEGORY_LIST={CATEGORY_LIST} />
@@ -30,13 +46,15 @@ const Aside = ({ CATEGORY_LIST, isSideBarOn, handleSideBarOn }) => {
         </nav>
         <footer className="gsbFooter">
           <div className="footerContainer">
-            <i className="fa fa-solid fa-headphones-simple fa-2x" />
             <ul>
               <li>
-                <span>1:1문의</span>
+                <span onClick={goToInquiry}>
+                  <i className="fa fa-solid fa-headphones-simple fa-2x" />
+                  1:1문의
+                </span>
               </li>
               <li>
-                <span>이메일 문의</span>
+                <span onClick={() => alert("그런 건 없다😋")}>이메일 문의</span>
               </li>
             </ul>
           </div>

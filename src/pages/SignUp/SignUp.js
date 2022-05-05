@@ -95,12 +95,14 @@ const SignUp = () => {
 
   return (
     <div className="signUp">
-      <h2 className="signUpTitle">회원가입</h2>
+      <h2 className="signUpTitle">88문방구 회원가입</h2>
       <div className="accountContent">
         <div className="accountTitleProcess">
           <h3>회원정보</h3>
           <ul className="processBox">
-            <li className="process">01</li>
+            <li className="process">
+              <i class="fa-solid fa-user" />
+            </li>
           </ul>
         </div>
         <form
@@ -313,7 +315,10 @@ const SignUp = () => {
                 )}
               </div>
             )}
-            <p>생일을 정확하게 입력해주세요.(예: 2000-12-31)</p>
+            <p>
+              <i className="fa-solid fa-triangle-exclamation" />
+              &nbsp; 생일을 정확하게 입력해주세요. (예:2000-12-31)
+            </p>
             <p>만 14세 이상만 회원가입이 가능합니다.</p>
           </div>
           <div className="signUpBtn">
