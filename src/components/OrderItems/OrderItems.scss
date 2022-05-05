@@ -7,12 +7,14 @@
   margin-left: 50px;
 
   .orderedListLi {
-    width: 100%;
     display: flex;
+    align-items: center;
+    width: 100%;
 
     .orderedProductBox {
       width: 100%;
       display: flex;
+
       .orderImgBox {
         position: relative;
 
@@ -42,18 +44,9 @@
         width: 100%;
         display: flex;
         align-items: center;
-
-        p {
-          font-size: 18px;
-          font-weight: 500;
-        }
+        font-size: 18px;
+        font-weight: 500;
       }
-    }
-
-    .orderedListInfoBox {
-      width: 50%;
-      display: flex;
-      align-items: center;
     }
 
     .orderedCount {

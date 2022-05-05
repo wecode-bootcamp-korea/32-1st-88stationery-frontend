@@ -11,11 +11,10 @@ const CartList = ({
   id,
   setCartLists,
   cartLists,
-  quantities,
+  quantity,
 }) => {
-  const [quantity, setQuantity] = useState(quantities);
   const [isChecked, setIsChecked] = useState(checkedList.includes(name));
-  const itemPrice = Number(productPrice);
+  const itemPrice = Number(productPrice) * quantity;
 
   // useEffect(() => {
   //   // 원본 배열은 건드리면 안되기 때문에 배열 복제
@@ -28,6 +27,7 @@ const CartList = ({
   //   copyArray[selectedIndex].quantity = quantity;
   //   setCartLists(copyArray);
   // }, [quantity]);
+  console.log(productPrice, id, quantity, cartLists);
 
   useEffect(() => {
     setIsChecked(checkedList.includes(name));
@@ -47,7 +47,7 @@ const CartList = ({
 
   const increaseCount = () => {
     const copyArray = [...cartLists];
-    const selectedIndex = copyArray.findIndex(e => e.category_id === id);
+    const selectedIndex = copyArray.findIndex(e => e.cart_id === id);
     copyArray[selectedIndex].quantity++;
     setCartLists(copyArray);
   };
@@ -55,19 +55,25 @@ const CartList = ({
   const decreaseCount = () => {
     if (quantity > 0) {
       const copyArray = [...cartLists];
-      const selectedIndex = copyArray.findIndex(e => e.category_id === id);
+      const selectedIndex = copyArray.findIndex(e => e.cart_id === id);
       copyArray[selectedIndex].quantity--;
       setCartLists(copyArray);
     }
   };
 
   const onChangeHandler = e => {
-    setQuantity(e.target.value);
+    const copyArray = [...cartLists];
+    const selectedIndex = copyArray.findIndex(e => e.cart_id === id);
+    copyArray[selectedIndex].quantity = e.target.value;
+    setCartLists(copyArray);
   };
 
   const onKeyDown = e => {
     if (e.code.includes("Digit") || e.code.includes("Backspace")) {
-      setQuantity(e.target.value);
+      const copyArray = [...cartLists];
+      const selectedIndex = copyArray.findIndex(e => e.cart_id === id);
+      copyArray[selectedIndex].quantity = e.target.value;
+      setCartLists(copyArray);
     } else {
       e.preventDefault();
     }
@@ -77,6 +83,20 @@ const CartList = ({
     checkedList.includes(name) === false
       ? setCheckedList(prev => [...prev, name])
       : setCheckedList(prev => prev.filter(item => item !== name));
+  };
+
+  const deleteItem = () => {
+    fetch("http://10.58.1.230:8000/orders/carts", {
+      method: "DELETE",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6N30.u8tQmYe21yFLPlb5ABDzRHAG7XGE2zugyDhD3IA5K1s",
+      },
+      body: JSON.stringify({
+        cart_id: id,
+      }),
+    }).then(response => response.json());
+    window.location.reload();
   };
 
   return (
@@ -101,9 +121,10 @@ const CartList = ({
           </button>
           <input
             type="text"
-            value={quantities}
+            value={quantity}
             onChange={onChangeHandler}
             onKeyDown={onKeyDown}
+            maxLength={4}
           />
           <button type="button" onClick={increaseCount}>
             +
@@ -114,7 +135,7 @@ const CartList = ({
         </div>
       </div>
       <div className="cartListDeleteBox">
-        <button>:x:</button>
+        <button onClick={deleteItem}>:x:</button>
       </div>
     </li>
   );

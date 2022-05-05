@@ -62,32 +62,26 @@ const Cart = () => {
         })),
       }),
     }).then(response => {
-      console.log(response);
       response.json();
     });
   }, [cartLists]);
 
-  // const buyItems = e => {
-  //   e.preventDefault();
-  //   fetch("http://10.58.1.230:8000/orders", {
-  //     method: "POST",
-  //     headers: {
-  //       Authorization:
-  //         "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6N30.u8tQmYe21yFLPlb5ABDzRHAG7XGE2zugyDhD3IA5K1s",
-  //     },
-  //     body: JSON.stringify({
-  //       carts_info: [cartInfo],
-  //     }),
-  //   }).then(response => response.json());
-  // };
-
-  console.log(cartLists);
-  console.log(checkedList);
-  console.log(
-    cartLists
-      .filter(list => checkedList.includes(list.product))
-      .map(e => e.cart_id)
-  );
+  const buyItems = e => {
+    e.preventDefault();
+    fetch("http://10.58.1.230:8000/orders", {
+      method: "POST",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6N30.u8tQmYe21yFLPlb5ABDzRHAG7XGE2zugyDhD3IA5K1s",
+      },
+      body: JSON.stringify({
+        cart_id: cartLists
+          .filter(list => checkedList.includes(list.product))
+          .map(e => e.cart_id),
+      }),
+    }).then(response => response.json());
+    window.location.reload();
+  };
 
   return (
     <div className="cartContainer">
@@ -119,10 +113,10 @@ const Cart = () => {
                   key={index}
                   productPrice={cartList.price}
                   name={cartList.product}
-                  id={cartList.category_id}
+                  id={cartList.cart_id}
                   img={cartList.product_image_1}
                   setSumPrice={setSumPrice}
-                  quantities={cartList.quantity}
+                  quantity={cartList.quantity}
                 />
               );
             })}
@@ -134,7 +128,7 @@ const Cart = () => {
             totalPrice={totalPrice}
           />
           <div className="orderBtn">
-            <button>주문하기</button>
+            <button onClick={buyItems}>주문하기</button>
           </div>
         </div>
       </div>
