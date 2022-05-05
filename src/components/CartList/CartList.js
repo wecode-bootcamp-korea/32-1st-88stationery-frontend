@@ -98,9 +98,9 @@ const CartList = ({
       </div>
       <div className="cartListProductBox">
         <img alt="제품사진" src={img} />
-        <div className="cartListProductText">
+        <p className="cartListProductText">
           <p>{name}</p>
-        </div>
+        </p>
       </div>
       <div className="cartListInfoBox">
         <div className="cartListQuantity">

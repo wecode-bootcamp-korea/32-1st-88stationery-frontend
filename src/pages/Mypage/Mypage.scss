@@ -17,8 +17,7 @@
       color: $commonColor;
     }
     .asideWelcomeBox {
-      display: flex;
-      justify-content: center;
+      @include commonDisplayAttributes(flex, center, null);
       width: 1250px;
       padding: 0 50px;
 
@@ -35,7 +34,7 @@
         }
         a {
           text-decoration: none;
-          color: #2ac1bc;
+          color: $commonColor;
           cursor: pointer;
         }
       }
