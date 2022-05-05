@@ -99,7 +99,8 @@ const Nav = () => {
                 </Link>
 
                 <h1 className="userName">
-                  {localStorage.getItem("userName")}님
+                  {localStorage.getItem("userName")}
+                  <span>님</span>
                 </h1>
                 <button className="gnbLogOut" onClick={logOutHandler}>
                   로그아웃

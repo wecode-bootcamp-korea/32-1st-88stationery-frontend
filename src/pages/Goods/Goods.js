@@ -9,8 +9,6 @@ const Goods = () => {
   const [goodsInfo, setGoodsInfo] = useState([]);
   const params = useParams();
 
-  console.log(goodsInfo);
-
   useEffect(() => {
     fetch(`${config.goods}/${params.id}`)
       .then(res => res.json())
@@ -51,7 +49,13 @@ const Goods = () => {
       }),
     })
       .then(response => response.json())
-      .then(result => console.log(result));
+      .then(result =>
+        result.message === "cart created"
+          ? alert("장바구니에 새로운 상품이 추가되었습니다")
+          : result.message === "cart updated"
+          ? alert("장바구니에 상품이 추가되었습니다")
+          : null
+      );
   };
 
   const buyItems = e => {
@@ -89,8 +93,16 @@ const Goods = () => {
               src={goodsInfo.thumnail_url_2}
               alt="goodsImage"
             />
-            <div onClick={swipeHandler} className="swipePrev" />
-            <div onClick={swipeHandler} className="swipeNext" />
+
+            <i
+              className="fa-solid fa-arrow-left-long fa-2x"
+              onClick={swipeHandler}
+            />
+            <i
+              className="fa-solid fa-arrow-right-long fa-2x"
+              onClick={swipeHandler}
+            />
+
             <div className="indexButton">
               {Array(2)
                 .fill()
