@@ -36,15 +36,21 @@ const Category = () => {
   };
 
   const sortCategoryHandler = e => {
-    if (e.target.type === "sortByLowPrice") {
+    if (e.target.type === "sortByLowPrice" && sortUrl !== "sort_method=1") {
       setItemLists([]);
       setPage(1);
       setSortUrl("sort_method=1");
-    } else if (e.target.type === "sortByHighPrice") {
+    } else if (
+      e.target.type === "sortByHighPrice" &&
+      sortUrl !== "sort_method=2"
+    ) {
       setItemLists([]);
       setPage(1);
       setSortUrl("sort_method=2");
-    } else if (e.target.type === "sortByNewItems") {
+    } else if (
+      e.target.type === "sortByNewItems" &&
+      sortUrl !== "sort_method=3"
+    ) {
       setItemLists([]);
       setPage(1);
       setSortUrl("sort_method=3");

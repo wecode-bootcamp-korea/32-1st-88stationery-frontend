@@ -1,5 +1,5 @@
 .OrderedItemUl {
-  width: 100%;
+  width: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,63 +11,60 @@
     align-items: center;
     width: 100%;
 
-    .orderedProductBox {
-      width: 100%;
-      display: flex;
+    .orderImgBox {
+      flex: 1;
+      position: relative;
 
-      .orderImgBox {
-        position: relative;
-
-        &:hover .orderHoverImg {
-          opacity: 0;
-          transition: opacity 0.3s ease-out;
-          cursor: pointer;
-        }
-        .orderProductImg {
-          width: 100px;
-          height: 100px;
-          margin-right: 30px;
-        }
-
-        .orderHoverImg {
-          position: absolute;
-          left: 0;
-          z-index: 1;
-          transition: opacity 0.3s ease-in;
-          width: 100px;
-          height: 100px;
-          margin-right: 30px;
-        }
+      &:hover .orderHoverImg {
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+        cursor: pointer;
+      }
+      .orderProductImg {
+        width: 100px;
+        height: 100px;
+        margin-right: 30px;
       }
 
-      .orderedListProductText {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        font-size: 18px;
-        font-weight: 500;
+      .orderHoverImg {
+        position: absolute;
+        left: 0;
+        z-index: 1;
+        transition: opacity 0.3s ease-in;
+        width: 100px;
+        height: 100px;
+        margin-right: 30px;
       }
     }
 
-    .orderedCount {
-      margin-right: 50px;
+    .orderedListProductText {
+      flex: 4;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 18px;
       font-weight: 500;
     }
+  }
 
-    .orderedSumPrice {
-      width: 20%;
-      display: flex;
-      align-items: center;
-      margin-right: 30px;
-      font-weight: 900;
-    }
+  .orderedCount {
+    flex: 1;
+    width: 30px;
+    font-weight: 500;
+    text-align: center;
+  }
 
-    .orderedStatus {
-      width: 100%;
-      margin-right: 10px;
-      display: flex;
-      align-items: center;
-      color: #2ac1bc;
-    }
+  .orderedSumPrice {
+    flex: 1;
+    width: 20%;
+    font-weight: 900;
+    text-align: center;
+  }
+
+  .orderedStatus {
+    flex: 1;
+    width: 100%;
+    color: #2ac1bc;
+    text-align: center;
   }
 }

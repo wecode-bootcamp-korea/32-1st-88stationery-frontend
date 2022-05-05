@@ -17,13 +17,13 @@
       color: $commonColor;
     }
     .asideWelcomeBox {
-      margin: 0 auto;
-      padding: 0 50px;
-      width: 100%;
       display: flex;
+      justify-content: center;
+      width: 1250px;
+      padding: 0 50px;
 
       .asideBar {
-        width: 20%;
+        width: 150px;
         span {
           color: $commonColor;
         }
