@@ -4,13 +4,13 @@ import AsideGlobalChange from "./AsideGlobalChange";
 import { useNavigate } from "react-router-dom";
 import "./Aside.scss";
 
-const Aside = ({ CATEGORY_LIST, isSideBarOn, handleSideBarOn }) => {
+const Aside = ({ CATEGORY_LIST, isSideBarOn, handleSideBarOn, userName }) => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  const loginAvalid = token;
 
   const goToInquiry = () => {
     if (token) {
+      handleSideBarOn();
       navigate("/inquiry");
     } else {
       alert("로그인 후 이용 가능한 서비스입니다🤗");
@@ -22,8 +22,8 @@ const Aside = ({ CATEGORY_LIST, isSideBarOn, handleSideBarOn }) => {
       <aside className={isSideBarOn ? "gsb" : "gsbHidden"}>
         <header className="gsbHeader">
           <h2>
-            {localStorage.getItem("token") ? (
-              <strong>{loginAvalid}님 환영합니다</strong>
+            {token ? (
+              <strong>{localStorage.getItem("userName")}님 환영합니다</strong>
             ) : (
               <p>
                 앗!

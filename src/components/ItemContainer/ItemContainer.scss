@@ -47,9 +47,11 @@
     font-weight: 700;
     transition: 0.3s;
   }
+
   .w-btn-neon2:hover {
     transform: scale(1.2);
   }
+
   .w-btn-neon2:hover::after {
     @include size(30px, 30px);
     content: "";

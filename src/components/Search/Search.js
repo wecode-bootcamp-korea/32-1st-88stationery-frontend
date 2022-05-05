@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { config } from "../../config";
 import "../Search/Search.scss";
-function Search({
-  isSearchOn,
-  handleSearchBarOn,
-  handleChange,
-  filterInputValue,
-  userInput,
-}) {
+function Search({ isSearchOn, handleSearchBarOn }) {
+  const [userInput, setUserInput] = useState("");
+  const [userSearch, setUserSearch] = useState([]);
+
+  const handleChange = e => {
+    setUserInput(e.target.value);
+  };
+
+  const filterInputValue = userSearch.filter(search => {
+    return search.name.includes(userInput);
+  });
+
+  useEffect(() => {
+    fetch(`${config.search}?search=${userInput}`, {})
+      .then(response => response.json())
+      .then(result => {
+        setUserSearch(result.searched_products);
+      });
+  }, [userInput]);
+
   return (
     <div
       className={
@@ -25,10 +39,10 @@ function Search({
         <div className="searchResultContainer">
           {userInput.length > 0 ? (
             filterInputValue.map(list => {
-              const { id, name, src1 } = list;
+              const { product_id, name, thumnail_url_1 } = list;
               return (
-                <div className="searchResult" key={id}>
-                  <img src={src1} alt="searchImg" />
+                <div className="searchResult" key={product_id}>
+                  <img src={thumnail_url_1} alt="searchImg" />
                   <h2>{name}</h2>
                 </div>
               );

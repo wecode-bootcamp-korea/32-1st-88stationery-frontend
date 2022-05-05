@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import ItemContainer from "../../components/ItemContainer/ItemContainer";
 import "./Category.scss";
 import { config } from "../../config";
 
-const LIMIT = 4;
+let LIMIT = 4;
 
 const Category = () => {
   const [itemLists, setItemLists] = useState([]);
@@ -21,6 +21,7 @@ const Category = () => {
     )
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         const copyArray = [...res.products];
         setCategoryInfo(res.category[0]);
         setItemLists(itemLists.concat(copyArray));
@@ -31,6 +32,7 @@ const Category = () => {
     // const offset = page * LIMIT;
     // const queryString = `?limit=${LIMIT}&offset=${offset}`;
     setPage(page + 1);
+    // LIMIT += 4;
     // navigate(`${queryString}`);
   };
 
@@ -58,6 +60,7 @@ const Category = () => {
         title="요즘 잘 나가요"
         itemLists={itemLists}
         updateOffset={updateOffset}
+        setItemLists={setItemLists}
       />
     </>
   );

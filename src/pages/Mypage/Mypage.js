@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import OrderItems from "../../components/OrderItems/OrderItems";
+import { config } from "../../config";
 import "./Mypage.scss";
 
 const Mypage = () => {
@@ -12,8 +13,7 @@ const Mypage = () => {
   };
 
   useEffect(() => {
-    fetch("http://10.58.1.230:8000/orders", {
-      method: "GET",
+    fetch(`${config.orders}`, {
       headers: {
         Authorization:
           "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6N30.u8tQmYe21yFLPlb5ABDzRHAG7XGE2zugyDhD3IA5K1s",

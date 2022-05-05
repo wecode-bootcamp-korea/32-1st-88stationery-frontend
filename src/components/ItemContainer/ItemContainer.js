@@ -1,9 +1,16 @@
 import Items from "../Items/Items";
+import { config } from "../../config";
+import { useParams } from "react-router-dom";
 import "./ItemContainer.scss";
+import { useEffect, useState } from "react";
 
-const LIMIT = 4;
-
-const ItemContainer = ({ title, name, itemLists, updateOffset }) => {
+const ItemContainer = ({
+  title,
+  name,
+  itemLists,
+  setItemLists,
+  updateOffset,
+}) => {
   // const [page, setPage] = useState(1);
   // const navigate = useNavigate();
   // const location = useLocation();
@@ -27,7 +34,27 @@ const ItemContainer = ({ title, name, itemLists, updateOffset }) => {
   //   setPage(page + 1);
   //   navigate(`${queryString}`);
   // };
+  //10.58.1.230:8000/products/category/번호?sort_method=0
+  const params = useParams();
+  const [sortNumber, setSortNumber] = useState(0);
 
+  useEffect(() => {
+    fetch(`${config.category}/${params.id}?sort_method=${sortNumber}`)
+      .then(res => res.json())
+      .then(res => {
+        setItemLists(res.products);
+      });
+  }, [sortNumber]);
+
+  const sortCategoryHandler = e => {
+    if (e.target.type === "sortByLowPrice") {
+      setSortNumber(1);
+    } else if (e.target.type === "sortByHighPrice") {
+      setSortNumber(2);
+    } else if (e.target.type === "sortByNewItems") {
+      setSortNumber(3);
+    }
+  };
   return (
     <div className="itemContainer">
       <h3 className="mainTitle">{title}</h3>
@@ -36,9 +63,15 @@ const ItemContainer = ({ title, name, itemLists, updateOffset }) => {
           <div className="sortCategoriesList">
             <div className="sortCategory">
               <ul>
-                <li type="sortByLowPrice">가격 낮은 순</li>
-                <li type="sortByHighPrice">가격 높은 순</li>
-                <li type="sortByNewItems">신상품</li>
+                <li type="sortByLowPrice" onClick={sortCategoryHandler}>
+                  가격 낮은 순
+                </li>
+                <li type="sortByHighPrice" onClick={sortCategoryHandler}>
+                  가격 높은 순
+                </li>
+                <li type="sortByNewItems" onClick={sortCategoryHandler}>
+                  신상품
+                </li>
               </ul>
             </div>
           </div>

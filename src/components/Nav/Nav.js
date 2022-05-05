@@ -4,6 +4,7 @@ import Aside from "../Aside/Aside";
 import Search from "../Search/Search";
 import NavSideCategory from "./NavSideCategory";
 import LoginModal from "../Modal/LoginModal";
+import { config } from "../../config";
 import "./Nav.scss";
 
 const CATEGORY_LIST = [
@@ -20,8 +21,6 @@ const Nav = () => {
   const [isSideBarOn, setisSideBarOn] = useState(false);
   const [isSearchOn, setisSearchOn] = useState(false);
   const [isLoginModalOn, setIstLoginModalOn] = useState(false);
-  const [userInput, setUserInput] = useState("");
-  const [userName, setUserName] = useState("");
 
   function handleScroll() {
     setScrollY(window.pageYOffset);
@@ -45,20 +44,11 @@ const Nav = () => {
     setScrollY(0);
   }
 
-  const handleChange = e => {
-    setUserInput(e.target.value);
-  };
-
   const logOutHandler = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userName");
     window.location.reload();
   };
-
-  //TODO : 백엔드에서 데이터 받아와서 구현할 예정
-  // const filterInputValue = PRODUCT.filter(search => {
-  //   return search.name.includes(userInput);
-  // });
-
   useEffect(() => {
     function scrollListener() {
       window.addEventListener("scroll", handleScroll);
@@ -98,15 +88,19 @@ const Nav = () => {
               className=" fa fa-light fa-magnifying-glass"
               onClick={handleSearchBarOn}
             />
-            <Link to="/cart">
-              <i className="fa fa-light fa-cart-shopping" />
-            </Link>
-            <Link to="/mypage">
-              <i className="fa-solid fa-user" />
-            </Link>
+
             {localStorage.getItem("token") ? (
               <>
-                <h1 className="userName">{userName}</h1>
+                <Link to="/cart">
+                  <i className="fa fa-light fa-cart-shopping" />
+                </Link>
+                <Link to="/mypage">
+                  <i className="fa-solid fa-user" />
+                </Link>
+
+                <h1 className="userName">
+                  {localStorage.getItem("userName")}님
+                </h1>
                 <button className="gnbLogOut" onClick={logOutHandler}>
                   로그아웃
                 </button>
@@ -124,12 +118,7 @@ const Nav = () => {
           </div>
         </div>
       </div>
-      <Search
-        isSearchOn={isSearchOn}
-        handleSearchBarOn={handleSearchBarOn}
-        handleChange={handleChange}
-        userInput={userInput}
-      />
+      <Search isSearchOn={isSearchOn} handleSearchBarOn={handleSearchBarOn} />
       <Aside
         CATEGORY_LIST={CATEGORY_LIST}
         isSideBarOn={isSideBarOn}
@@ -146,7 +135,6 @@ const Nav = () => {
           isLoginModalOn={isLoginModalOn}
           handleisLoginModalOn={handleisLoginModalOn}
           setIstLoginModalOn={setIstLoginModalOn}
-          setUserName={setUserName}
         />
       )}
     </nav>
