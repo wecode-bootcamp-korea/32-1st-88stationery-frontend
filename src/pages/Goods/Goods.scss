@@ -33,7 +33,6 @@
       .goodsPrice {
         margin-top: 28px;
         font-size: 24px;
-        font-weight: 500;
         line-height: 20px;
         font-weight: 500;
       }
@@ -156,6 +155,7 @@
           }
         }
       }
+
       .orderTotal {
         @include commonDisplayAttributes(flex, space-between, null);
         margin-top: 40px;

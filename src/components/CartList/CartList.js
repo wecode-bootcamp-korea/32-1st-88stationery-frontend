@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import { config } from "../../config";
 import "./CartList.scss";
 const CartList = ({
   productPrice,
@@ -15,19 +16,6 @@ const CartList = ({
 }) => {
   const [isChecked, setIsChecked] = useState(checkedList.includes(name));
   const itemPrice = Number(productPrice) * quantity;
-
-  // useEffect(() => {
-  //   // 원본 배열은 건드리면 안되기 때문에 배열 복제
-  //   // 수정하고자 하는 product가 어떤 건지 알아야 함 => id
-  //   // 복제된 배열에서, 해당하는 product의 quantity를 바꿔줌 => findIndex
-  //   // setState
-
-  //   const copyArray = [...cartLists];
-  //   const selectedIndex = copyArray.findIndex(e => e.category_id === id);
-  //   copyArray[selectedIndex].quantity = quantity;
-  //   setCartLists(copyArray);
-  // }, [quantity]);
-  console.log(productPrice, id, quantity, cartLists);
 
   useEffect(() => {
     setIsChecked(checkedList.includes(name));
@@ -86,7 +74,7 @@ const CartList = ({
   };
 
   const deleteItem = () => {
-    fetch("http://10.58.1.230:8000/orders/carts", {
+    fetch(`${config.carts}`, {
       method: "DELETE",
       headers: {
         Authorization:

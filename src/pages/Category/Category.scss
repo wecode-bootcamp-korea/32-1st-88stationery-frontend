@@ -1,3 +1,6 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .category {
   width: 100%;
   padding: 90px;
@@ -10,8 +13,7 @@
 
     .categoryHeader {
       h1 {
-        display: flex;
-        align-content: flex-start;
+        @include commonDisplayAttributes(flex, null, flex-start);
         font-size: 60px;
         font-weight: 400;
 

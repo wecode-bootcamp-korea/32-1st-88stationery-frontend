@@ -1,36 +1,41 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .cartPayment {
   position: relative;
   top: -5%;
   padding-top: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   width: 50%;
+
   .paymentResult {
     .productPrice {
-      display: flex;
-      justify-content: space-between;
+      @include commonDisplayAttributes(flex, space-between, null);
       margin-bottom: 15px;
+
       span {
         margin: 5px 0;
       }
     }
+
     .deliveryPrice {
-      display: flex;
-      justify-content: space-between;
+      @include commonDisplayAttributes(flex, space-between, null);
       border-bottom: 1px solid rgba(0, 0, 0, 0.2);
       padding-bottom: 10px;
       margin-bottom: 15px;
     }
+
     .totalPrice {
-      display: flex;
-      justify-content: space-between;
+      @include commonDisplayAttributes(flex, space-between);
+
       span {
         color: #2ac1bc;
         margin: 15px 0;
       }
     }
+
     .textBox {
-      display: flex;
-      justify-content: flex-end;
+      @include commonDisplayAttributes(flex, flex-end, null);
       margin-top: 10px;
       margin-bottom: 30px;
       color: #2ac1bc;
@@ -39,6 +44,7 @@
       font-weight: 500;
     }
   }
+
   .orderBtn {
     button {
       width: 100%;
@@ -50,6 +56,7 @@
       background-color: #2ac1bc;
       opacity: 0.9;
       cursor: pointer;
+
       &:active {
         transform: scale(0.9);
       }

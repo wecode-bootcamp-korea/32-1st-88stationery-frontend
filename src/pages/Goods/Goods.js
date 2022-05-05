@@ -119,6 +119,7 @@ const Goods = () => {
                 ))}
             </div>
           </figure>
+
           <div className="goodsOrder">
             <div className="shippingGuide">
               <p>배송정보</p>

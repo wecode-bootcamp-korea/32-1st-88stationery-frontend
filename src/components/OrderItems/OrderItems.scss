@@ -1,14 +1,15 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .OrderedItemUl {
-  width: 800px;
-  display: flex;
+  @include commonDisplayAttributes(flex, null, center);
+  width: 100%;
   flex-direction: column;
-  align-items: center;
   margin-left: 50px;
   overflow: scroll;
 
   .orderedListLi {
-    display: flex;
-    align-items: center;
+    @include commonDisplayAttributes(flex, null, center);
     width: 100%;
 
     .orderImgBox {
@@ -20,30 +21,46 @@
         transition: opacity 0.3s ease-out;
         cursor: pointer;
       }
+
       .orderProductImg {
-        width: 100px;
-        height: 100px;
+        @include size(100px, 100px);
         margin-right: 30px;
       }
 
       .orderHoverImg {
+        @include size(100px, 100px);
         position: absolute;
         left: 0;
         z-index: 1;
         transition: opacity 0.3s ease-in;
-        width: 100px;
-        height: 100px;
         margin-right: 30px;
       }
     }
 
     .orderedListProductText {
-      flex: 4;
+      @include commonDisplayAttributes(flex, null, center);
       width: 100%;
-      display: flex;
-      align-items: center;
       font-size: 18px;
       font-weight: 500;
+    }
+
+    .orderedCount {
+      margin-right: 50px;
+      font-weight: 500;
+    }
+
+    .orderedSumPrice {
+      @include commonDisplayAttributes(flex, null, center);
+      width: 20%;
+      margin-right: 30px;
+      font-weight: 900;
+    }
+
+    .orderedStatus {
+      @include commonDisplayAttributes(flex, null, center);
+      width: 100%;
+      margin-right: 10px;
+      color: #2ac1bc;
     }
   }
 
