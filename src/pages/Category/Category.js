@@ -44,6 +44,7 @@ const Category = () => {
       setItemLists([]);
       setPage(1);
       setSortUrl("sort_method=1");
+      setIsLast(false);
     } else if (
       e.target.type === "sortByHighPrice" &&
       sortUrl !== "sort_method=2"
@@ -51,6 +52,7 @@ const Category = () => {
       setItemLists([]);
       setPage(1);
       setSortUrl("sort_method=2");
+      setIsLast(false);
     } else if (
       e.target.type === "sortByNewItems" &&
       sortUrl !== "sort_method=3"
@@ -58,6 +60,7 @@ const Category = () => {
       setItemLists([]);
       setPage(1);
       setSortUrl("sort_method=3");
+      setIsLast(false);
     }
   };
 
