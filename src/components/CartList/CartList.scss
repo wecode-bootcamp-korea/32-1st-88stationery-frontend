@@ -10,6 +10,7 @@
     .cartListProductBox {
       @include commonDisplayAttributes(flex, null, center);
       flex: 2;
+      cursor: pointer;
 
       img {
         width: 150px;
@@ -61,12 +62,10 @@
       }
     }
 
-    .cartListDeleteBox {
-      button {
-        border: none;
-        background-color: white;
-        cursor: pointer;
-      }
+    .cartListDeleteBtn {
+      border: none;
+      background-color: white;
+      cursor: pointer;
     }
   }
 }

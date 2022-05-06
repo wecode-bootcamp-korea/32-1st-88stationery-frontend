@@ -6,11 +6,11 @@ import "./Cart.scss";
 
 const Cart = () => {
   const [sumPrice, setSumPrice] = useState({ default: 0 });
-  const [deliveryPrice, setDeliveryPrice] = useState(3000);
   const [isAllChecked, setIsAllChecked] = useState(true);
   const [cartLists, setCartLists] = useState([]);
   const [checkedList, setCheckedList] = useState([]);
-  const [cartInfo, setCartInfo] = useState();
+
+  const totalPrice = Object.values(sumPrice).reduce((acc, cur) => acc + cur);
 
   useEffect(() => {
     fetch(`${config.carts}`, {
@@ -24,13 +24,6 @@ const Cart = () => {
       .then(data => {
         setCheckedList(data.carts.map(cart => cart.product));
         setCartLists(data.carts);
-        setCartInfo(
-          data.carts.map(cart => ({
-            cart_id: String(cart.cart_id),
-            quantity: String(cart.quantity),
-            price: String(Number(cart.price) * cart.quantity),
-          }))
-        );
       });
   }, []);
 
@@ -39,10 +32,6 @@ const Cart = () => {
       ? setIsAllChecked(true)
       : setIsAllChecked(false);
   }, [checkedList]);
-
-  useEffect(() => {
-    sumPrice > 30000 ? setDeliveryPrice(0) : setDeliveryPrice(3000);
-  }, [sumPrice]);
 
   useEffect(() => {
     fetch(`${config.carts}`, {
@@ -63,11 +52,9 @@ const Cart = () => {
     });
   }, [cartLists]);
 
-  const totalPrice = Object.values(sumPrice).reduce((acc, cur) => acc + cur);
-
   const allCheckHandler = () => {
     setIsAllChecked(!isAllChecked);
-    isAllChecked === true && setCheckedList([]);
+    isAllChecked && setCheckedList([]);
   };
 
   const buyItems = e => {
@@ -87,6 +74,8 @@ const Cart = () => {
     window.location.reload();
   };
 
+  console.log(cartLists);
+
   return (
     <div className="cartContainer">
       <h1 className="cartTitle">장바구니</h1>
@@ -99,38 +88,45 @@ const Cart = () => {
                 checked={isAllChecked}
                 onChange={allCheckHandler}
               />
-              <button>전체선택</button>
-            </div>
-            <div>
-              <button>선택삭제</button>
+              <p>전체선택</p>
             </div>
           </div>
           <ul className="cartList">
-            {cartLists.map((cartList, index) => {
-              return (
-                <CartList
-                  cartLists={cartLists}
-                  setCartLists={setCartLists}
-                  setCheckedList={setCheckedList}
-                  checkedList={checkedList}
-                  isAllChecked={isAllChecked}
-                  key={index}
-                  productPrice={cartList.price}
-                  name={cartList.product}
-                  id={cartList.cart_id}
-                  img={cartList.product_image_1}
-                  setSumPrice={setSumPrice}
-                  quantity={cartList.quantity}
-                />
-              );
-            })}
+            {cartLists.map(
+              (
+                {
+                  price,
+                  product,
+                  cart_id,
+                  product_image_1,
+                  quantity,
+                  product_id,
+                },
+                index
+              ) => {
+                return (
+                  <CartList
+                    cartLists={cartLists}
+                    setCartLists={setCartLists}
+                    setCheckedList={setCheckedList}
+                    checkedList={checkedList}
+                    isAllChecked={isAllChecked}
+                    key={index}
+                    productPrice={price}
+                    name={product}
+                    id={cart_id}
+                    img={product_image_1}
+                    setSumPrice={setSumPrice}
+                    quantity={quantity}
+                    productId={product_id}
+                  />
+                );
+              }
+            )}
           </ul>
         </div>
         <div className="cartPayment">
-          <CartPaymentResult
-            deliveryPrice={deliveryPrice}
-            totalPrice={totalPrice}
-          />
+          <CartPaymentResult totalPrice={totalPrice} />
           <div className="orderBtn">
             <button onClick={buyItems}>주문하기</button>
           </div>

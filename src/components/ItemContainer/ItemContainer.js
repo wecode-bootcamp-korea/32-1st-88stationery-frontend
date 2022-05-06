@@ -7,6 +7,7 @@ const ItemContainer = ({
   itemLists,
   updateOffset,
   sortCategoryHandler,
+  isLast,
 }) => {
   return (
     <div className="itemContainer">
@@ -36,7 +37,11 @@ const ItemContainer = ({
         })}
       </div>
       <div className="nextItems">
-        <button className="w-btn-neon2 " onClick={updateOffset}>
+        <button
+          className={isLast ? "w-btn-neon" : "w-btn-neon2"}
+          disabled={isLast}
+          onClick={updateOffset}
+        >
           더 보기
         </button>
       </div>

@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { config } from "../../config";
 import "./CartList.scss";
 const CartList = ({
@@ -13,13 +14,10 @@ const CartList = ({
   setCartLists,
   cartLists,
   quantity,
+  productId,
 }) => {
-  const [isChecked, setIsChecked] = useState(checkedList.includes(name));
+  const navigate = useNavigate();
   const itemPrice = Number(productPrice) * quantity;
-
-  useEffect(() => {
-    setIsChecked(checkedList.includes(name));
-  }, []);
 
   useEffect(() => {
     isAllChecked === true &&
@@ -28,10 +26,10 @@ const CartList = ({
   }, [isAllChecked]);
 
   useEffect(() => {
-    isChecked
+    checkedList.includes(name)
       ? setSumPrice(prev => ({ ...prev, [name]: itemPrice }))
       : setSumPrice(prev => ({ ...prev, [name]: 0 }));
-  }, [itemPrice, isChecked]);
+  }, [itemPrice, checkedList.includes(name)]);
 
   const increaseCount = () => {
     const copyArray = [...cartLists];
@@ -87,6 +85,10 @@ const CartList = ({
     window.location.reload();
   };
 
+  const goDetail = () => {
+    navigate(`/goods/${productId}`);
+  };
+
   return (
     <li className="cartListLi">
       <div className="cartListCheckBox">
@@ -96,11 +98,9 @@ const CartList = ({
           checked={checkedList.includes(name)}
         />
       </div>
-      <div className="cartListProductBox">
+      <div onClick={goDetail} className="cartListProductBox">
         <img alt="제품사진" src={img} />
-        <p className="cartListProductText">
-          <p>{name}</p>
-        </p>
+        <p className="cartListProductText">{name}</p>
       </div>
       <div className="cartListInfoBox">
         <div className="cartListQuantity">
@@ -118,13 +118,11 @@ const CartList = ({
             +
           </button>
         </div>
-        <div className="cartListPrice">
-          <p>{itemPrice.toLocaleString("ko-KR")}원</p>
-        </div>
+        <p className="cartListPrice">{itemPrice.toLocaleString()}원</p>
       </div>
-      <div className="cartListDeleteBox">
-        <button onClick={deleteItem}>:x:</button>
-      </div>
+      <button className="cartListDeleteBtn" onClick={deleteItem}>
+        X
+      </button>
     </li>
   );
 };

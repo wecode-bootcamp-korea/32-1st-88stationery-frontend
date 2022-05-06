@@ -4,6 +4,7 @@
 .footer {
   @include commonDisplayAttributes(flex, space-evenly, center);
   @include size(100%, 300px);
+  min-width: 1300px;
   background-color: #fafafa;
 
   .logoImage {

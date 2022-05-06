@@ -11,37 +11,41 @@
   .orderedListLi {
     @include commonDisplayAttributes(flex, null, center);
     width: 100%;
+    .orderedProductBox {
+      display: flex;
+      flex: 4;
 
-    .orderImgBox {
-      flex: 1;
-      position: relative;
+      .orderImgBox {
+        flex: 1;
+        position: relative;
 
-      &:hover .orderHoverImg {
-        opacity: 0;
-        transition: opacity 0.3s ease-out;
-        cursor: pointer;
+        &:hover .orderHoverImg {
+          opacity: 0;
+          transition: opacity 0.3s ease-out;
+          cursor: pointer;
+        }
+
+        .orderProductImg {
+          @include size(100px, 100px);
+          margin-right: 30px;
+        }
+
+        .orderHoverImg {
+          @include size(100px, 100px);
+          position: absolute;
+          left: 0;
+          z-index: 1;
+          transition: opacity 0.3s ease-in;
+          margin-right: 30px;
+        }
       }
 
-      .orderProductImg {
-        @include size(100px, 100px);
-        margin-right: 30px;
+      .orderedListProductText {
+        @include commonDisplayAttributes(flex, null, center);
+        width: 100%;
+        font-size: 18px;
+        font-weight: 500;
       }
-
-      .orderHoverImg {
-        @include size(100px, 100px);
-        position: absolute;
-        left: 0;
-        z-index: 1;
-        transition: opacity 0.3s ease-in;
-        margin-right: 30px;
-      }
-    }
-
-    .orderedListProductText {
-      @include commonDisplayAttributes(flex, null, center);
-      width: 100%;
-      font-size: 18px;
-      font-weight: 500;
     }
 
     .orderedCount {

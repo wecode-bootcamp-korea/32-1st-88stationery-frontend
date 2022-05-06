@@ -14,6 +14,8 @@ const Category = () => {
   const location = useLocation();
   const params = useParams();
 
+  const [isLast, setIsLast] = useState(false);
+
   useEffect(() => {
     fetch(
       `${config.category}/${params.id}?${sortUrl}&${
@@ -22,9 +24,14 @@ const Category = () => {
     )
       .then(res => res.json())
       .then(res => {
-        const copyArray = [...res.products];
-        setCategoryInfo(res.category[0]);
-        setItemLists(itemLists.concat(copyArray));
+        if (res.products.length) {
+          const copyArray = [...res.products];
+          setCategoryInfo(res.category[0]);
+          setItemLists(itemLists.concat(copyArray));
+        } else {
+          alert("마지막 상품입니다");
+          setIsLast(true);
+        }
       });
   }, [page, sortUrl]);
 
@@ -75,11 +82,11 @@ const Category = () => {
       </header>
       <ItemContainer
         name="itemsInCategory"
-        title="요즘 잘 나가요"
         itemLists={itemLists}
         updateOffset={updateOffset}
         setItemLists={setItemLists}
         sortCategoryHandler={sortCategoryHandler}
+        isLast={isLast}
       />
     </>
   );
