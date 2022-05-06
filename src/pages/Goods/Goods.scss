@@ -21,11 +21,12 @@
       flex: 1;
 
       .goodsName {
+        width: 300px;
         font-size: 30px;
         font-weight: 700;
         word-break: keep-all;
-        line-height: 20px;
-        white-space: nowrap;
+        line-height: 50px;
+        white-space: wrap;
         color: #2ac1bc;
         font-weight: 700;
       }

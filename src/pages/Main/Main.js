@@ -18,6 +18,8 @@ const Main = () => {
       });
   }, []);
 
+  console.log(itemLists);
+
   return (
     <main className="Main">
       <Carousel />
@@ -25,7 +27,7 @@ const Main = () => {
         <img src="/images/main/mainBanner.png" alt="mainBanner" />
         <ItemsCarousel bestItems={bestItems} />
         <ItemContainer
-          title="요즘 잘 나가요"
+          title="새로 나왔어요"
           itemLists={itemLists}
           setItemLists={setItemLists}
         />

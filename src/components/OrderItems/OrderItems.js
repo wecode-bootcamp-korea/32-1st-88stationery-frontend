@@ -1,11 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./OrderItems.scss";
 
 const OrderItems = ({ orderLists }) => {
+  const navigate = useNavigate();
+
+  const goDetail = product_id => {
+    navigate(`/goods/${product_id}`);
+  };
+
   return (
     <ul className="OrderedItemUl">
       {orderLists.map(
         ({
+          product_id,
           order_id,
           product_image_1,
           product_image_2,
@@ -16,7 +24,10 @@ const OrderItems = ({ orderLists }) => {
         }) => {
           return (
             <li key={order_id} className="orderedListLi">
-              <div className="orderedProductBox">
+              <div
+                onClick={() => goDetail(product_id)}
+                className="orderedProductBox"
+              >
                 <div className="orderImgBox">
                   <img
                     alt="productImage"
@@ -31,8 +42,6 @@ const OrderItems = ({ orderLists }) => {
                 </div>
                 <p className="orderedListProductText">{product}</p>
               </div>
-              <p className="orderedListProductText">{product}</p>
-
               <p className="orderedCount">{quantity} 개</p>
               <p className="orderedSumPrice">
                 {(quantity * price).toLocaleString()}원

@@ -30,6 +30,20 @@
   position: relative;
   padding: 50px 0;
 
+  .w-btn-neon {
+    position: relative;
+    border: none;
+    min-width: 200px;
+    min-height: 50px;
+    background: $borderColor;
+    border-radius: 1000px;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: "BMDOHYEON";
+    transition: 0.3s;
+  }
+
   .w-btn-neon2 {
     position: relative;
     border: none;
