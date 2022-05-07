@@ -11,6 +11,8 @@
   .orderedListLi {
     @include commonDisplayAttributes(flex, null, center);
     width: 100%;
+    cursor: pointer;
+
     .orderedProductBox {
       display: flex;
       flex: 4;
