@@ -82,7 +82,7 @@
 
 ![](https://blog.kakaocdn.net/dn/bOEEWy/btrATRU5kZC/a7WE845EvXeN5za98yacH1/img.gif)
 
-- 카테고리 별로 가격이 높은 순 / 낮은 순 / 신상품으로 sorting되는 기능을 구현했다
+- 카테고리 별로 가격이 높은 순 / 낮은 순 / 신상품 으로 sorting되는 기능을 구현했다
 - 이 부분도 서버와의 통신으로 실시간으로 백엔드에서 처리 후 뿌려주는 부분이다
 
 # Reference
