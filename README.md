@@ -52,6 +52,39 @@
 - 1:1 문의 및 댓글 기능
 - 마이페이지
 
+<br />
+
+# 내가 담당한 부분
+
+## Nav바 / Aside바 구현
+
+![chrome-capture-2022-4-7](https://user-images.githubusercontent.com/66737450/167240370-90732668-8a7c-4a1a-9da7-ac6d719a8b47.gif)
+
+- 스크롤이 제일 위에 있을때는 배경을 투명하게 하고 밑으로 조금이라도 움직이면 borderdhk opacity가 발생한다
+- Side바에서는 버튼 클릭시 오른쪽에 숨어있던 바를 right: 0으로 보여주면서 나머지 배경은 어둡게 만들었다. 배경을 눌러도 side바가 풀리게 만들었다
+
+## Search 바 구현
+
+![](https://blog.kakaocdn.net/dn/bOq0tb/btrAUk3bCqX/5TdOUJHxbBJ0yRQ7jRndA1/img.gif)
+
+- Search 아이콘 클릭시 위에 있던 search 바를 자연스럽게 내려오게 만들었다
+- 서버와의 통신으로 실시간으로 fetch하여 결과물을 화면에 뿌려주게 만들었다
+
+## Main페이지 캐러셀
+
+![](https://blog.kakaocdn.net/dn/emxWSv/btrARLuHBdC/BgpaEMkoeGXpV8AhiBiWRk/img.gif)
+
+- 덕우님이 만드신 main 캐러셀 밑에 내가 만든 캐러셀을 넣어봤다
+- 이미지 hover시 뒤에 있던 이미지를 애니메이션으로 나오게 하고 오른쪽 버튼도 나오게 했다
+- 배민문방구에서도 한 번 넘기면 캐러셀이 끝이라 넘길시 반대편 버튼을 나오게 구현했다
+
+## 카테고리 별 sorting
+
+![](https://blog.kakaocdn.net/dn/bOEEWy/btrATRU5kZC/a7WE845EvXeN5za98yacH1/img.gif)
+
+- 카테고리 별로 가격이 높은 순 / 낮은 순 / 신상품으로 sorting되는 기능을 구현했다
+- 이 부분도 서버와의 통신으로 실시간으로 백엔드에서 처리 후 뿌려주는 부분이다
+
 # Reference
 
 - 이 프로젝트는 배민문방구 사이트를 참조하여 학습목적으로 만들었습니다.
