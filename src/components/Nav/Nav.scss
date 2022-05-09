@@ -58,6 +58,7 @@
       }
     }
   }
+
   .gnbEtc {
     @include commonDisplayAttributes(flex, space-evenly, center);
     flex: 1;
@@ -97,6 +98,10 @@
       font-weight: 900;
       color: #39c5c0;
       transform: translateY(1px);
+
+      span {
+        color: $blackColor;
+      }
     }
 
     .gnbLogOut {

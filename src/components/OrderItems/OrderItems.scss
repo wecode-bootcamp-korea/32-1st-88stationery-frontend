@@ -1,20 +1,24 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .OrderedItemUl {
+  @include commonDisplayAttributes(flex, null, center);
   width: 100%;
-  display: flex;
   flex-direction: column;
-  align-items: center;
   margin-left: 50px;
   overflow: scroll;
 
   .orderedListLi {
+    @include commonDisplayAttributes(flex, null, center);
     width: 100%;
-    display: flex;
-    height: 120px;
+    cursor: pointer;
 
     .orderedProductBox {
-      width: 100%;
       display: flex;
+      flex: 4;
+
       .orderImgBox {
+        flex: 1;
         position: relative;
 
         &:hover .orderHoverImg {
@@ -22,39 +26,28 @@
           transition: opacity 0.3s ease-out;
           cursor: pointer;
         }
+
         .orderProductImg {
-          width: 100px;
-          height: 100px;
+          @include size(100px, 100px);
           margin-right: 30px;
         }
 
         .orderHoverImg {
+          @include size(100px, 100px);
           position: absolute;
           left: 0;
           z-index: 1;
           transition: opacity 0.3s ease-in;
-          width: 100px;
-          height: 100px;
           margin-right: 30px;
         }
       }
 
       .orderedListProductText {
+        @include commonDisplayAttributes(flex, null, center);
         width: 100%;
-        display: flex;
-        align-items: center;
-
-        p {
-          font-size: 18px;
-          font-weight: 500;
-        }
+        font-size: 18px;
+        font-weight: 500;
       }
-    }
-
-    .orderedListInfoBox {
-      width: 50%;
-      display: flex;
-      align-items: center;
     }
 
     .orderedCount {
@@ -63,19 +56,38 @@
     }
 
     .orderedSumPrice {
+      @include commonDisplayAttributes(flex, null, center);
       width: 20%;
-      display: flex;
-      align-items: center;
       margin-right: 30px;
       font-weight: 900;
     }
 
     .orderedStatus {
+      @include commonDisplayAttributes(flex, null, center);
       width: 100%;
       margin-right: 10px;
-      display: flex;
-      align-items: center;
       color: #2ac1bc;
     }
+  }
+
+  .orderedCount {
+    flex: 1;
+    width: 30px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .orderedSumPrice {
+    flex: 1;
+    width: 20%;
+    font-weight: 900;
+    text-align: center;
+  }
+
+  .orderedStatus {
+    flex: 1;
+    width: 100%;
+    color: #2ac1bc;
+    text-align: center;
   }
 }

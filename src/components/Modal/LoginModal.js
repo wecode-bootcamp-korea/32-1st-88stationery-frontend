@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { config } from "../../config";
-import "./Login.scss";
 import AsideGlobalChange from "../Aside/AsideGlobalChange";
 import LoginFormLayout from "./LoginFormLayout";
+import "./Login.scss";
 
 const ERROR_MESSAGE = {
   INVALID_EMAIL: "존재하지 않는 아이디입니다",
@@ -41,11 +41,15 @@ const LoginModal = ({
     })
       .then(response => response.json())
       .then(result => {
-        alert(ERROR_MESSAGE[result.message]);
-
-        localStorage.setItem("token", result.Authorization);
-        localStorage.setItem("userName", result.user_name);
-        setIstLoginModalOn(false);
+        if (result.message === "SUCCESS") {
+          alert(ERROR_MESSAGE[result.message]);
+          localStorage.setItem("token", result.Authorization);
+          localStorage.setItem("userName", result.user_name);
+          setIstLoginModalOn(false);
+        } else {
+          alert(ERROR_MESSAGE[result.message]);
+          setIstLoginModalOn(false);
+        }
       });
   };
 

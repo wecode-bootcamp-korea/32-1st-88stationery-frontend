@@ -9,8 +9,6 @@ const Goods = () => {
   const [goodsInfo, setGoodsInfo] = useState([]);
   const params = useParams();
 
-  console.log(goodsInfo);
-
   useEffect(() => {
     fetch(`${config.goods}/${params.id}`)
       .then(res => res.json())
@@ -51,7 +49,29 @@ const Goods = () => {
       }),
     })
       .then(response => response.json())
-      .then(result => console.log(result));
+      .then(result =>
+        result.message === "cart created"
+          ? alert("장바구니에 새로운 상품이 추가되었습니다")
+          : result.message === "cart updated"
+          ? alert("장바구니에 상품이 추가되었습니다")
+          : null
+      );
+  };
+
+  const buyItems = e => {
+    e.preventDefault();
+    fetch("http://10.58.1.230:8000/orders", {
+      method: "POST",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6N30.u8tQmYe21yFLPlb5ABDzRHAG7XGE2zugyDhD3IA5K1s",
+      },
+      body: JSON.stringify({
+        product_id: goodsInfo.product_id,
+        quantity: quantity,
+      }),
+    }).then(response => response.json());
+    window.location.reload();
   };
 
   return (
@@ -73,8 +93,16 @@ const Goods = () => {
               src={goodsInfo.thumnail_url_2}
               alt="goodsImage"
             />
-            <div onClick={swipeHandler} className="swipePrev" />
-            <div onClick={swipeHandler} className="swipeNext" />
+
+            <i
+              className="fa-solid fa-arrow-left-long fa-2x"
+              onClick={swipeHandler}
+            />
+            <i
+              className="fa-solid fa-arrow-right-long fa-2x"
+              onClick={swipeHandler}
+            />
+
             <div className="indexButton">
               {Array(2)
                 .fill()
@@ -91,6 +119,7 @@ const Goods = () => {
                 ))}
             </div>
           </figure>
+
           <div className="goodsOrder">
             <div className="shippingGuide">
               <p>배송정보</p>
@@ -123,7 +152,9 @@ const Goods = () => {
               <button onClick={goCart} className="cartButton">
                 <i className="fa-solid fa-cart-shopping" />
               </button>
-              <button className="buyButton">바로 구매하기</button>
+              <button onClick={buyItems} className="buyButton">
+                바로 구매하기
+              </button>
             </footer>
           </div>
         </div>

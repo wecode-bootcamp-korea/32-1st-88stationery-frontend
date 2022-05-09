@@ -1,60 +1,14 @@
 import Items from "../Items/Items";
-import { config } from "../../config";
-import { useParams } from "react-router-dom";
 import "./ItemContainer.scss";
-import { useEffect, useState } from "react";
 
 const ItemContainer = ({
   title,
   name,
   itemLists,
-  setItemLists,
   updateOffset,
+  sortCategoryHandler,
+  isLast,
 }) => {
-  // const [page, setPage] = useState(1);
-  // const navigate = useNavigate();
-  // const location = useLocation();
-  // const params = useParams();
-
-  // useEffect(() => {
-  //   fetch(
-  //     `${config.category}/${params.id}${
-  //       location.search || `?limit=${LIMIT}&offset=0`
-  //     }`
-  //   )
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       setItemLists(prev => prev.concat(res.products));
-  //     });
-  // }, [location.search]);
-
-  // const updateOffset = e => {
-  //   const offset = page * LIMIT;
-  //   const queryString = `?limit=${LIMIT}&offset=${offset}`;
-  //   setPage(page + 1);
-  //   navigate(`${queryString}`);
-  // };
-  //10.58.1.230:8000/products/category/번호?sort_method=0
-  const params = useParams();
-  const [sortNumber, setSortNumber] = useState(0);
-
-  useEffect(() => {
-    fetch(`${config.category}/${params.id}?sort_method=${sortNumber}`)
-      .then(res => res.json())
-      .then(res => {
-        setItemLists(res.products);
-      });
-  }, [sortNumber]);
-
-  const sortCategoryHandler = e => {
-    if (e.target.type === "sortByLowPrice") {
-      setSortNumber(1);
-    } else if (e.target.type === "sortByHighPrice") {
-      setSortNumber(2);
-    } else if (e.target.type === "sortByNewItems") {
-      setSortNumber(3);
-    }
-  };
   return (
     <div className="itemContainer">
       <h3 className="mainTitle">{title}</h3>
@@ -83,7 +37,11 @@ const ItemContainer = ({
         })}
       </div>
       <div className="nextItems">
-        <button className="w-btn-neon2 " onClick={updateOffset}>
+        <button
+          className={isLast ? "w-btn-neon" : "w-btn-neon2"}
+          disabled={isLast}
+          onClick={updateOffset}
+        >
           더 보기
         </button>
       </div>

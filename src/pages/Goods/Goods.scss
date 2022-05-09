@@ -21,11 +21,12 @@
       flex: 1;
 
       .goodsName {
+        width: 300px;
         font-size: 30px;
         font-weight: 700;
         word-break: keep-all;
-        line-height: 20px;
-        white-space: nowrap;
+        line-height: 50px;
+        white-space: wrap;
         color: #2ac1bc;
         font-weight: 700;
       }
@@ -33,7 +34,6 @@
       .goodsPrice {
         margin-top: 28px;
         font-size: 24px;
-        font-weight: 500;
         line-height: 20px;
         font-weight: 500;
       }
@@ -59,20 +59,25 @@
         opacity: 0;
       }
 
-      .swipePrev,
-      .swipeNext {
+      .fa-arrow-left-long,
+      .fa-arrow-right-long {
         @include size(30px, 50px);
         position: absolute;
-        background-color: $commonColor;
         top: 50%;
+        color: #999;
         transform: translateY(-50%);
+        cursor: pointer;
+
+        &:hover {
+          color: $blackColor;
+        }
       }
 
-      .swipePrev {
+      .fa-arrow-left-long {
         left: 10px;
       }
 
-      .swipeNext {
+      .fa-arrow-right-long {
         right: 10px;
       }
 
@@ -151,6 +156,7 @@
           }
         }
       }
+
       .orderTotal {
         @include commonDisplayAttributes(flex, space-between, null);
         margin-top: 40px;

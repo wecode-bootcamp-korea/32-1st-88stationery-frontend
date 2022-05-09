@@ -1,3 +1,6 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
 .searchBarContainer {
   position: fixed;
   max-height: 100%;
@@ -27,20 +30,43 @@
 
     .searchResultContainer {
       display: grid;
-      padding: 0 200px;
+      padding: 50px 200px;
       grid-template-columns: repeat(4, 1fr);
       text-align: center;
 
       .searchResult {
+        position: relative;
         margin: 20px 20px;
+
         img {
-          width: 200px;
-          height: 200px;
+          @include size(200px, 200px);
+        }
+
+        .lastImg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          opacity: 0;
+          transition: all 0.3s ease-in;
+        }
+
+        h2 {
+          padding-top: 15px;
+          font-size: 18px;
+          color: #2ac1bc;
         }
       }
+
+      .searchResult:hover {
+        .lastImg {
+          opacity: 1;
+          z-index: 1;
+        }
+      }
+
       .searchBarRecentContainer {
-        display: flex;
-        justify-content: center;
+        @include commonDisplayAttributes(flex, center, null);
         width: 800px;
         transform: translateX(11%);
 
@@ -58,15 +84,13 @@
   }
 
   .searchBarHeader {
-    display: flex;
+    @include commonDisplayAttributes(flex, null, center);
     position: relative;
-    align-items: center;
     margin: 0 auto;
     width: 600px;
 
     input {
-      width: 100%;
-      height: 60px;
+      @include size(100%, 60px);
       border: none;
       border-bottom: 2px solid #000;
       outline: none;

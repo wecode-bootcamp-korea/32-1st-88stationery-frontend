@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { config } from "../../config";
 import "./SignUp.scss";
 
 const SignUp = () => {
@@ -34,7 +35,7 @@ const SignUp = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    fetch("http://10.58.1.19:8000/users/signup", {
+    fetch(`${config.signup}`, {
       method: "POST",
       body: JSON.stringify({
         email: userInfo.id,
@@ -71,6 +72,22 @@ const SignUp = () => {
   };
 
   const putUserInfo = e => {
+    e.target.name === "id"
+      ? setValueCheck(prev => ({ ...prev, id: true }))
+      : e.target.name === "pw"
+      ? setValueCheck(prev => ({ ...prev, pw: true }))
+      : e.target.name === "pwCheck"
+      ? setValueCheck(prev => ({ ...prev, pwCheck: true }))
+      : e.target.name === "name"
+      ? setValueCheck(prev => ({ ...prev, name: true }))
+      : e.target.name === "phone"
+      ? setValueCheck(prev => ({ ...prev, phone: true }))
+      : e.target.name === "address"
+      ? setValueCheck(prev => ({ ...prev, address: true }))
+      : e.target.name === "detailAddress"
+      ? setValueCheck(prev => ({ ...prev, detailAddress: true }))
+      : e.target.name === "birth" &&
+        setValueCheck(prev => ({ ...prev, birth: true }));
     setUserInfo(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -101,7 +118,7 @@ const SignUp = () => {
           <h3>회원정보</h3>
           <ul className="processBox">
             <li className="process">
-              <i class="fa-solid fa-user" />
+              <i className="fa-solid fa-user" />
             </li>
           </ul>
         </div>

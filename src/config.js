@@ -1,5 +1,4 @@
-export const BASE_URL = "http://10.58.7.20:8000/";
-export const MAIN_URL = "http://10.58.1.230:8000/";
+export const MAIN_URL = "http://3.39.118.217:8000/";
 
 export const config = {
   login: `${MAIN_URL}users/signin`,
@@ -11,4 +10,5 @@ export const config = {
   carts: `${MAIN_URL}orders/carts`,
   search: `${MAIN_URL}search`,
   orders: `${MAIN_URL}orders`,
+  signup: `${MAIN_URL}users/signup`,
 };

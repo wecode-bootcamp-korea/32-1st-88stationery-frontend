@@ -6,7 +6,6 @@ function NavSideCategory({ CATEGORY_LIST }) {
 
   return CATEGORY_LIST.map((list, index) => {
     const { category } = list;
-
     const goToCategoryHandler = () => {
       navigate(`/category/${list.id}`);
       window.location.reload();

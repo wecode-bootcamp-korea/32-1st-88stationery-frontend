@@ -1,4 +1,6 @@
 import { React, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { config } from "../../config";
 import "./CartList.scss";
 const CartList = ({
   productPrice,
@@ -11,27 +13,11 @@ const CartList = ({
   id,
   setCartLists,
   cartLists,
-  quantities,
+  quantity,
+  productId,
 }) => {
-  const [quantity, setQuantity] = useState(quantities);
-  const [isChecked, setIsChecked] = useState(checkedList.includes(name));
-  const itemPrice = Number(productPrice);
-
-  // useEffect(() => {
-  //   // 원본 배열은 건드리면 안되기 때문에 배열 복제
-  //   // 수정하고자 하는 product가 어떤 건지 알아야 함 => id
-  //   // 복제된 배열에서, 해당하는 product의 quantity를 바꿔줌 => findIndex
-  //   // setState
-
-  //   const copyArray = [...cartLists];
-  //   const selectedIndex = copyArray.findIndex(e => e.category_id === id);
-  //   copyArray[selectedIndex].quantity = quantity;
-  //   setCartLists(copyArray);
-  // }, [quantity]);
-
-  useEffect(() => {
-    setIsChecked(checkedList.includes(name));
-  }, []);
+  const navigate = useNavigate();
+  const itemPrice = Number(productPrice) * quantity;
 
   useEffect(() => {
     isAllChecked === true &&
@@ -40,14 +26,14 @@ const CartList = ({
   }, [isAllChecked]);
 
   useEffect(() => {
-    isChecked
+    checkedList.includes(name)
       ? setSumPrice(prev => ({ ...prev, [name]: itemPrice }))
       : setSumPrice(prev => ({ ...prev, [name]: 0 }));
-  }, [itemPrice, isChecked]);
+  }, [itemPrice, checkedList.includes(name)]);
 
   const increaseCount = () => {
     const copyArray = [...cartLists];
-    const selectedIndex = copyArray.findIndex(e => e.category_id === id);
+    const selectedIndex = copyArray.findIndex(e => e.cart_id === id);
     copyArray[selectedIndex].quantity++;
     setCartLists(copyArray);
   };
@@ -55,19 +41,25 @@ const CartList = ({
   const decreaseCount = () => {
     if (quantity > 0) {
       const copyArray = [...cartLists];
-      const selectedIndex = copyArray.findIndex(e => e.category_id === id);
+      const selectedIndex = copyArray.findIndex(e => e.cart_id === id);
       copyArray[selectedIndex].quantity--;
       setCartLists(copyArray);
     }
   };
 
   const onChangeHandler = e => {
-    setQuantity(e.target.value);
+    const copyArray = [...cartLists];
+    const selectedIndex = copyArray.findIndex(e => e.cart_id === id);
+    copyArray[selectedIndex].quantity = e.target.value;
+    setCartLists(copyArray);
   };
 
   const onKeyDown = e => {
     if (e.code.includes("Digit") || e.code.includes("Backspace")) {
-      setQuantity(e.target.value);
+      const copyArray = [...cartLists];
+      const selectedIndex = copyArray.findIndex(e => e.cart_id === id);
+      copyArray[selectedIndex].quantity = e.target.value;
+      setCartLists(copyArray);
     } else {
       e.preventDefault();
     }
@@ -79,6 +71,24 @@ const CartList = ({
       : setCheckedList(prev => prev.filter(item => item !== name));
   };
 
+  const deleteItem = () => {
+    fetch(`${config.carts}`, {
+      method: "DELETE",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6N30.u8tQmYe21yFLPlb5ABDzRHAG7XGE2zugyDhD3IA5K1s",
+      },
+      body: JSON.stringify({
+        cart_id: id,
+      }),
+    }).then(response => response.json());
+    window.location.reload();
+  };
+
+  const goDetail = () => {
+    navigate(`/goods/${productId}`);
+  };
+
   return (
     <li className="cartListLi">
       <div className="cartListCheckBox">
@@ -88,11 +98,9 @@ const CartList = ({
           checked={checkedList.includes(name)}
         />
       </div>
-      <div className="cartListProductBox">
+      <div onClick={goDetail} className="cartListProductBox">
         <img alt="제품사진" src={img} />
-        <div className="cartListProductText">
-          <p>{name}</p>
-        </div>
+        <p className="cartListProductText">{name}</p>
       </div>
       <div className="cartListInfoBox">
         <div className="cartListQuantity">
@@ -101,21 +109,20 @@ const CartList = ({
           </button>
           <input
             type="text"
-            value={quantities}
+            value={quantity}
             onChange={onChangeHandler}
             onKeyDown={onKeyDown}
+            maxLength={4}
           />
           <button type="button" onClick={increaseCount}>
             +
           </button>
         </div>
-        <div className="cartListPrice">
-          <p>{itemPrice.toLocaleString("ko-KR")}원</p>
-        </div>
+        <p className="cartListPrice">{itemPrice.toLocaleString()}원</p>
       </div>
-      <div className="cartListDeleteBox">
-        <button>:x:</button>
-      </div>
+      <button className="cartListDeleteBtn" onClick={deleteItem}>
+        X
+      </button>
     </li>
   );
 };

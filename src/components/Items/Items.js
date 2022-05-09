@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./items.scss";
-import { config } from "../../config";
 
 const Items = ({ itemList }) => {
   const navigate = useNavigate();

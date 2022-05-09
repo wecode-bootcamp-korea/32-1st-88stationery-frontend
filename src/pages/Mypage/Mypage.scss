@@ -3,9 +3,8 @@
 
 .myPageContentBox {
   @include commonDisplayAttributes(flex, center, center);
-  height: 90vh;
-  padding: 800px 20px;
-  margin-bottom: 100px;
+  padding: 200px 0;
+
   .myPageAllBox {
     @include commonDisplayAttributes(flex, null, center);
     flex-direction: column;
@@ -18,13 +17,12 @@
       color: $commonColor;
     }
     .asideWelcomeBox {
-      margin-left: 150px;
-      padding: 0 20px;
-      width: 80%;
-      display: flex;
+      @include commonDisplayAttributes(flex, center, null);
+      min-width: 1250px;
+      padding: 0 50px;
 
       .asideBar {
-        width: 20%;
+        width: 150px;
         span {
           color: $commonColor;
         }
@@ -36,7 +34,7 @@
         }
         a {
           text-decoration: none;
-          color: #2ac1bc;
+          color: $commonColor;
           cursor: pointer;
         }
       }
